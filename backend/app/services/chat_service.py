@@ -6,11 +6,28 @@ from app.core.time import KST
 from app.schemas.chat import ChatAction, ChatResponse
 from app.schemas.course import Course, CourseCategory, CourseClassType
 from app.schemas.student import ScheduleItem
-from app.services import course_service, student_service
+from app.services import ai_client, course_service, student_service
 
 # 확인할 데이터가 없을 때 쓰는 고정 문구. AI_AGENT_RULES.md: 데이터가 없으면
-# 이렇게 말하고, 학교 규정을 지어내지 않는다.
+# 이렇게 말하고, 학교 규정을 지어내지 않는다. AI가 다듬지 못하게 별도 취급한다.
 NO_DATA_ANSWER = "현재 연결된 데이터에서 확인할 수 없습니다."
+
+# Phase 7: AI는 이미 계산된 사실 문장의 "말투"만 다듬는다. 새 정보를 절대
+# 추가하지 않도록 시스템 프롬프트에서 명시적으로 못박는다 (AI_AGENT_RULES.md -
+# LLM은 학교 데이터의 Source of Truth가 아니다).
+_REPHRASE_SYSTEM_PROMPT = (
+    "너는 명지전문대학교 AI 캠퍼스 비서다. 사용자가 보내는 안내문에 담긴 사실"
+    "(숫자, 이름, 시간, 상태 등)은 절대 바꾸거나 더하지 말고, 같은 의미를 유지"
+    "하면서 학생에게 자연스럽고 친절한 한국어 말투로만 한 문단으로 다듬어라."
+)
+
+
+def _rephrase(answer: str) -> str:
+    client = ai_client.get_client()
+    if client is None:
+        return answer
+    rephrased = client.generate(system=_REPHRASE_SYSTEM_PROMPT, user=answer)
+    return rephrased or answer
 
 DAY_ORDER = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 
@@ -183,14 +200,18 @@ def handle_message(message: str, now: datetime | None = None) -> ChatResponse:
     intent = classify_intent(message, filters)
 
     if intent == ChatIntent.AVAILABLE_COURSES:
-        return _handle_course_search(filters, require_available=True)
-    if intent == ChatIntent.SEARCH_COURSES:
-        return _handle_course_search(filters, require_available=False)
-    if intent == ChatIntent.SCHEDULE_TODAY:
-        return _handle_schedule_today(now)
-    if intent == ChatIntent.NEXT_CLASS:
-        return _handle_next_class(now)
+        response = _handle_course_search(filters, require_available=True)
+    elif intent == ChatIntent.SEARCH_COURSES:
+        response = _handle_course_search(filters, require_available=False)
+    elif intent == ChatIntent.SCHEDULE_TODAY:
+        response = _handle_schedule_today(now)
+    elif intent == ChatIntent.NEXT_CLASS:
+        response = _handle_next_class(now)
+    else:
+        # SCHOOL_INFO: no RAG/document search exists yet (Phase 9-10), so we
+        # never fabricate a school-policy answer, and never let the AI
+        # rephrase this fixed safety sentence either.
+        return ChatResponse(answer=NO_DATA_ANSWER)
 
-    # SCHOOL_INFO: no RAG/document search exists yet (Phase 9-10), so we
-    # never fabricate a school-policy answer.
-    return ChatResponse(answer=NO_DATA_ANSWER)
+    response.answer = _rephrase(response.answer)
+    return response

@@ -95,3 +95,41 @@ def test_chat_endpoint_never_returns_500_on_unexpected_error(monkeypatch):
 
     assert response.status_code == 200
     assert response.json()["answer"]
+
+
+class _FakeAIClient:
+    def __init__(self, reply: str | None):
+        self._reply = reply
+
+    def generate(self, *, system: str, user: str) -> str | None:
+        return self._reply
+
+
+def test_chat_uses_ai_rephrased_answer_when_ai_client_available(monkeypatch):
+    monkeypatch.setattr(
+        chat_service.ai_client, "get_client", lambda: _FakeAIClient("다듬어진 답변입니다.")
+    )
+
+    result = chat_service.handle_message("전공필수 과목 알려줘")
+
+    assert result.answer == "다듬어진 답변입니다."
+    # Facts (which/how many courses) are untouched by the AI rephrase step.
+    assert len(result.courses) == 6
+
+
+def test_chat_falls_back_to_template_answer_when_ai_client_fails(monkeypatch):
+    monkeypatch.setattr(chat_service.ai_client, "get_client", lambda: _FakeAIClient(None))
+
+    result = chat_service.handle_message("전공필수 과목 알려줘")
+
+    assert result.answer == "조건에 맞는 과목을 6건 찾았습니다."
+
+
+def test_chat_school_info_fallback_is_never_rephrased_by_ai(monkeypatch):
+    monkeypatch.setattr(
+        chat_service.ai_client, "get_client", lambda: _FakeAIClient("이렇게 저렇게 도와드릴게요.")
+    )
+
+    result = chat_service.handle_message("휴학 신청은 어떻게 해?")
+
+    assert result.answer == "현재 연결된 데이터에서 확인할 수 없습니다."
