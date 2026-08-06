@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,7 +12,22 @@ from app.api.notices import router as notices_router
 from app.api.students import router as students_router
 from app.core.config import settings
 
-app = FastAPI(title="MJC AI Campus Agent API")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Phase 9: when DATABASE_URL is set, create tables and seed them from
+    # data/*.json on first run. Without it, repositories fall back to
+    # reading the Mock JSON files directly - no code above the repository
+    # layer needs to know which one is active.
+    if settings.database_url:
+        from app.core import db, seed
+
+        db.init_engine(settings.database_url)
+        seed.seed_if_empty()
+    yield
+
+
+app = FastAPI(title="MJC AI Campus Agent API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

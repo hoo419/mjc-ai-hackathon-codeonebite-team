@@ -26,5 +26,10 @@ class Settings(BaseSettings):
     ai_api_key: str | None = None
     ai_model: str | None = None
 
+    # Phase 9: PostgreSQL. When unset, repositories fall back to the Mock
+    # JSON files in data/ so the app keeps working without a database
+    # (demo resilience if the DB is ever unreachable).
+    database_url: str | None = None
+
 
 settings = Settings()

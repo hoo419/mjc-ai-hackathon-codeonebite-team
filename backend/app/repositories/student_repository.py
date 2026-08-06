@@ -2,7 +2,9 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
+from app.core import db as db_core
 from app.core.config import settings
+from app.models import StudentModel
 from app.schemas.student import Student
 
 
@@ -13,7 +15,20 @@ def _load_raw(data_dir: Path) -> list[dict]:
         return json.load(f)
 
 
+def _model_to_schema(row: StudentModel) -> Student:
+    return Student(
+        id=row.id,
+        name=row.name,
+        department=row.department,
+        grade=row.grade,
+        semester=row.semester,
+    )
+
+
 def list_students() -> list[Student]:
+    if settings.database_url:
+        with db_core.get_session() as session:
+            return [_model_to_schema(row) for row in session.query(StudentModel).all()]
     return [Student.model_validate(item) for item in _load_raw(settings.data_dir)]
 
 

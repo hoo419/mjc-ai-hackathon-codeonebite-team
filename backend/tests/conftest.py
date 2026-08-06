@@ -1,6 +1,17 @@
 import pytest
 
+from app.core.config import settings
 from app.repositories import counseling_repository, course_repository, enrollment_repository
+
+
+@pytest.fixture(autouse=True)
+def default_to_mock_mode(monkeypatch):
+    """backend/.env may have a real DATABASE_URL configured (Neon). Tests
+    must not silently switch to DB mode just because that's in the
+    environment - default every test to Mock mode. DB-specific tests
+    (test_db_repositories.py) opt back in explicitly inside the test body,
+    after this fixture has already run."""
+    monkeypatch.setattr(settings, "database_url", None)
 
 
 @pytest.fixture(autouse=True)
