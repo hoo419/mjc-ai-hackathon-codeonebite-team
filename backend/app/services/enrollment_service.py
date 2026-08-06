@@ -2,18 +2,13 @@ from datetime import datetime
 
 from app.core.time import KST
 from app.repositories import enrollment_repository
-from app.schemas.course import Course, CourseStatus
+from app.schemas.course import Course
 from app.schemas.enrollment import EnrollmentRecord, EnrollmentStatus
-from app.schemas.student import Student
 from app.services import course_service, student_service
 
 ERROR_MESSAGES = {
     "COURSE_NOT_FOUND": "과목을 찾을 수 없습니다.",
     "ALREADY_ENROLLED": "이미 신청한 과목입니다.",
-    "COURSE_CANCELLED": "폐강된 과목입니다.",
-    "ENROLLMENT_CLOSED": "현재 수강신청 기간이 아닙니다.",
-    "COURSE_FULL": "수강 정원이 마감되었습니다.",
-    "NOT_ELIGIBLE": "수강 자격 조건을 충족하지 않습니다.",
     "TIME_CONFLICT": "기존 수강 과목과 시간이 겹칩니다.",
 }
 
@@ -39,17 +34,13 @@ def _has_time_conflict(existing_courses: list[Course], candidate: Course) -> boo
     return False
 
 
-def is_student_eligible(student: Student, course: Course) -> bool:
-    """No eligibility Mock data (prerequisites, grade-level restrictions,
-    department-only majors, ...) exists yet, so every student currently
-    passes. Replace this once real eligibility data exists - never let the
-    LLM decide eligibility instead."""
-    return True
-
-
 def enroll(course_id: str) -> EnrollmentRecord:
-    """Validates in the order BACKEND_IMPLEMENTATION_PLAN.md Phase 5 defines,
-    raising EnrollmentError with a contract error code on the first failure."""
+    """"수강신청"은 학생이 실제 sugang.mjc.ac.kr에서 이미 마친 신청을 우리
+    시간표 도구에 기록하는 것이다 (정원/폐강/자격/신청기간 검증은 실제
+    신청 시점에 이미 끝난 일이라 여기서 다시 하지 않는다). 우리가 하는 건
+    딱 두 가지: 중복 기록 방지, 그리고 학생이 실수로 겹치는 시간대 두
+    과목을 등록하지 않았는지 확인하는 것 - 이건 실제 신청 사이트가 안
+    잡아줄 수도 있는 부분이라 우리 쪽에서 검증하는 의미가 있다."""
     student = student_service.get_current_student()
     course = course_service.get_course_by_id(course_id)
 
@@ -59,20 +50,6 @@ def enroll(course_id: str) -> EnrollmentRecord:
     existing = enrollment_repository.find_enrollment(student.id, course_id)
     if existing is not None and existing.status == EnrollmentStatus.ENROLLED:
         raise EnrollmentError("ALREADY_ENROLLED")
-
-    if course.status == CourseStatus.CANCELLED:
-        raise EnrollmentError("COURSE_CANCELLED")
-
-    if course.status in (CourseStatus.UPCOMING, CourseStatus.CLOSED):
-        raise EnrollmentError("ENROLLMENT_CLOSED")
-
-    # Defensive: trust the computed remaining seats over the stored status
-    # string, in case the two ever disagree.
-    if course_service.remaining_seats(course) <= 0:
-        raise EnrollmentError("COURSE_FULL")
-
-    if not is_student_eligible(student, course):
-        raise EnrollmentError("NOT_ELIGIBLE")
 
     current_courses = student_service.get_current_student_courses()
     if _has_time_conflict(current_courses, course):
@@ -85,7 +62,7 @@ def enroll(course_id: str) -> EnrollmentRecord:
         enrolledAt=datetime.now(KST).isoformat(),
     )
     enrollment_repository.upsert_enrolled(record)
-    # Only reached on a genuinely new successful enrollment (ALREADY_ENROLLED
+    # Only reached on a genuinely new successful add (ALREADY_ENROLLED
     # already returned above), so this always represents one new seat taken.
     course_service.record_enrollment(course_id)
     return record

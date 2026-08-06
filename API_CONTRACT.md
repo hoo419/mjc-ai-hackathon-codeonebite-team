@@ -238,8 +238,18 @@ Response:
 
 ## 7. Enrollment API
 
+**의미 변경**: 실제 수강신청은 학생이 학교 수강신청시스템(sugang.mjc.ac.kr)에서
+직접 한다. 이 API는 "신청 시도"가 아니라, **학생이 이미 그 사이트에서 신청을
+마친 과목을 우리 시간표 도구에 기록**하는 것이다. 그래서 정원/폐강/자격/
+신청기간 검증(`COURSE_FULL`/`COURSE_CANCELLED`/`NOT_ELIGIBLE`/
+`ENROLLMENT_CLOSED`)은 더 이상 하지 않는다 - 그건 실제 신청 시점에 이미 끝난
+일이다. 우리가 실제로 검증하는 건 `COURSE_NOT_FOUND`(존재하는 과목인지),
+`ALREADY_ENROLLED`(중복 기록 방지), `TIME_CONFLICT`(학생이 실수로 겹치는
+시간대 두 과목을 신청하지 않았는지 - 실제 신청 사이트가 놓칠 수도 있는
+부분이라 우리 쪽 검증이 의미 있다)뿐이다.
+
 ### POST /enrollment
-수강신청.
+이미 실제로 신청 완료한 과목을 내 시간표에 추가.
 
 Request:
 ```json
@@ -270,7 +280,8 @@ Request:
 }
 ```
 
-가능 오류:
+가능 오류 (문서화 목적으로 전체 유지, 실제로 현재 검증하는 건 위 "의미 변경"
+설명대로 `COURSE_NOT_FOUND`/`ALREADY_ENROLLED`/`TIME_CONFLICT` 뿐):
 - COURSE_FULL
 - COURSE_CANCELLED
 - ENROLLMENT_CLOSED
@@ -280,7 +291,7 @@ Request:
 - COURSE_NOT_FOUND
 
 ### DELETE /enrollment/{courseId}
-Mock 수강취소.
+내 시간표에서 과목 제거 (실제 수강취소는 학교 시스템에서 별도로 처리).
 
 Response:
 ```json
