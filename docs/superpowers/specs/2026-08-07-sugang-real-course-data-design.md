@@ -62,6 +62,8 @@ INTEGRATED_MAJOR   // 통합전공교과
     { "day": "TUE", "startTime": "13:25", "endTime": "14:50", "building": null, "room": "공502" },
     { "day": "WED", "startTime": "10:25", "endTime": "11:50", "building": null, "room": "공502" }
   ],
+  "targetGrade": 1,
+  "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
   "capacity": 35,
   "enrolled": 30,
   "status": "OPEN",
@@ -69,6 +71,7 @@ INTEGRATED_MAJOR   // 통합전공교과
 }
 ```
 - `day`/`startTime`/`endTime`/`building`/`room` 필드 **제거**, `sessions` 배열로 대체.
+- `targetGrade`/`eligibleDepts` 신규 추가 (계획 단계에서 발견 — 아래 "설계 보완" 참고).
 - `classType`: `CourseClassType | None`. 판단 근거: 원본 수집 시 `_sugangGbn`(강좌구분: 10=교양,
   30=전공, 60=원격강좌)이 60이면 `null`(근거 부족), 10/30이면 `"OFFLINE"`.
 - `id`: `{원본 subjectCd}-{원본 bunban}` (세션별로 더는 안 쪼갠다 — 한 분반 = 한 Course).
@@ -125,6 +128,18 @@ INTEGRATED_MAJOR   // 통합전공교과
 
 ## 브랜치 전략
 - `feature/course-data-real` 새 브랜치에서 작업, 완료 후 `integration/fullstack-demo`에 병합.
+
+## 설계 보완 (계획 수립 중 발견)
+- 최초 설계엔 없었지만, 프론트에 "대상학년/학과" 드롭다운을 넣으려면 그 데이터가 `Course`에 있어야
+  한다는 게 계획 단계에서 드러났다. 원본 재집계 결과 **학년은 분반당 항상 하나**지만, **학과는 246개
+  중 21개 분반이 2개 이상 학과에 공통 개방**되어 있었다 (`data/raw/README.md`의 `depts` 필드 참고).
+  그래서 `Course`에 다음 두 필드를 추가한다:
+  - `targetGrade: number` (1~4)
+  - `eligibleDepts: { code: string, name: string }[]` (길이 1 이상)
+- "강좌구분"(교양/전공/원격) 필터는 별도 필드를 추가하지 않고 `category`(GENERAL_*/MAJOR_COURSE/
+  INTEGRATED_MAJOR) + `classType`(null이면 원격) 조합으로 프론트에서 재구성한다 — 확인 결과 원격강좌는
+  `classType: null`로 이미 구분되고, 교양/전공 구분은 `category`로 이미 구분되므로 중복 필드가
+  불필요하다.
 
 ## 열린 리스크
 - `classType`이 원격강좌(60)에서 전부 `null`이 되므로, 프론트 배지 표시가 빈 값을 자연스럽게
