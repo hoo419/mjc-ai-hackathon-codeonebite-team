@@ -1,0 +1,58 @@
+[
+  {
+    "id": "engineering-503",
+    "building": "공학관",
+    "floor": 5,
+    "room": "503",
+    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 5층으로 이동", "엘리베이터에서 내려 503호로 이동"]
+  },
+  {
+    "id": "engineering-401",
+    "building": "공학관",
+    "floor": 4,
+    "room": "401",
+    "directions": ["공학관 입구로 이동", "계단 또는 엘리베이터로 4층 이동", "401호는 복도 왼쪽 끝"]
+  },
+  {
+    "id": "engineering-302",
+    "building": "공학관",
+    "floor": 3,
+    "room": "302",
+    "directions": ["공학관 입구로 이동", "3층으로 이동", "302호는 엘리베이터 바로 앞"]
+  },
+  {
+    "id": "engineering-410",
+    "building": "공학관",
+    "floor": 4,
+    "room": "410",
+    "directions": ["공학관 입구로 이동", "4층으로 이동", "410호는 401호 맞은편"]
+  },
+  {
+    "id": "engineering-205",
+    "building": "공학관",
+    "floor": 2,
+    "room": "205",
+    "directions": ["공학관 입구로 이동", "2층으로 이동", "205호는 복도 중간"]
+  },
+  {
+    "id": "engineering-301",
+    "building": "공학관",
+    "floor": 3,
+    "room": "301",
+    "directions": ["공학관 입구로 이동", "3층으로 이동", "301호는 엘리베이터 오른쪽"]
+  },
+  {
+    "id": "humanities-201",
+    "building": "인문관",
+    "floor": 2,
+    "room": "201",
+    "directions": ["인문관 입구로 이동", "2층으로 이동", "201호는 계단 바로 옆"]
+  },
+  {
+    "id": "student-hall-101",
+    "building": "학생회관",
+    "floor": 1,
+    "room": "101",
+    "directions": ["학생회관 입구로 이동", "1층 로비 왼쪽 101호"]
+  }
+]
