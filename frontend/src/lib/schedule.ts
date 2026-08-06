@@ -13,7 +13,9 @@ export function getNextClass(schedule: ScheduleEntry[], date = new Date()): Sche
   const now = nowMinutes(date);
   const todayIndex = DAY_ORDER.indexOf(today);
 
-  for (let offset = 0; offset < 7; offset++) {
+  // offset 7 wraps back to today next week, so a same-day class later
+  // this week or next week is never missed.
+  for (let offset = 0; offset <= 7; offset++) {
     const day = DAY_ORDER[(todayIndex + offset) % 7];
     const dayEntries = schedule
       .filter((e) => e.day === day)

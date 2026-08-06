@@ -33,7 +33,9 @@ description: Use whenever building or editing a page/screen in this repo's front
   label). 이 프로젝트의 shadcn CLI는 **Base UI**(`@base-ui/react`, `render` prop 방식)를
   쓴다 — Radix `asChild` 패턴이 아니다. 예를 들어 `Button`을 `Link`로 렌더링하려면
   `<Button render={<Link href="/x" />}>라벨</Button>` 처럼 쓴다 (`asChild` prop은
-  타입에 없어서 빌드가 깨진다). 새 컴포넌트가 필요하면
+  타입에 없어서 빌드가 깨진다). `components/ui/button.tsx`는 `render`가 있으면 자동으로
+  `nativeButton={false}`를 넣도록 이미 고쳐뒀다 — 그렇지 않으면 콘솔에 Base UI native
+  button 경고가 뜬다. 새 컴포넌트가 필요하면
   `npx shadcn@latest add <name>`으로 추가하고, 기존 컴포넌트 소스(`ui/dialog.tsx`,
   `ui/sheet.tsx`)를 참고해 `render` prop 패턴을 따른다.
 

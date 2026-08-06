@@ -8,7 +8,6 @@ export function useAsyncData<T>(fetcher: () => Promise<T>, deps: DependencyList 
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
     fetcher().then((result) => {
       if (active) {
         setData(result);
