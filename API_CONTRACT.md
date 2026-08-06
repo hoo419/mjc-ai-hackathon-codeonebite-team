@@ -65,35 +65,45 @@ CLOSED
 ```
 
 ### CourseCategory
-초기 MVP:
 ```text
-MAJOR_REQUIRED
-MAJOR_ELECTIVE
-GENERAL_REQUIRED
-GENERAL_ELECTIVE
-OTHER
+GENERAL_COURSE     // 교양과정
+GENERAL_REQUIRED   // 교양필수
+GENERAL_ELECTIVE   // 일반선택
+MAJOR_COURSE       // 전공과정
+INTEGRATED_MAJOR   // 통합전공교과
 ```
 
 ## 4. Course Object
 ```json
 {
-  "id": "CS301-01",
-  "name": "인공지능 프로그래밍",
-  "professor": "김OO",
+  "id": "T00137-101",
+  "name": "딥러닝",
+  "professor": "윤현구",
   "credits": 3,
-  "category": "MAJOR_REQUIRED",
+  "category": "MAJOR_COURSE",
   "classType": "OFFLINE",
-  "day": "THU",
-  "startTime": "13:00",
-  "endTime": "15:50",
-  "building": "공학관",
-  "room": "503",
-  "capacity": 30,
-  "enrolled": 27,
+  "sessions": [
+    { "day": "TUE", "startTime": "13:25", "endTime": "14:50", "building": null, "room": "공502" },
+    { "day": "WED", "startTime": "10:25", "endTime": "11:50", "building": null, "room": "공502" }
+  ],
+  "targetGrade": 1,
+  "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
+  "capacity": 35,
+  "enrolled": 30,
   "status": "OPEN",
-  "lastUpdated": "2026-08-06T14:00:00+09:00"
+  "lastUpdated": "2026-08-07T00:00:00+09:00"
 }
 ```
+
+- day/startTime/endTime/building/room 단일 필드는 sessions 배열로 대체됐다
+  (한 분반이 여러 요일/시간에 걸칠 수 있어서다). 시간표가 없는 특수 과목은
+  sessions: [].
+- classType은 근거가 없으면(원격강좌) null이다 — 실시간/녹화를 구분할 방법이
+  없어 지어내지 않는다.
+- building은 항상 null이다 — 원본이 "공502" 같은 축약 코드라 정식 건물명을
+  지어내지 않는다. room은 원본 문자열 그대로.
+- eligibleDepts는 이 분반이 열려있는 학과 목록이며 1개 이상일 수 있다
+  (여러 학과 공통 개방 분반 존재).
 
 ## 5. 과목 API
 
@@ -113,21 +123,22 @@ Response:
 {
   "courses": [
     {
-      "id": "CS301-01",
-      "name": "인공지능 프로그래밍",
-      "professor": "김OO",
+      "id": "T00137-101",
+      "name": "딥러닝",
+      "professor": "윤현구",
       "credits": 3,
-      "category": "MAJOR_REQUIRED",
+      "category": "MAJOR_COURSE",
       "classType": "OFFLINE",
-      "day": "THU",
-      "startTime": "13:00",
-      "endTime": "15:50",
-      "building": "공학관",
-      "room": "503",
-      "capacity": 30,
-      "enrolled": 27,
+      "sessions": [
+        { "day": "TUE", "startTime": "13:25", "endTime": "14:50", "building": null, "room": "공502" },
+        { "day": "WED", "startTime": "10:25", "endTime": "11:50", "building": null, "room": "공502" }
+      ],
+      "targetGrade": 1,
+      "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
+      "capacity": 35,
+      "enrolled": 30,
       "status": "OPEN",
-      "lastUpdated": "2026-08-06T14:00:00+09:00"
+      "lastUpdated": "2026-08-07T00:00:00+09:00"
     }
   ]
 }
@@ -140,21 +151,22 @@ Response:
 ```json
 {
   "course": {
-    "id": "CS301-01",
-    "name": "인공지능 프로그래밍",
-    "professor": "김OO",
+    "id": "T00137-101",
+    "name": "딥러닝",
+    "professor": "윤현구",
     "credits": 3,
-    "category": "MAJOR_REQUIRED",
+    "category": "MAJOR_COURSE",
     "classType": "OFFLINE",
-    "day": "THU",
-    "startTime": "13:00",
-    "endTime": "15:50",
-    "building": "공학관",
-    "room": "503",
-    "capacity": 30,
-    "enrolled": 27,
+    "sessions": [
+      { "day": "TUE", "startTime": "13:25", "endTime": "14:50", "building": null, "room": "공502" },
+      { "day": "WED", "startTime": "10:25", "endTime": "11:50", "building": null, "room": "공502" }
+    ],
+    "targetGrade": 1,
+    "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
+    "capacity": 35,
+    "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-06T14:00:00+09:00"
+    "lastUpdated": "2026-08-07T00:00:00+09:00"
   }
 }
 ```
@@ -222,15 +234,15 @@ Response:
 {
   "schedule": [
     {
-      "courseId": "CS301-01",
-      "name": "인공지능 프로그래밍",
-      "professor": "김OO",
+      "courseId": "T00137-101",
+      "name": "딥러닝",
+      "professor": "윤현구",
       "classType": "OFFLINE",
-      "day": "THU",
-      "startTime": "13:00",
-      "endTime": "15:50",
-      "building": "공학관",
-      "room": "503"
+      "day": "TUE",
+      "startTime": "13:25",
+      "endTime": "14:50",
+      "building": null,
+      "room": "공502"
     }
   ]
 }
@@ -330,15 +342,15 @@ Response:
       "credits": 3,
       "category": "GENERAL_ELECTIVE",
       "classType": "ONLINE_LIVE",
-      "day": "MON",
-      "startTime": "10:00",
-      "endTime": "11:50",
-      "building": null,
-      "room": null,
+      "sessions": [
+        { "day": "MON", "startTime": "10:00", "endTime": "11:50", "building": null, "room": null }
+      ],
+      "targetGrade": 1,
+      "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
       "capacity": 40,
       "enrolled": 31,
       "status": "OPEN",
-      "lastUpdated": "2026-08-06T14:00:00+09:00"
+      "lastUpdated": "2026-08-07T00:00:00+09:00"
     }
   ],
   "actions": [
