@@ -1,32 +1,17 @@
-import studentData from "@/mocks/student.json";
 import type { Course, ScheduleEntry, Student } from "@/types";
-import { enrolledCourseIds, mockCourses } from "./store";
+import { apiGet } from "./client";
 
 // GET /students/me
-export async function getMe(): Promise<{ student: Student }> {
-  return { student: studentData as Student };
+export function getMe(): Promise<{ student: Student }> {
+  return apiGet<{ student: Student }>("/students/me");
 }
 
 // GET /students/me/courses
-export async function getMyCourses(): Promise<{ courses: Course[] }> {
-  const courses = mockCourses.filter((c) => enrolledCourseIds.includes(c.id));
-  return { courses };
+export function getMyCourses(): Promise<{ courses: Course[] }> {
+  return apiGet<{ courses: Course[] }>("/students/me/courses");
 }
 
 // GET /students/me/schedule
-export async function getMySchedule(): Promise<{ schedule: ScheduleEntry[] }> {
-  const schedule: ScheduleEntry[] = mockCourses
-    .filter((c) => enrolledCourseIds.includes(c.id))
-    .map((c) => ({
-      courseId: c.id,
-      name: c.name,
-      professor: c.professor,
-      classType: c.classType,
-      day: c.day,
-      startTime: c.startTime,
-      endTime: c.endTime,
-      building: c.building,
-      room: c.room,
-    }));
-  return { schedule };
+export function getMySchedule(): Promise<{ schedule: ScheduleEntry[] }> {
+  return apiGet<{ schedule: ScheduleEntry[] }>("/students/me/schedule");
 }

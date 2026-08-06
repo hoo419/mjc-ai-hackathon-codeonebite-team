@@ -1,5 +1,5 @@
-import type { Course, CourseClassType, CourseCategory, CourseStatus } from "@/types";
-import { mockCourses } from "./store";
+import type { Course, CourseCategory, CourseClassType, CourseStatus } from "@/types";
+import { apiGet } from "./client";
 
 export interface GetCoursesParams {
   status?: CourseStatus;
@@ -10,21 +10,21 @@ export interface GetCoursesParams {
 
 // GET /courses
 export async function getCourses(params: GetCoursesParams = {}): Promise<{ courses: Course[] }> {
-  let courses = mockCourses;
-  if (params.status) courses = courses.filter((c) => c.status === params.status);
-  if (params.classType) courses = courses.filter((c) => c.classType === params.classType);
-  if (params.category) courses = courses.filter((c) => c.category === params.category);
-  if (params.search) {
-    const q = params.search.toLowerCase();
-    courses = courses.filter(
-      (c) => c.name.toLowerCase().includes(q) || c.professor.toLowerCase().includes(q)
-    );
-  }
-  return { courses };
+  const query = new URLSearchParams();
+  if (params.status) query.set("status", params.status);
+  if (params.classType) query.set("classType", params.classType);
+  if (params.category) query.set("category", params.category);
+  if (params.search) query.set("search", params.search);
+
+  const qs = query.toString();
+  return apiGet<{ courses: Course[] }>(`/courses${qs ? `?${qs}` : ""}`);
 }
 
 // GET /courses/{courseId}
 export async function getCourse(courseId: string): Promise<{ course: Course | null }> {
-  const course = mockCourses.find((c) => c.id === courseId) ?? null;
-  return { course };
+  try {
+    return await apiGet<{ course: Course }>(`/courses/${courseId}`);
+  } catch {
+    return { course: null };
+  }
 }

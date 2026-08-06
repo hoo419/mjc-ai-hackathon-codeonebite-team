@@ -1,21 +1,15 @@
-import counselingData from "@/mocks/counseling.json";
 import type { CounselingRequestResult, CounselingSummary, CounselingTargetType } from "@/types";
+import { apiGet, apiPost } from "./client";
 
 // GET /counseling/me
-export async function getMyCounseling(): Promise<CounselingSummary> {
-  return counselingData as CounselingSummary;
+export function getMyCounseling(): Promise<CounselingSummary> {
+  return apiGet<CounselingSummary>("/counseling/me");
 }
 
 // POST /counseling/request
-export async function requestCounseling(
+export function requestCounseling(
   targetType: CounselingTargetType,
   message: string
 ): Promise<CounselingRequestResult> {
-  void targetType;
-  void message;
-  return {
-    success: true,
-    requestId: `counsel-req-${Date.now()}`,
-    status: "REQUESTED",
-  };
+  return apiPost<CounselingRequestResult>("/counseling/request", { targetType, message });
 }
