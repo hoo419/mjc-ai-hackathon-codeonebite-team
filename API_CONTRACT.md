@@ -330,8 +330,8 @@ Response:
   "answer": "현재 신청 가능한 전공 과목을 찾았습니다.",
   "sources": [
     {
-      "title": "2026학년도 수강신청 안내",
-      "url": "https://example.ac.kr/notice/123"
+      "title": "2026학년도 2학기 교양과정 시간표 안내",
+      "url": "https://www.mjc.ac.kr/bbs/data/view.do?menu_idx=169&bbs_mst_idx=BM0000000025&data_idx=BD0050388084"
     }
   ],
   "courses": [
@@ -369,18 +369,24 @@ Frontend는 `answer`를 반드시 표시하고, `sources`, `courses`, `actions`�
 ## 9. Notice API
 
 ### GET /notices
-학교/학과 공지.
+학교 홈페이지 학사공지 게시판(menu_idx=169)에서 실시간으로 긁어온 최신 4개.
+`backend/app/rag/mjc_notices.py`가 목록 페이지를 날짜순으로 정렬해 상위
+4개를 고르고, 각 글의 상세페이지에서 진짜 제목을 다시 가져와 확정한다.
+6시간 캐시(`notice_repository.py`) - 요청이 들어올 때 캐시가 6시간보다
+오래됐으면 새로 긁어오고, 학교 사이트가 잠깐 안 열리면 새로고침을 건너뛰고
+기존 캐시를 그대로 보여준다(캐시가 아예 없으면 빈 목록). `category`는 이
+게시판 자체가 학사공지이므로 항상 `"ACADEMIC"`.
 
 Response:
 ```json
 {
   "notices": [
     {
-      "id": "notice-001",
-      "title": "2026학년도 수강신청 안내",
+      "id": "BD0050388085",
+      "title": "[교양과정] 2026학년도 2학기 군 e-러닝 학점교류 운영 안내",
       "category": "ACADEMIC",
-      "publishedAt": "2026-08-05T09:00:00+09:00",
-      "url": "https://example.ac.kr/notice/001"
+      "publishedAt": "2026-08-06T00:00:00+09:00",
+      "url": "https://www.mjc.ac.kr/bbs/data/view.do?menu_idx=169&bbs_mst_idx=BM0000000025&data_idx=BD0050388085"
     }
   ]
 }

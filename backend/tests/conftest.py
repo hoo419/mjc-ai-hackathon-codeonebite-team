@@ -5,6 +5,7 @@ from app.repositories import (
     counseling_repository,
     course_repository,
     enrollment_repository,
+    notice_repository,
     student_repository,
 )
 
@@ -56,3 +57,13 @@ def reset_counseling_store():
     counseling_repository.reset()
     yield
     counseling_repository.reset()
+
+
+@pytest.fixture(autouse=True)
+def reset_notice_store():
+    """notice_repository caches the live-scraped 학사공지 list in memory
+    (6h TTL) - reset it so a test's monkeypatched fetch, or a real network
+    hit, never leaks into the next test."""
+    notice_repository.reset()
+    yield
+    notice_repository.reset()
