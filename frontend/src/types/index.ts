@@ -85,6 +85,11 @@ export interface CounselingRequestResult {
   status: "REQUESTED";
 }
 
+export interface AptitudeAnalysisResult {
+  summary: string;
+  insights: string[];
+}
+
 export interface Building {
   id: string;
   name: string;

@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Textarea } from "@/components/ui/textarea";
 import { useAsyncData } from "@/hooks/use-async-data";
-import { getMyCounseling, requestCounseling } from "@/lib/api";
+import { analyzeAptitude, getMyCounseling, requestCounseling } from "@/lib/api";
+import { ApiError } from "@/lib/api/client";
 import { formatDateTime } from "@/lib/time";
-import type { CounselingTargetType } from "@/types";
+import type { AptitudeAnalysisResult, CounselingTargetType } from "@/types";
 
 const TARGETS: { type: CounselingTargetType; label: string }[] = [
   { type: "ADVISOR", label: "지도교수 연결" },
@@ -22,12 +24,31 @@ export default function CounselingPage() {
   const [requestingType, setRequestingType] = useState<CounselingTargetType | null>(null);
   const [result, setResult] = useState<string | null>(null);
 
+  const [rawText, setRawText] = useState("");
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analysis, setAnalysis] = useState<AptitudeAnalysisResult | null>(null);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
+
   async function handleRequest(type: CounselingTargetType) {
     setRequestingType(type);
     setResult(null);
     const res = await requestCounseling(type, message || "상담을 요청합니다.");
     setResult(`요청이 접수되었습니다 (${res.requestId})`);
     setRequestingType(null);
+  }
+
+  async function handleAnalyze() {
+    setAnalyzing(true);
+    setAnalysisError(null);
+    setAnalysis(null);
+    try {
+      const res = await analyzeAptitude(rawText);
+      setAnalysis(res);
+    } catch (e) {
+      setAnalysisError(e instanceof ApiError ? e.message : "분석하지 못했습니다.");
+    } finally {
+      setAnalyzing(false);
+    }
   }
 
   return (
@@ -52,6 +73,48 @@ export default function CounselingPage() {
                 최근 상담일: {formatDateTime(data.lastCounselingAt)}
               </p>
             </>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-sm">진로적성검사 결과 AI 분석</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-xs text-muted-foreground">
+            <a
+              href="https://mpu.mjc.ac.kr/"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              학생역량 이력관리 시스템(SMART CARE)
+            </a>
+            에 직접 로그인해서 진로적성검사 · 핵심역량검사 · 종합심리검사 결과를 확인한
+            뒤, 그 내용을 복사해서 아래에 붙여넣어 주세요. 로그인 아이디/비밀번호는
+            여기서 입력하지 않습니다.
+          </p>
+          <Textarea
+            value={rawText}
+            onChange={(e) => setRawText(e.target.value)}
+            placeholder="mpu.mjc.ac.kr에서 복사한 검사 결과를 붙여넣으세요"
+          />
+          <Button onClick={handleAnalyze} disabled={analyzing || !rawText.trim()}>
+            {analyzing ? "분석 중..." : "AI로 분석하기"}
+          </Button>
+          {analysisError && <p className="text-sm text-destructive">{analysisError}</p>}
+          {analysis && (
+            <div className="space-y-2 rounded-lg border p-3 text-sm">
+              <p>{analysis.summary}</p>
+              {analysis.insights.length > 0 && (
+                <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+                  {analysis.insights.map((insight, i) => (
+                    <li key={i}>{insight}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           )}
         </CardContent>
       </Card>
