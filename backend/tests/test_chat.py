@@ -74,7 +74,9 @@ def test_chat_next_class_wraps_to_following_week():
     assert {c.id for c in result.courses} == {"GE101-01"}
 
 
-def test_chat_school_info_question_returns_safe_fallback():
+def test_chat_school_info_question_returns_safe_fallback_when_nothing_found(monkeypatch):
+    monkeypatch.setattr(chat_service.school_info, "answer", lambda question: None)
+
     response = client.post("/api/chat", json={"message": "휴학 신청은 어떻게 해?"})
 
     assert response.status_code == 200
@@ -83,6 +85,24 @@ def test_chat_school_info_question_returns_safe_fallback():
     assert body["sources"] == []
     assert body["courses"] == []
     assert body["actions"] == []
+
+
+def test_chat_school_info_returns_rag_answer_when_found(monkeypatch):
+    from app.schemas.chat import ChatResponse, ChatSource
+
+    fake_response = ChatResponse(
+        answer="공지에 따르면 학기별로 휴학 신청 기간이 다릅니다.",
+        sources=[ChatSource(title="휴학 안내", url="https://www.mjc.ac.kr/bbs/data/view.do?data_idx=1")],
+    )
+    monkeypatch.setattr(chat_service.school_info, "answer", lambda question: fake_response)
+
+    response = client.post("/api/chat", json={"message": "휴학 신청은 어떻게 해?"})
+
+    body = response.json()
+    assert body["answer"] == "공지에 따르면 학기별로 휴학 신청 기간이 다릅니다."
+    assert body["sources"] == [
+        {"title": "휴학 안내", "url": "https://www.mjc.ac.kr/bbs/data/view.do?data_idx=1"}
+    ]
 
 
 def test_chat_endpoint_never_returns_500_on_unexpected_error(monkeypatch):
@@ -126,6 +146,7 @@ def test_chat_falls_back_to_template_answer_when_ai_client_fails(monkeypatch):
 
 
 def test_chat_school_info_fallback_is_never_rephrased_by_ai(monkeypatch):
+    monkeypatch.setattr(chat_service.school_info, "answer", lambda question: None)
     monkeypatch.setattr(
         chat_service.ai_client, "get_client", lambda: _FakeAIClient("이렇게 저렇게 도와드릴게요.")
     )
