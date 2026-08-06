@@ -1,4 +1,4 @@
-from backend.scripts.transform_sugang_raw import parse_sessions, transform_row
+from scripts.transform_sugang_raw import parse_sessions, transform_row
 
 RAW_MULTI_SESSION = {
     "subjectCd": "T00137",

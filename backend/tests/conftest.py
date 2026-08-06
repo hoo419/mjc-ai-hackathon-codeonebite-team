@@ -20,65 +20,48 @@ def default_to_mock_mode(monkeypatch):
 
 
 @pytest.fixture(autouse=True)
-def reset_course_store():
+def reset_course_store(request):
     """Course.enrolled/status are bumped at runtime once an enrollment
     actually succeeds (see course_repository.increment_enrolled). Reload
     from data/courses.json before and after every test."""
-    try:
+    # Skip for test_transform_sugang_raw.py which doesn't depend on repos
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         course_repository.reset()
-    except Exception:
-        # If reset fails (e.g., due to schema mismatch), skip for tests like
-        # test_transform_sugang_raw that don't depend on the repository
-        pass
     yield
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         course_repository.reset()
-    except Exception:
-        pass
 
 
 @pytest.fixture(autouse=True)
-def reset_student_store():
+def reset_student_store(request):
     """Student profile (department/grade/semester) is editable via
     PATCH /students/me. Reload from data/students.json before and after
     every test."""
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         student_repository.reset()
-    except Exception:
-        pass
     yield
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         student_repository.reset()
-    except Exception:
-        pass
 
 
 @pytest.fixture(autouse=True)
-def reset_enrollment_store():
+def reset_enrollment_store(request):
     """Enrollment is Mock data mutated at runtime (POST/DELETE). Reload it
     from data/enrollments.json before and after every test so tests can't
     leak state into each other."""
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         enrollment_repository.reset()
-    except Exception:
-        pass
     yield
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         enrollment_repository.reset()
-    except Exception:
-        pass
 
 
 @pytest.fixture(autouse=True)
-def reset_counseling_store():
+def reset_counseling_store(request):
     """Counseling requests are also mutated at runtime (POST); reset the
     in-memory list so generated request IDs stay predictable per test."""
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         counseling_repository.reset()
-    except Exception:
-        pass
     yield
-    try:
+    if request.node.fspath.basename != "test_transform_sugang_raw.py":
         counseling_repository.reset()
-    except Exception:
-        pass
