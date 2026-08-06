@@ -23,14 +23,20 @@ class EnrollmentError(Exception):
 
 
 def _has_time_conflict(existing_courses: list[Course], candidate: Course) -> bool:
-    """AI_AGENT_RULES.md 시간표 규칙: 같은 요일이고
+    """AI_AGENT_RULES.md 시간표 규칙: 두 세션이 같은 요일이고
     new_start < existing_end AND new_end > existing_start 이면 충돌.
-    시간 비교는 "HH:MM" 문자열이 자릿수 고정이라 사전식 비교가 시간 순서와 일치한다."""
+    한 분반이 여러 세션을 가질 수 있으므로, 기존 과목들의 모든 세션과
+    후보 과목의 모든 세션을 한 쌍씩 비교한다."""
     for existing in existing_courses:
-        if existing.day != candidate.day:
-            continue
-        if candidate.startTime < existing.endTime and candidate.endTime > existing.startTime:
-            return True
+        for existing_session in existing.sessions:
+            for candidate_session in candidate.sessions:
+                if existing_session.day != candidate_session.day:
+                    continue
+                if (
+                    candidate_session.startTime < existing_session.endTime
+                    and candidate_session.endTime > existing_session.startTime
+                ):
+                    return True
     return False
 
 
