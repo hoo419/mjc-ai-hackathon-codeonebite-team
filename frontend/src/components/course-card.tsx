@@ -27,7 +27,7 @@ export function CourseCard({ course, footer }: { course: Course; footer?: ReactN
           course.sessions.map((s, i) => (
             <p key={i}>
               {dayLabel[s.day]} {s.startTime}~{s.endTime} ·{" "}
-              {s.building ? `${s.building} ${s.room}` : s.room ? `${s.room}` : "장소 미정"}
+              {[s.building, s.room].filter(Boolean).join(" ") || "장소 미정"}
             </p>
           ))
         )}
