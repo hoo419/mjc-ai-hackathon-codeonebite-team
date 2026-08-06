@@ -25,8 +25,7 @@ def test_get_current_student_courses_returns_enrolled_courses_only():
     assert response.status_code == 200
     courses = response.json()["courses"]
     course_ids = {c["id"] for c in courses}
-    assert course_ids == {"CS301-01", "GE101-01"}
-    # Full course objects, not just enrollment records.
+    assert course_ids == {"T00138-101", "J01683-101"}
     assert "status" in courses[0]
     assert "capacity" in courses[0]
 
@@ -48,28 +47,28 @@ def test_patch_current_student_updates_profile_and_persists():
         }
     }
 
-    # A later GET reflects the update - it's not just echoed back once.
     follow_up = client.get("/api/students/me")
     assert follow_up.json()["student"]["department"] == "소프트웨어학과"
     assert follow_up.json()["student"]["grade"] == 2
     assert follow_up.json()["student"]["semester"] == 2
 
 
-def test_get_current_student_schedule_returns_weekly_schedule():
+def test_get_current_student_schedule_returns_one_item_per_session():
     response = client.get("/api/students/me/schedule")
 
     assert response.status_code == 200
     schedule = response.json()["schedule"]
+    # T00138-101은 세션 1개(FRI 11:00-11:50), J01683-101도 세션 1개(TUE 09:25-10:25).
     assert len(schedule) == 2
-    item = next(s for s in schedule if s["courseId"] == "CS301-01")
+    item = next(s for s in schedule if s["courseId"] == "T00138-101")
     assert item == {
-        "courseId": "CS301-01",
-        "name": "인공지능 프로그래밍",
-        "professor": "김민준",
-        "classType": "OFFLINE",
-        "day": "THU",
-        "startTime": "13:00",
-        "endTime": "15:50",
-        "building": "공학관",
-        "room": "503",
+        "courseId": "T00138-101",
+        "name": "AI활용웹개발",
+        "professor": "정필성",
+        "classType": None,
+        "day": "FRI",
+        "startTime": "11:00",
+        "endTime": "11:50",
+        "building": None,
+        "room": " ",
     }

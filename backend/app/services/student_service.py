@@ -31,6 +31,9 @@ def get_current_student_courses() -> list[Course]:
 
 
 def get_current_student_schedule() -> list[ScheduleItem]:
+    """한 과목이 여러 세션(요일)을 가지면, 세션마다 하나씩 ScheduleItem을
+    만든다 - 시간표 화면은 "언제 어디서 무슨 수업"인지 슬롯 단위로 봐야
+    하기 때문이다."""
     courses = get_current_student_courses()
     return [
         ScheduleItem(
@@ -38,11 +41,12 @@ def get_current_student_schedule() -> list[ScheduleItem]:
             name=course.name,
             professor=course.professor,
             classType=course.classType,
-            day=course.day,
-            startTime=course.startTime,
-            endTime=course.endTime,
-            building=course.building,
-            room=course.room,
+            day=session.day,
+            startTime=session.startTime,
+            endTime=session.endTime,
+            building=session.building,
+            room=session.room,
         )
         for course in courses
+        for session in course.sessions
     ]
