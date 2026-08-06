@@ -146,6 +146,14 @@ def _find_next_class(
     return None
 
 
+def _location_text(building: str | None, room: str | None) -> str:
+    """building은 실데이터에서 항상 None이라 이걸 "온라인"으로 읽으면 안 된다
+    (건물명을 모른다는 뜻일 뿐, 오프라인/온라인 여부와는 무관). room이라도
+    있으면 그걸 보여주고, 둘 다 없을 때만 중립적인 안내 문구를 쓴다."""
+    location = " ".join(part for part in (building, room) if part)
+    return location or "장소 정보 없음"
+
+
 def _handle_schedule_today(now: datetime) -> ChatResponse:
     today = DAY_ORDER[now.weekday()]
     schedule = student_service.get_current_student_schedule()
@@ -155,7 +163,8 @@ def _handle_schedule_today(now: datetime) -> ChatResponse:
         return ChatResponse(answer="오늘은 등록된 수업이 없습니다.")
 
     lines = [
-        f"{item.name} ({item.startTime}~{item.endTime}, {item.building or '온라인'} {item.room or ''})".strip()
+        f"{item.name} ({item.startTime}~{item.endTime}, "
+        f"{_location_text(item.building, item.room)})"
         for item in todays_items
     ]
     answer = "오늘 수업은 다음과 같습니다: " + ", ".join(lines)
@@ -170,11 +179,10 @@ def _handle_next_class(now: datetime) -> ChatResponse:
     if next_item is None:
         return ChatResponse(answer="예정된 다음 수업이 없습니다.")
 
-    location = next_item.building or "온라인"
-    room = f" {next_item.room}" if next_item.room else ""
+    location = _location_text(next_item.building, next_item.room)
     answer = (
         f"다음 수업은 {next_item.name} ({next_item.day} {next_item.startTime}~"
-        f"{next_item.endTime}, {location}{room})입니다."
+        f"{next_item.endTime}, {location})입니다."
     )
     course = course_service.get_course_by_id(next_item.courseId)
     courses = [course] if course else []
