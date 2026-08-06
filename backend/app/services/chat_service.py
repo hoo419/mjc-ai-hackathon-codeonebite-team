@@ -216,7 +216,7 @@ def handle_message(message: str, now: datetime | None = None) -> ChatResponse:
         # was found, we fall back to the fixed safety sentence, never
         # fabricating a school-policy answer, and never letting the AI
         # rephrase that fixed sentence either.
-        return school_info.answer(message) or ChatResponse(answer=NO_DATA_ANSWER)
+        return school_info.answer(message, now=now) or ChatResponse(answer=NO_DATA_ANSWER)
 
     response.answer = _rephrase(response.answer)
     return response
