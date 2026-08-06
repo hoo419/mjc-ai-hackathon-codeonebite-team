@@ -177,6 +177,33 @@ Response:
 }
 ```
 
+### PATCH /students/me
+학생 프로필(학과/학년/학기) 갱신. 학교 포털 로그인은 학생이 직접 하고,
+확인한 값을 우리 앱에 입력하는 방식 — 백엔드는 로그인 자격 증명을 절대
+다루지 않는다.
+
+Request:
+```json
+{
+  "department": "컴퓨터공학과",
+  "grade": 3,
+  "semester": 1
+}
+```
+
+Response: `GET /students/me`와 동일한 형식.
+```json
+{
+  "student": {
+    "id": "mock-student-001",
+    "name": "홍길동",
+    "department": "컴퓨터공학과",
+    "grade": 3,
+    "semester": 1
+  }
+}
+```
+
 ### GET /students/me/courses
 현재 신청 과목.
 

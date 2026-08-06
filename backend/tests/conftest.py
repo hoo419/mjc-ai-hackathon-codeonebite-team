@@ -1,7 +1,12 @@
 import pytest
 
 from app.core.config import settings
-from app.repositories import counseling_repository, course_repository, enrollment_repository
+from app.repositories import (
+    counseling_repository,
+    course_repository,
+    enrollment_repository,
+    student_repository,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -22,6 +27,16 @@ def reset_course_store():
     course_repository.reset()
     yield
     course_repository.reset()
+
+
+@pytest.fixture(autouse=True)
+def reset_student_store():
+    """Student profile (department/grade/semester) is editable via
+    PATCH /students/me. Reload from data/students.json before and after
+    every test."""
+    student_repository.reset()
+    yield
+    student_repository.reset()
 
 
 @pytest.fixture(autouse=True)

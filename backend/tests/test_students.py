@@ -31,6 +31,30 @@ def test_get_current_student_courses_returns_enrolled_courses_only():
     assert "capacity" in courses[0]
 
 
+def test_patch_current_student_updates_profile_and_persists():
+    response = client.patch(
+        "/api/students/me",
+        json={"department": "소프트웨어학과", "grade": 2, "semester": 2},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "student": {
+            "id": "mock-student-001",
+            "name": "홍길동",
+            "department": "소프트웨어학과",
+            "grade": 2,
+            "semester": 2,
+        }
+    }
+
+    # A later GET reflects the update - it's not just echoed back once.
+    follow_up = client.get("/api/students/me")
+    assert follow_up.json()["student"]["department"] == "소프트웨어학과"
+    assert follow_up.json()["student"]["grade"] == 2
+    assert follow_up.json()["student"]["semester"] == 2
+
+
 def test_get_current_student_schedule_returns_weekly_schedule():
     response = client.get("/api/students/me/schedule")
 

@@ -17,6 +17,16 @@ class StudentResponse(BaseModel):
     student: Student
 
 
+class StudentProfileUpdate(BaseModel):
+    """PATCH /students/me request body. The student logs into the school
+    portal themselves and types in what they see - we never handle their
+    login credentials."""
+
+    department: str
+    grade: int
+    semester: int
+
+
 class StudentCoursesResponse(BaseModel):
     courses: list[Course]
 
