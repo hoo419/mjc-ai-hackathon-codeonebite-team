@@ -1,13 +1,13 @@
 [
   {
     "studentId": "mock-student-001",
-    "courseId": "CS301-01",
+    "courseId": "T00138-101",
     "status": "ENROLLED",
     "enrolledAt": "2026-08-01T10:00:00+09:00"
   },
   {
     "studentId": "mock-student-001",
-    "courseId": "GE101-01",
+    "courseId": "J01683-101",
     "status": "ENROLLED",
     "enrolledAt": "2026-08-01T10:05:00+09:00"
   }
