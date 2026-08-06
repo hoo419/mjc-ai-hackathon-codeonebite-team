@@ -19,7 +19,20 @@ def test_full_flow_chat_search_enroll_schedule_and_capacity_updates():
     assert chat_body["courses"], "추천된 과목이 없습니다"
     assert all(c["status"] == "OPEN" for c in chat_body["courses"])
 
-    chosen = chat_body["courses"][0]
+    # mock-student-001 is already enrolled in a couple of courses (seeded
+    # via data/enrollments.json) - skip past those so the enroll call below
+    # actually succeeds instead of returning ALREADY_ENROLLED. Also require
+    # at least one session so the schedule-matching assertions below have
+    # something to compare against.
+    already_enrolled_ids = {
+        item["courseId"]
+        for item in client.get("/api/students/me/schedule").json()["schedule"]
+    }
+    chosen = next(
+        c
+        for c in chat_body["courses"]
+        if c["id"] not in already_enrolled_ids and c["sessions"]
+    )
     course_id = chosen["id"]
     assert any(a["targetId"] == course_id for a in chat_body["actions"])
 
@@ -36,14 +49,15 @@ def test_full_flow_chat_search_enroll_schedule_and_capacity_updates():
     schedule = client.get("/api/students/me/schedule").json()["schedule"]
     scheduled = next((s for s in schedule if s["courseId"] == course_id), None)
     assert scheduled is not None
+    chosen_session = chosen["sessions"][0]
     assert scheduled["name"] == chosen["name"]
     assert scheduled["professor"] == chosen["professor"]
     assert scheduled["classType"] == chosen["classType"]
-    assert scheduled["day"] == chosen["day"]
-    assert scheduled["startTime"] == chosen["startTime"]
-    assert scheduled["endTime"] == chosen["endTime"]
-    assert scheduled["building"] == chosen["building"]
-    assert scheduled["room"] == chosen["room"]
+    assert scheduled["day"] == chosen_session["day"]
+    assert scheduled["startTime"] == chosen_session["startTime"]
+    assert scheduled["endTime"] == chosen_session["endTime"]
+    assert scheduled["building"] == chosen_session["building"]
+    assert scheduled["room"] == chosen_session["room"]
 
     after = client.get(f"/api/courses/{course_id}").json()["course"]
     assert after["enrolled"] == before["enrolled"] + 1

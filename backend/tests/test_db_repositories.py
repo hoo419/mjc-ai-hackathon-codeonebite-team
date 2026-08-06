@@ -26,31 +26,31 @@ def test_db_get_course_reads_live_database_state_not_json(monkeypatch, tmp_path)
     # get_course() is actually querying the database, not a JSON-loaded
     # in-memory copy.
     with db_core.get_session() as session:
-        row = session.get(CourseModel, "CS210-01")
+        row = session.get(CourseModel, "J00105-101")
         row.enrolled = 999
         session.commit()
 
-    course = course_repository.get_course("CS210-01")
+    course = course_repository.get_course("J00105-101")
     assert course.enrolled == 999
 
 
 def test_db_increment_enrolled_writes_to_database(monkeypatch, tmp_path):
     _use_sqlite_db(monkeypatch, tmp_path)
 
-    course_repository.increment_enrolled("CS210-01")
+    course_repository.increment_enrolled("J00105-101")
 
     with db_core.get_session() as session:
-        row = session.get(CourseModel, "CS210-01")
-        assert row.enrolled == 13  # seeded at 12
+        row = session.get(CourseModel, "J00105-101")
+        assert row.enrolled == 31  # seeded at 30 (capacity 35, OPEN)
 
 
 def test_db_decrement_enrolled_writes_to_database(monkeypatch, tmp_path):
     _use_sqlite_db(monkeypatch, tmp_path)
 
-    course_repository.decrement_enrolled("CS301-02")  # seeded at 30 (FULL)
+    course_repository.decrement_enrolled("J00936-101")  # seeded at 30/30 (FULL)
 
     with db_core.get_session() as session:
-        row = session.get(CourseModel, "CS301-02")
+        row = session.get(CourseModel, "J00936-101")
         assert row.enrolled == 29
         assert row.status == "OPEN"
 
@@ -72,7 +72,7 @@ def test_db_enrollment_upsert_writes_to_database(monkeypatch, tmp_path):
 
     record = EnrollmentRecord(
         studentId="mock-student-001",
-        courseId="CS220-01",
+        courseId="J01840-101",
         status=EnrollmentStatus.ENROLLED,
         enrolledAt="2026-01-01T00:00:00+09:00",
     )
@@ -81,7 +81,7 @@ def test_db_enrollment_upsert_writes_to_database(monkeypatch, tmp_path):
     with db_core.get_session() as session:
         row = (
             session.query(EnrollmentModel)
-            .filter_by(student_id="mock-student-001", course_id="CS220-01")
+            .filter_by(student_id="mock-student-001", course_id="J01840-101")
             .one()
         )
         assert row.status == "ENROLLED"
@@ -90,12 +90,14 @@ def test_db_enrollment_upsert_writes_to_database(monkeypatch, tmp_path):
 def test_db_enrollment_cancel_writes_to_database(monkeypatch, tmp_path):
     _use_sqlite_db(monkeypatch, tmp_path)
 
-    enrollment_repository.cancel_enrollment("mock-student-001", "CS301-01")
+    # T00138-101 is seeded (data/enrollments.json) as an existing ENROLLED
+    # row for mock-student-001.
+    enrollment_repository.cancel_enrollment("mock-student-001", "T00138-101")
 
     with db_core.get_session() as session:
         row = (
             session.query(EnrollmentModel)
-            .filter_by(student_id="mock-student-001", course_id="CS301-01")
+            .filter_by(student_id="mock-student-001", course_id="T00138-101")
             .one()
         )
         assert row.status == "CANCELLED"
