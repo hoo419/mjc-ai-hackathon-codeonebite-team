@@ -113,7 +113,7 @@ INTEGRATED_MAJOR   // 통합전공교과
 선택 Query 예:
 ```text
 ?status=OPEN
-?classType=ONLINE_LIVE
+?classType=OFFLINE
 ?category=GENERAL_ELECTIVE
 ?search=인공지능
 ```
@@ -320,14 +320,14 @@ AI 비서 질문.
 Request:
 ```json
 {
-  "message": "지금 신청 가능한 온라인 교양 과목 알려줘."
+  "message": "지금 신청 가능한 전공 과목 알려줘."
 }
 ```
 
 Response:
 ```json
 {
-  "answer": "현재 신청 가능한 온라인 교양 과목을 찾았습니다.",
+  "answer": "현재 신청 가능한 전공 과목을 찾았습니다.",
   "sources": [
     {
       "title": "2026학년도 수강신청 안내",
@@ -336,19 +336,20 @@ Response:
   ],
   "courses": [
     {
-      "id": "GE101-01",
-      "name": "디지털 리터러시",
-      "professor": "이OO",
+      "id": "T00137-101",
+      "name": "딥러닝",
+      "professor": "윤현구",
       "credits": 3,
-      "category": "GENERAL_ELECTIVE",
-      "classType": "ONLINE_LIVE",
+      "category": "MAJOR_COURSE",
+      "classType": "OFFLINE",
       "sessions": [
-        { "day": "MON", "startTime": "10:00", "endTime": "11:50", "building": null, "room": null }
+        { "day": "TUE", "startTime": "13:25", "endTime": "14:50", "building": null, "room": "공502" },
+        { "day": "WED", "startTime": "10:25", "endTime": "11:50", "building": null, "room": "공502" }
       ],
       "targetGrade": 1,
       "eligibleDepts": [{ "code": "1200203", "name": "컴퓨터공학과" }],
-      "capacity": 40,
-      "enrolled": 31,
+      "capacity": 35,
+      "enrolled": 30,
       "status": "OPEN",
       "lastUpdated": "2026-08-07T00:00:00+09:00"
     }
@@ -357,7 +358,7 @@ Response:
     {
       "type": "VIEW_COURSE",
       "label": "과목 보기",
-      "targetId": "GE101-01"
+      "targetId": "T00137-101"
     }
   ]
 }

@@ -35,17 +35,25 @@
 | `targetGrades` | 이 분반이 노출된 대상학년 배열 — 246개 전부 배열 길이 1 (한 분반=한 학년). |
 | `depts` | 이 분반이 노출된 학과 배열 (`{code, name}[]`) — **246개 중 21개는 배열 길이 2 이상** (여러 학과 학생에게 공통 개방된 분반, 주로 통합전공교과). `grade`/`clsMajCd` 원본 필드는 여러 조합 중 마지막으로 관측된 값 하나만 남아있으니 다학과 개방 여부는 반드시 `depts` 배열로 판단할 것. |
 
-## Course 스키마로 변환 시 참고할 점 (미착수, 다음 작업자가 결정)
-- `time`의 `<br>` 다중 세션을 어떻게 쪼갤지: 세션별로 `id`를 `{subjectCd}-{bunban}-세션번호`로 나눠 여러
-  Course row로 만드는 방향으로 지난 논의는 있었으나 최종 확정은 아님.
-- `building`/`room`: 원본이 "공706" 같은 축약 코드라 건물 정식명칭을 지어내지 않으려면 `building: null`,
-  `room`에 원본 문자열 그대로 넣는 방향으로 논의됐었음 (역시 미확정).
-- `category`(MAJOR_REQUIRED 등 API_CONTRACT enum)로 매핑하려면 `isuCdNm` 5종 값과 API_CONTRACT의
-  CourseCategory enum(MAJOR_REQUIRED/MAJOR_ELECTIVE/GENERAL_REQUIRED/GENERAL_ELECTIVE/OTHER)을
-  대응시켜야 함 — 지금은 안 되어 있음.
-- `classType`(OFFLINE/ONLINE_LIVE/ONLINE_RECORDED/HYBRID) 판단 기준(`_sugangGbn===60` 또는 `virYn`)도 미확정.
-- API_CONTRACT.md에 없는 필드(분반명/이수구분 원문/학과코드/대상학년 등)를 스키마에 추가할지는
-  프론트(개발자B)와 조율 필요 — API_CONTRACT.md부터 고치고 나서 필드를 늘릴 것.
+## Course 스키마로 변환한 방법 (구현 완료)
+실제 변환 로직은 `backend/scripts/transform_sugang_raw.py`를 정본으로 삼는다. 이 원본 JSON을
+읽어 `data/courses.json`을 생성하며, 재수집 시 `python -m scripts.transform_sugang_raw`로
+다시 실행하면 된다. 결정된 내용:
+- `time`의 `<br>` 다중 세션은 한 Course의 `sessions` 배열 원소로 쪼갠다 (row당 별도의 Course를
+  만들지 않는다 — `id`는 여전히 `{subjectCd}-{bunban}` 하나). `"원격시험 배정시간"` 세그먼트는
+  실제 수업 세션이 아니므로 건너뛴다.
+- `building`/`room`: 원본이 "공706" 같은 축약 코드라 건물 정식명칭을 지어내지 않기로 하고
+  `building: null`로 고정, `room`에는 원본 문자열을 trim해서 그대로 넣는다 (공백만 있던 값은
+  `null`로 정규화 — "알 수 없음"은 빈 문자열이 아니라 `null`이어야 하므로).
+- `category`는 `isuCdNm` 원문 5종을 API_CONTRACT의 CourseCategory enum으로 직접 매핑한다:
+  `교양과정→GENERAL_COURSE`, `교양필수→GENERAL_REQUIRED`, `일반선택→GENERAL_ELECTIVE`,
+  `전공과정→MAJOR_COURSE`, `통합전공교과→INTEGRATED_MAJOR`. (예전에 언급됐던
+  `MAJOR_REQUIRED`/`MAJOR_ELECTIVE`/`OTHER` enum 값은 API_CONTRACT.md에서 이미 빠졌고 쓰지 않는다.)
+- `classType`은 `sugangGbnCodes[0] == "60"`(원격)이면 `null`, 그 외엔 `"OFFLINE"`으로 판단한다.
+  실시간/녹화 구분은 원본에서 알 수 없어 지어내지 않고 전부 `null`로 뭉뚱그린다.
+- API_CONTRACT.md에 없던 필드(분반명/이수구분 원문/학과코드 등)는 스키마에 추가하지 않았다 —
+  변환은 `id`/`name`/`professor`/`credits`/`category`/`classType`/`sessions`/`targetGrade`/
+  `eligibleDepts`/`capacity`/`enrolled`/`status`/`lastUpdated`만 채운다.
 
 ## 수집 스크립트
 이 저장소에는 포함하지 않음 (Playwright 등 개발 의존성을 앱에 안 섞으려고 별도 스크래치 폴더에서 실행).
