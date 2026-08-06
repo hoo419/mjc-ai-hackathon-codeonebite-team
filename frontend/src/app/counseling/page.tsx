@@ -52,18 +52,39 @@ export default function CounselingPage() {
           <CardTitle className="text-sm">진로·검사 결과 요약</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
-          {loading || !data ? (
+          {loading ? (
             <>
               <Skeleton className="h-4 w-full" />
               <Skeleton className="h-4 w-3/4" />
             </>
-          ) : (
+          ) : data ? (
             <>
               <p>{data.careerSummary}</p>
               <p className="text-muted-foreground">{data.personalitySummary}</p>
               <p className="text-xs text-muted-foreground">
                 최근 상담일: {formatDateTime(data.lastCounselingAt)}
               </p>
+            </>
+          ) : (
+            <>
+              <p className="text-muted-foreground">
+                아직 진로적성검사 결과가 없습니다. 아래에서 검사 결과를 붙여넣어 AI로
+                분석해보거나, 상담이 필요하면 상담지원팀으로 바로 연락해 주세요.
+              </p>
+              <ul className="space-y-1.5 pt-1">
+                {COUNSELING_CENTER_CONTACTS.map((c) => (
+                  <li key={c.phone} className="flex items-center justify-between">
+                    <span className="text-muted-foreground">상담지원팀 {c.role}</span>
+                    <Button
+                      render={<a href={`tel:${c.phone}`} />}
+                      variant="secondary"
+                      size="sm"
+                    >
+                      <Phone className="h-3.5 w-3.5" /> {c.phone}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
             </>
           )}
         </CardContent>

@@ -5,15 +5,16 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_get_counseling_summary_returns_mock_summary():
+def test_get_counseling_summary_returns_404_when_no_real_summary_exists():
+    # 진로적성검사 요약은 학생이 mpu.mjc.ac.kr(SMART CARE)에 직접 로그인해서
+    # 확인한 뒤 붙여넣어야만 나오는 데이터라, 아직 아무도 그렇게 한 적 없는
+    # mock-student-001은 진짜로 요약이 없다 - data/counseling.json이
+    # 비어있으므로 정직하게 404. 프론트는 이 경우 상담센터 연락처를 보여준다.
     response = client.get("/api/counseling/me")
 
-    assert response.status_code == 200
-    assert response.json() == {
-        "careerSummary": "소프트웨어 개발 직무에 높은 관심을 보입니다.",
-        "personalitySummary": "Mock 데이터입니다.",
-        "lastCounselingAt": "2026-07-01T15:00:00+09:00",
-    }
+    assert response.status_code == 404
+    body = response.json()
+    assert body["error"]["code"] == "COUNSELING_SUMMARY_NOT_FOUND"
 
 
 def test_request_counseling_returns_requested_status():

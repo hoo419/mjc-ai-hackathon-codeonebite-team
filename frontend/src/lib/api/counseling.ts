@@ -6,9 +6,16 @@ import type {
 } from "@/types";
 import { apiGet, apiPost } from "./client";
 
-// GET /counseling/me
-export function getMyCounseling(): Promise<CounselingSummary> {
-  return apiGet<CounselingSummary>("/counseling/me");
+// GET /counseling/me - 진로적성검사 결과는 학생이 mpu.mjc.ac.kr에 직접
+// 로그인해서 붙여넣어야만 존재하는 데이터라, 아직 그렇게 한 적 없으면
+// 백엔드가 404(COUNSELING_SUMMARY_NOT_FOUND)를 준다. 화면에서는 에러가
+// 아니라 "아직 결과 없음" 상태로 다뤄야 하므로 null로 바꿔서 돌려준다.
+export async function getMyCounseling(): Promise<CounselingSummary | null> {
+  try {
+    return await apiGet<CounselingSummary>("/counseling/me");
+  } catch {
+    return null;
+  }
 }
 
 // POST /counseling/request

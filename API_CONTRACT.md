@@ -399,14 +399,30 @@ Response:
 ## 10. Counseling API
 
 ### GET /counseling/me
-학생에게 공개 가능한 상담/검사 요약.
+학생에게 공개 가능한 상담/검사 요약. 이 요약은 학생이 `mpu.mjc.ac.kr`(SMART
+CARE)에 직접 로그인해서 확인한 검사 결과를 서버에 실제로 저장한 적이 있어야만
+존재한다 - 현재는 저장 경로가 없어서(POST /counseling/analyze-aptitude는
+그때그때 AI 분석만 하고 저장하지 않음) `data/counseling.json`이 비어있고,
+모든 학생이 항상 404를 받는다. 프론트는 이 404를 에러가 아니라 "아직 검사
+결과 없음" 상태로 다루고, 상담센터 연락처(상담지원팀 전화번호)를 대신
+보여준다.
 
-Response:
+성공 Response:
 ```json
 {
-  "careerSummary": "소프트웨어 개발 직무에 높은 관심을 보입니다.",
-  "personalitySummary": "Mock 데이터입니다.",
+  "careerSummary": "...",
+  "personalitySummary": "...",
   "lastCounselingAt": "2026-07-01T15:00:00+09:00"
+}
+```
+
+없을 때 (현재 항상 이 경로):
+```json
+{
+  "error": {
+    "code": "COUNSELING_SUMMARY_NOT_FOUND",
+    "message": "상담 요약 정보를 찾을 수 없습니다."
+  }
 }
 ```
 
