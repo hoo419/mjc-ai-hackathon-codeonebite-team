@@ -43,7 +43,7 @@ class ChatIntent(StrEnum):
 
 @dataclass
 class CourseFilters:
-    class_types: set[CourseClassType] = field(default_factory=set)
+    class_types: set[CourseClassType | None] = field(default_factory=set)
     categories: set[CourseCategory] = field(default_factory=set)
 
     def is_empty(self) -> bool:
@@ -51,45 +51,35 @@ class CourseFilters:
 
 
 def extract_course_filters(message: str) -> CourseFilters:
-    """Very small rule-based keyword extractor - this is the "intent /
-    parameter extraction" step. No AI provider is involved yet (Phase 6 runs
-    before the OpenAI-compatible client), but a real LLM would eventually
-    replace only this function, not the course lookup that follows it."""
+    """Very small rule-based keyword extractor. 실데이터엔 classType이
+    OFFLINE 또는 None(원격, 실시간/녹화 구분 불가)만 존재하므로 "온라인"
+    관련 언급은 전부 None으로 모은다 - 실시간/녹화를 구분해서 답하면
+    근거 없이 지어내는 것이라 그렇게 하지 않는다."""
     filters = CourseFilters()
 
     if "온라인" in message:
-        if "실시간" in message:
-            filters.class_types.add(CourseClassType.ONLINE_LIVE)
-        elif "녹화" in message or "동영상" in message:
-            filters.class_types.add(CourseClassType.ONLINE_RECORDED)
-        else:
-            filters.class_types.update(
-                {CourseClassType.ONLINE_LIVE, CourseClassType.ONLINE_RECORDED}
-            )
+        filters.class_types.add(None)
     if "오프라인" in message:
         filters.class_types.add(CourseClassType.OFFLINE)
     if "하이브리드" in message or "혼합" in message:
         filters.class_types.add(CourseClassType.HYBRID)
 
-    wants_required = "필수" in message
-    wants_elective = "선택" in message
     if "전공" in message:
-        if wants_required:
-            filters.categories.add(CourseCategory.MAJOR_REQUIRED)
-        if wants_elective:
-            filters.categories.add(CourseCategory.MAJOR_ELECTIVE)
-        if not wants_required and not wants_elective:
-            filters.categories.update(
-                {CourseCategory.MAJOR_REQUIRED, CourseCategory.MAJOR_ELECTIVE}
-            )
+        filters.categories.add(CourseCategory.MAJOR_COURSE)
     if "교양" in message:
+        wants_required = "필수" in message
+        wants_elective = "선택" in message
         if wants_required:
             filters.categories.add(CourseCategory.GENERAL_REQUIRED)
         if wants_elective:
             filters.categories.add(CourseCategory.GENERAL_ELECTIVE)
         if not wants_required and not wants_elective:
             filters.categories.update(
-                {CourseCategory.GENERAL_REQUIRED, CourseCategory.GENERAL_ELECTIVE}
+                {
+                    CourseCategory.GENERAL_COURSE,
+                    CourseCategory.GENERAL_REQUIRED,
+                    CourseCategory.GENERAL_ELECTIVE,
+                }
             )
 
     return filters

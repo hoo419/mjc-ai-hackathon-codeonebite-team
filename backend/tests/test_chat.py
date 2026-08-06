@@ -8,15 +8,15 @@ from app.services import chat_service
 
 client = TestClient(app)
 
-# 2024-01-01 is a known Monday, 2024-01-04 a known Thursday. Using fixed
-# reference dates keeps the schedule/next-class tests independent of
-# whatever day the suite actually runs on.
-A_MONDAY = datetime(2024, 1, 1, 9, 0, tzinfo=KST)
-A_THURSDAY_MORNING = datetime(2024, 1, 4, 10, 0, tzinfo=KST)
-A_THURSDAY_AFTERNOON = datetime(2024, 1, 4, 16, 0, tzinfo=KST)
+# 2024-01-01이 월요일이라는 가정 하에, 2024-01-02는 화요일, 2024-01-05는
+# 금요일 (date +%A 등으로 실제 확인 완료). 고정 기준 날짜를 쓰면 테스트가
+# 실행되는 요일과 무관하게 동작한다.
+A_TUESDAY_MORNING = datetime(2024, 1, 2, 9, 0, tzinfo=KST)  # 2024-01-02는 화요일
+A_FRIDAY_MORNING = datetime(2024, 1, 5, 9, 0, tzinfo=KST)  # 2024-01-05는 금요일
+A_FRIDAY_AFTERNOON = datetime(2024, 1, 5, 12, 0, tzinfo=KST)
 
 
-def test_chat_finds_available_online_general_elective_courses():
+def test_chat_finds_available_online_general_courses():
     response = client.post(
         "/api/chat", json={"message": "지금 신청 가능한 온라인 교양 과목 알려줘."}
     )
@@ -24,54 +24,50 @@ def test_chat_finds_available_online_general_elective_courses():
     assert response.status_code == 200
     body = response.json()
     assert body["answer"]
-    course_ids = {c["id"] for c in body["courses"]}
-    assert course_ids == {"GE101-01", "GE104-01"}
+    assert len(body["courses"]) >= 1
+    assert all(c["classType"] is None for c in body["courses"])
+    assert all(
+        c["category"] in {"GENERAL_COURSE", "GENERAL_REQUIRED", "GENERAL_ELECTIVE"}
+        for c in body["courses"]
+    )
     assert all(c["status"] == "OPEN" for c in body["courses"])
-    assert {a["targetId"] for a in body["actions"]} == course_ids
+    assert {a["targetId"] for a in body["actions"]} == {c["id"] for c in body["courses"]}
     assert all(a["type"] == "VIEW_COURSE" for a in body["actions"])
 
 
-def test_chat_searches_major_required_courses_regardless_of_status():
-    response = client.post("/api/chat", json={"message": "전공필수 과목 알려줘"})
+def test_chat_searches_major_courses_regardless_of_status():
+    response = client.post("/api/chat", json={"message": "전공 과목 알려줘"})
 
     assert response.status_code == 200
     courses = response.json()["courses"]
-    assert {c["id"] for c in courses} == {
-        "CS301-01",
-        "CS301-02",
-        "CS210-01",
-        "CS350-01",
-        "CS360-01",
-        "CS370-01",
-    }
-    assert all(c["category"] == "MAJOR_REQUIRED" for c in courses)
+    assert len(courses) >= 1
+    assert all(c["category"] == "MAJOR_COURSE" for c in courses)
 
 
 def test_chat_today_schedule_returns_only_todays_courses():
-    result = chat_service.handle_message("오늘 수업 뭐 있어?", now=A_THURSDAY_MORNING)
+    result = chat_service.handle_message("오늘 수업 뭐 있어?", now=A_FRIDAY_MORNING)
 
-    assert {c.id for c in result.courses} == {"CS301-01"}
-    assert "인공지능" in result.answer
+    assert {c.id for c in result.courses} == {"T00138-101"}
+    assert "AI활용웹개발" in result.answer
 
 
-def test_chat_today_schedule_on_monday():
-    result = chat_service.handle_message("오늘 수업 뭐 있어?", now=A_MONDAY)
+def test_chat_today_schedule_on_tuesday():
+    result = chat_service.handle_message("오늘 수업 뭐 있어?", now=A_TUESDAY_MORNING)
 
-    assert {c.id for c in result.courses} == {"GE101-01"}
+    assert {c.id for c in result.courses} == {"J01683-101"}
 
 
 def test_chat_next_class_before_todays_class():
-    result = chat_service.handle_message("다음 수업 뭐야?", now=A_THURSDAY_MORNING)
+    result = chat_service.handle_message("다음 수업 뭐야?", now=A_FRIDAY_MORNING)
 
-    assert {c.id for c in result.courses} == {"CS301-01"}
+    assert {c.id for c in result.courses} == {"T00138-101"}
 
 
 def test_chat_next_class_wraps_to_following_week():
-    # After CS301-01 (THU 13:00-15:50) has ended, the next class is
-    # GE101-01 the following MON.
-    result = chat_service.handle_message("다음 수업 뭐야?", now=A_THURSDAY_AFTERNOON)
+    # FRI 11:00-11:50(T00138-101)이 끝난 뒤엔 다음 주 TUE 09:25(J01683-101)가 다음 수업.
+    result = chat_service.handle_message("다음 수업 뭐야?", now=A_FRIDAY_AFTERNOON)
 
-    assert {c.id for c in result.courses} == {"GE101-01"}
+    assert {c.id for c in result.courses} == {"J01683-101"}
 
 
 def test_chat_school_info_question_returns_safe_fallback_when_nothing_found(monkeypatch):
@@ -130,19 +126,19 @@ def test_chat_uses_ai_rephrased_answer_when_ai_client_available(monkeypatch):
         chat_service.ai_client, "get_client", lambda: _FakeAIClient("다듬어진 답변입니다.")
     )
 
-    result = chat_service.handle_message("전공필수 과목 알려줘")
+    result = chat_service.handle_message("전공 과목 알려줘")
 
     assert result.answer == "다듬어진 답변입니다."
     # Facts (which/how many courses) are untouched by the AI rephrase step.
-    assert len(result.courses) == 6
+    assert len(result.courses) == 35
 
 
 def test_chat_falls_back_to_template_answer_when_ai_client_fails(monkeypatch):
     monkeypatch.setattr(chat_service.ai_client, "get_client", lambda: _FakeAIClient(None))
 
-    result = chat_service.handle_message("전공필수 과목 알려줘")
+    result = chat_service.handle_message("전공 과목 알려줘")
 
-    assert result.answer == "조건에 맞는 과목을 6건 찾았습니다."
+    assert result.answer == "조건에 맞는 과목을 35건 찾았습니다."
 
 
 def test_chat_school_info_fallback_is_never_rephrased_by_ai(monkeypatch):
