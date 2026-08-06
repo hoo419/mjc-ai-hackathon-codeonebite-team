@@ -12,8 +12,8 @@
 
 | 이름 | 역할 | 담당 |
 |---|---|---|
-| 임채호 | 개발자 A (Backend/AI) | `backend/`, `ai/`, `data/`, DB, RAG |
-| 조영남 | 개발자 B (Frontend) | `frontend/`, 학생용 UI/UX |
+| 임채호 | Backend/AI/Frontend 전체 | `backend/`, `frontend/`, `data/`, DB, RAG |
+| 조영남 | (초기 Frontend MVP 참여) | - |
 
 2026-08-07부터는 임채호가 Backend/Frontend 전체를 직접 담당한다.
 

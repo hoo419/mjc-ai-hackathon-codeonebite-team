@@ -10,11 +10,9 @@ logger = logging.getLogger(__name__)
 class AIClient:
     """Thin wrapper over an OpenAI-compatible /chat/completions endpoint.
 
-    BACKEND_IMPLEMENTATION_PLAN.md Phase 7: "특정 공급자 SDK에 강하게 종속되지
-    않게 구성한다" - so this only depends on httpx + the wire format, not any
-    provider SDK. Every other service talks to this class, never to httpx or
-    a provider directly (CLAUDE.md: "Keep AI provider access behind a
-    dedicated client/service")."""
+    Deliberately depends only on httpx + the wire format, not any provider
+    SDK, so swapping AI providers never touches the callers. Every other
+    service talks to this class, never to httpx or a provider directly."""
 
     def __init__(
         self,
