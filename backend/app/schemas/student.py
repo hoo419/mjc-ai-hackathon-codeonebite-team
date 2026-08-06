@@ -39,7 +39,7 @@ class ScheduleItem(BaseModel):
     courseId: str
     name: str
     professor: str
-    classType: CourseClassType
+    classType: CourseClassType | None
     day: str
     startTime: str
     endTime: str
