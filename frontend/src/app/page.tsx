@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { NewStudentDeptNotice } from "@/components/new-student-dept-notice";
 import { ProfileEditDialog } from "@/components/profile-edit-dialog";
 import { useAsyncData } from "@/hooks/use-async-data";
 import { getMe, getMySchedule, getNotices } from "@/lib/api";
@@ -58,6 +59,10 @@ export default function DashboardPage() {
           )}
         </CardContent>
       </Card>
+
+      {student && student.grade === 1 && student.semester === 1 && (
+        <NewStudentDeptNotice department={student.department} />
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Card>
