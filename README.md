@@ -15,17 +15,19 @@
 | 임채호 | 개발자 A (Backend/AI) | `backend/`, `ai/`, `data/`, DB, RAG |
 | 조영남 | 개발자 B (Frontend) | `frontend/`, 학생용 UI/UX |
 
-역할별 상세 작업은 `DEVELOPER_A_BACKEND_TASKS.md`, `DEVELOPER_B_FRONTEND_TASKS.md` 참고.
+2026-08-07부터는 임채호가 Backend/Frontend 전체를 직접 담당한다.
 
 ## 진행 상황
 
-- [x] 저장소 생성 / 기술 스택·역할 분담 확정 (`TECH_STACK.md`)
-- [x] Backend: Course/Student/Enrollment/Chat/Notices/Counseling/Buildings·Rooms API 13개 전부 구현 (Mock 데이터 기반)
+- [x] 저장소 생성 / 기술 스택 확정 (`TECH_STACK.md`)
+- [x] Backend: Course/Student/Enrollment/Chat/Counseling/Buildings·Rooms API 전부 구현 (Mock JSON ↔ PostgreSQL 듀얼 모드)
 - [x] Backend: OpenAI 호환 AI 클라이언트 연동 (Chat 답변 다듬기)
-- [x] Backend: PostgreSQL(Neon) 연동 — 설정 없으면 Mock으로 자동 폴백
+- [x] Backend: PostgreSQL(Neon) 연동 — `DATABASE_URL` 비우면 Mock으로 자동 폴백
+- [x] 학교정보 RAG (`www.mjc.ac.kr` 실시간 검색+상세조회 기반)
 - [x] Frontend: 6개 화면(대시보드/채팅/과목검색/시간표/강의실/상담) 구현
 - [x] Frontend ↔ Backend 실연동 통합 테스트 (`integration/fullstack-demo` 브랜치)
-- [ ] 학교정보 RAG (크롤러 + pgvector)
+- [x] sugang.mjc.ac.kr 개설강좌 실데이터 246개 반영 (Mock/가짜 강의 데이터 제거)
+- [x] 실제 배포 (Backend: Railway, Frontend: Vercel)
 - [ ] 발표 자료 정리
 
 ## 실행 방법
@@ -41,5 +43,3 @@
 | `TECH_STACK.md` | 확정 기술 스택 |
 | `API_CONTRACT.md` | Frontend/Backend REST API 계약 |
 | `AI_AGENT_RULES.md` | AI가 추측하면 안 되는 데이터 및 처리 원칙 |
-| `BACKEND_IMPLEMENTATION_PLAN.md`, `DEVELOPER_A_BACKEND_TASKS.md` | Backend 구현 계획/작업 목록 |
-| `DEVELOPER_B_FRONTEND_TASKS.md` | Frontend 작업 목록 |

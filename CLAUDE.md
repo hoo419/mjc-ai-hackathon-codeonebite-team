@@ -1,109 +1,25 @@
-# CLAUDE.md — Developer A
+# CLAUDE.md
 
 ## Project
-MJC AI Campus Agent
+MJC AI Campus Agent — 명지전문대 AI 해커톤용 학생 캠퍼스 비서 (Backend: FastAPI, Frontend: Next.js).
 
-You are working as Developer A.
+2026-08-07부터 임채호가 `backend/`, `frontend/`, `data/` 전체를 직접 담당한다 (예전
+"개발자 A/B" 역할 분담은 더 이상 유효하지 않음).
 
 ## Before Coding
 Read these files first:
 - `TECH_STACK.md`
 - `PROJECT_REQUIREMENTS.md`
-- `API_CONTRACT.md`
-- `DEVELOPER_A_BACKEND_TASKS.md`
-- `BACKEND_IMPLEMENTATION_PLAN.md`
-- `AI_AGENT_RULES.md`
+- `API_CONTRACT.md` — Frontend/Backend 계약, 필드/엔드포인트 임의 변경 금지
+- `AI_AGENT_RULES.md` — AI가 추측하면 안 되는 데이터 및 처리 원칙
 
 Inspect the existing repository before creating, deleting, moving, or rewriting files.
 
-## Ownership
-You own:
-- `backend/`
-- `ai/`
-- `data/`
-
-Shared with Developer B:
-- `shared/`
-- `docs/`
-
-Do not modify `frontend/` unless explicitly requested.
-
-## Current Priority
-Build a working vertical slice before advanced infrastructure.
-
-Order:
-1. FastAPI skeleton
-2. Mock data
-3. Course API
-4. Student/Schedule API
-5. Enrollment validation
-6. Chat API
-7. OpenAI-compatible AI client
-8. Integration test
-9. PostgreSQL
-10. Crawler/RAG
-
-Do not begin with PostgreSQL or RAG unless the earlier phases are working.
-
-## API Contract
-`API_CONTRACT.md` is the interface contract with Developer B.
-
-Do not rename endpoints, fields, enums, request bodies, or response structures without explicit approval.
-
-If implementation requires a contract change:
-1. Explain why.
-2. Update the contract first after approval.
-3. Then update code.
-
-## Architecture Rules
-- FastAPI
-- Pydantic
-- SQLAlchemy when database phase begins
-- REST API
-- Keep business rules outside route handlers.
-- Keep AI provider access behind a dedicated client/service.
-- Prefer simple code over premature abstraction.
-- Mock data must be replaceable with database repositories later.
-
-## AI Safety / Correctness
-Never let the LLM invent authoritative school facts.
-
-Course availability, cancellation, enrollment capacity, schedules, classrooms, class modality, and eligibility must come from code/API/database results.
-
-The LLM handles intent, tool selection, summarization, and natural-language presentation.
-
-## Secrets
-Never hardcode secrets.
-Use environment variables.
-Never commit `.env`.
-Never expose AI API keys to frontend code.
-Do not print secrets in logs.
-
-## Quality
-After each meaningful implementation:
-- run relevant tests
-- verify FastAPI starts
-- verify endpoint response matches `API_CONTRACT.md`
-- check imports
-- check errors
-- summarize changed files
-
-Do not silently ignore failing tests.
-
-## Collaboration
-Developer B is implementing Frontend simultaneously.
-Avoid unnecessary shared-file edits.
-Make backend behavior predictable so B can develop against Mock responses.
-
-## First Task
-If the backend has not been initialized:
-1. Analyze repository.
-2. Present a short implementation plan.
-3. Create the FastAPI skeleton.
-4. Add CORS for local Next.js development.
-5. Add `/health`.
-6. Create Mock course data.
-7. Implement `GET /api/courses`.
-8. Implement `GET /api/courses/{courseId}`.
-9. Test both endpoints.
-10. Report what was created and the next recommended task.
+## 절대 원칙
+- 학교 사실정보(과목/건물/전화번호 등)를 지어내지 않는다. 확인 안 되면 `null`/빈 값 +
+  이유 주석, 또는 실제 학교 페이지로의 링크로 대체한다.
+- 실제 학교 로그인 자격증명은 백엔드가 절대 다루지 않는다.
+- 저장소가 public이므로 진짜 비밀값은 절대 커밋하지 않는다. `backend/.env`,
+  `frontend/.env.local`은 gitignore 대상. 배포 환경변수는 Railway/Vercel에 직접 설정.
+- 새 기능은 TDD(RED→GREEN→COMMIT)로 진행하고, `feature/*` 브랜치에서 작업 후 리뷰를
+  거쳐 `integration/fullstack-demo`(배포 기준 브랜치)에 병합한다.

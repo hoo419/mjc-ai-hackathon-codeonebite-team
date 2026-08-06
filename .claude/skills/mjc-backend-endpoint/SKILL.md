@@ -1,11 +1,11 @@
 ---
 name: mjc-backend-endpoint
-description: MJC AI Campus Agent 백엔드(개발자 A 담당)에서 API_CONTRACT.md에 정의된 REST 엔드포인트를 새로 구현하거나 수정할 때 사용한다. "학생/시간표/수강신청/채팅/공지/상담/강의실 API 만들어줘", "엔드포인트 추가", "Mock 데이터 기반 API 구현" 같은 요청이면 파일명이나 "스킬"이라는 단어가 없어도 트리거해야 한다. Course API 이후 남은 모든 backend/app 엔드포인트(students, enrollment, chat, notices, counseling, buildings, rooms) 작업에 반드시 사용할 것.
+description: MJC AI Campus Agent 백엔드에서 API_CONTRACT.md에 정의된 REST 엔드포인트를 새로 구현하거나 수정할 때 사용한다. "학생/시간표/수강신청/채팅/상담/강의실 API 만들어줘", "엔드포인트 추가", "Mock 데이터 기반 API 구현" 같은 요청이면 파일명이나 "스킬"이라는 단어가 없어도 트리거해야 한다. backend/app 엔드포인트(students, enrollment, chat, counseling, buildings, rooms) 작업에 반드시 사용할 것.
 ---
 
 # MJC Backend Endpoint 구현 절차
 
-이 프로젝트는 Frontend(개발자 B)가 `API_CONTRACT.md`만 보고 독립적으로 개발 중이다. 백엔드 쪽에서 계약을 깨거나, 사실 데이터를 LLM이 지어내면 통합 시점에 바로 터진다. 그래서 매 엔드포인트마다 아래 순서를 그대로 따른다 — 순서를 건너뛰면 그만큼 나중에 되돌아와서 고치게 된다.
+`API_CONTRACT.md`가 Frontend/Backend 사이의 유일한 계약이다. 백엔드 쪽에서 계약을 깨거나, 사실 데이터를 LLM이 지어내면 바로 터진다. 그래서 매 엔드포인트마다 아래 순서를 그대로 따른다 — 순서를 건너뛰면 그만큼 나중에 되돌아와서 고치게 된다.
 
 ## 0. 시작 전 계약 확인
 `API_CONTRACT.md`에서 구현할 엔드포인트의 request/response JSON, 관련 enum, 오류 코드를 정확히 옮겨 적는다. 필드명·enum·엔드포인트 구조는 임의로 바꾸지 않는다. 계약을 바꿔야만 하는 이유가 생기면:
@@ -55,9 +55,5 @@ Chat API 같은 LLM 관여 엔드포인트에서는 위 값들을 LLM 프롬프�
 - [ ] 변경된 파일 목록을 짧게 요약해서 보고
 
 ## 6. 경계
-- `frontend/`는 명시적 요청 없이 건드리지 않는다.
-- 큰 작업을 한 번에 커밋하지 않는다. `feat: implement <domain> endpoint` 같은 작은 단위 커밋을 "제안"하되, 사용자가 요청할 때만 실제로 커밋한다.
+- 큰 작업을 한 번에 커밋하지 않는다. `feat: implement <domain> endpoint` 같은 작은 단위 커밋으로 나눈다.
 - 진행 중 다음 엔드포인트로 넘어가기 전에, 이번 엔드포인트가 위 체크리스트를 통과했는지 스스로 확인한다.
-
-## 참고: 남은 엔드포인트 우선순위 (DEVELOPER_A_BACKEND_TASKS.md 기준)
-`GET /students/me` → `GET /students/me/courses` → `GET /students/me/schedule` → `POST /enrollment` → `DELETE /enrollment/{courseId}` → `POST /chat` → `GET /notices` → `GET /counseling/me` → `POST /counseling/request` → `GET /buildings` → `GET /rooms/{roomId}`

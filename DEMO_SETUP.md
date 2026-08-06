@@ -114,4 +114,3 @@ http://localhost:3000 접속.
 
 - `API_CONTRACT.md` — Frontend/Backend REST API 계약
 - `PROJECT_REQUIREMENTS.md` — 전체 기능 요구사항
-- `BACKEND_IMPLEMENTATION_PLAN.md` — Backend 구현 단계(Phase)별 계획
