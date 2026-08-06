@@ -32,3 +32,15 @@ def get_course_by_id(course_id: str) -> Course | None:
 
 def remaining_seats(course: Course) -> int:
     return course.capacity - course.enrolled
+
+
+def record_enrollment(course_id: str) -> None:
+    """Called once enrollment_service confirms a new ENROLLED record, so
+    seat counts stay correct for the very next read."""
+    course_repository.increment_enrolled(course_id)
+
+
+def record_cancellation(course_id: str) -> None:
+    """Called once enrollment_service confirms an ENROLLED record was
+    actually cancelled (not a no-op on an already-cancelled/nonexistent one)."""
+    course_repository.decrement_enrolled(course_id)

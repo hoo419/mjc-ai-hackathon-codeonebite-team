@@ -85,10 +85,19 @@ def enroll(course_id: str) -> EnrollmentRecord:
         enrolledAt=datetime.now(KST).isoformat(),
     )
     enrollment_repository.upsert_enrolled(record)
+    # Only reached on a genuinely new successful enrollment (ALREADY_ENROLLED
+    # already returned above), so this always represents one new seat taken.
+    course_service.record_enrollment(course_id)
     return record
 
 
 def cancel(course_id: str) -> None:
     """Mock 수강취소: 신청 기록이 없어도 조용히 성공 처리한다 (idempotent)."""
     student = student_service.get_current_student()
+    existing = enrollment_repository.find_enrollment(student.id, course_id)
+    was_enrolled = existing is not None and existing.status == EnrollmentStatus.ENROLLED
+
     enrollment_repository.cancel_enrollment(student.id, course_id)
+
+    if was_enrolled:
+        course_service.record_cancellation(course_id)

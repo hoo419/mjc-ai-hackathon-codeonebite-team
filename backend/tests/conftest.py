@@ -1,6 +1,16 @@
 import pytest
 
-from app.repositories import counseling_repository, enrollment_repository
+from app.repositories import counseling_repository, course_repository, enrollment_repository
+
+
+@pytest.fixture(autouse=True)
+def reset_course_store():
+    """Course.enrolled/status are bumped at runtime once an enrollment
+    actually succeeds (see course_repository.increment_enrolled). Reload
+    from data/courses.json before and after every test."""
+    course_repository.reset()
+    yield
+    course_repository.reset()
 
 
 @pytest.fixture(autouse=True)
