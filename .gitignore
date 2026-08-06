@@ -5,3 +5,9 @@ Thumbs.db
 *.log
 dist/
 build/
+
+# Python / backend
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

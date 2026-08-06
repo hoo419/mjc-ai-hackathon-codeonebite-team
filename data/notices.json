@@ -1,0 +1,37 @@
+[
+  {
+    "id": "notice-001",
+    "title": "2026학년도 2학기 수강신청 안내",
+    "category": "ACADEMIC",
+    "publishedAt": "2026-08-05T09:00:00+09:00",
+    "url": "https://example.ac.kr/notice/001"
+  },
+  {
+    "id": "notice-002",
+    "title": "국가장학금 2차 신청 기간 안내",
+    "category": "SCHOLARSHIP",
+    "publishedAt": "2026-08-04T10:00:00+09:00",
+    "url": "https://example.ac.kr/notice/002"
+  },
+  {
+    "id": "notice-003",
+    "title": "컴퓨터공학과 캡스톤디자인 발표회 일정",
+    "category": "DEPARTMENT",
+    "publishedAt": "2026-08-03T13:00:00+09:00",
+    "url": "https://example.ac.kr/notice/003"
+  },
+  {
+    "id": "notice-004",
+    "title": "학생회관 시설 점검에 따른 일시 휴관 안내",
+    "category": "GENERAL",
+    "publishedAt": "2026-08-01T11:00:00+09:00",
+    "url": "https://example.ac.kr/notice/004"
+  },
+  {
+    "id": "notice-005",
+    "title": "2026학년도 휴학/복학 신청 안내",
+    "category": "ACADEMIC",
+    "publishedAt": "2026-07-28T09:00:00+09:00",
+    "url": "https://example.ac.kr/notice/005"
+  }
+]

@@ -1,38 +1,109 @@
-# 프로젝트 개요
+# CLAUDE.md — Developer A
 
-명지전문대 AI 해커톤 참가용 프로젝트. 주제는 대회 당일 확정 예정.
+## Project
+MJC AI Campus Agent
 
-팀: 코드한입조
-팀원: 임채호, 조영남
+You are working as Developer A.
 
-# 기술 스택
+## Before Coding
+Read these files first:
+- `TECH_STACK.md`
+- `PROJECT_REQUIREMENTS.md`
+- `API_CONTRACT.md`
+- `DEVELOPER_A_BACKEND_TASKS.md`
+- `BACKEND_IMPLEMENTATION_PLAN.md`
+- `AI_AGENT_RULES.md`
 
-(대회 당일 주제·규칙에 맞춰 확정)
+Inspect the existing repository before creating, deleting, moving, or rewriting files.
 
-# 코딩 규칙
+## Ownership
+You own:
+- `backend/`
+- `ai/`
+- `data/`
 
-- 함수와 변수 이름은 영어 camelCase, 의미가 드러나게 작성
-- 주요 함수 위에는 한 줄 한글 주석을 단다
-- 하나의 함수는 하나의 일만 한다
+Shared with Developer B:
+- `shared/`
+- `docs/`
 
-# 작업 방식
+Do not modify `frontend/` unless explicitly requested.
 
-- 코드를 작성하기 전에 무엇을 어떤 순서로 만들지 먼저 제안한다
-- 한 번에 하나의 기능만 구현한다. 여러 기능을 동시에 만들지 않는다
-- 기존에 동작하던 코드를 요청 없이 수정하거나 삭제하지 않는다
-- 확실하지 않은 부분은 추측하지 말고 먼저 질문한다
+## Current Priority
+Build a working vertical slice before advanced infrastructure.
 
-# 커밋 규칙
+Order:
+1. FastAPI skeleton
+2. Mock data
+3. Course API
+4. Student/Schedule API
+5. Enrollment validation
+6. Chat API
+7. OpenAI-compatible AI client
+8. Integration test
+9. PostgreSQL
+10. Crawler/RAG
 
-- 기능 하나가 동작하면 바로 커밋한다
-- 커밋 메시지 형식: <기능명>: <무엇을 했는지>
+Do not begin with PostgreSQL or RAG unless the earlier phases are working.
 
-# 현재 진행 상황
+## API Contract
+`API_CONTRACT.md` is the interface contract with Developer B.
 
-- [x] 저장소 생성
-- [ ] 주제 확정
-- [ ] 기술 스택 결정
-- [ ] 역할 분담
-- [ ] 구현
+Do not rename endpoints, fields, enums, request bodies, or response structures without explicit approval.
 
-남은 일: 대회 당일 주제 확정 후 이어서 작업
+If implementation requires a contract change:
+1. Explain why.
+2. Update the contract first after approval.
+3. Then update code.
+
+## Architecture Rules
+- FastAPI
+- Pydantic
+- SQLAlchemy when database phase begins
+- REST API
+- Keep business rules outside route handlers.
+- Keep AI provider access behind a dedicated client/service.
+- Prefer simple code over premature abstraction.
+- Mock data must be replaceable with database repositories later.
+
+## AI Safety / Correctness
+Never let the LLM invent authoritative school facts.
+
+Course availability, cancellation, enrollment capacity, schedules, classrooms, class modality, and eligibility must come from code/API/database results.
+
+The LLM handles intent, tool selection, summarization, and natural-language presentation.
+
+## Secrets
+Never hardcode secrets.
+Use environment variables.
+Never commit `.env`.
+Never expose AI API keys to frontend code.
+Do not print secrets in logs.
+
+## Quality
+After each meaningful implementation:
+- run relevant tests
+- verify FastAPI starts
+- verify endpoint response matches `API_CONTRACT.md`
+- check imports
+- check errors
+- summarize changed files
+
+Do not silently ignore failing tests.
+
+## Collaboration
+Developer B is implementing Frontend simultaneously.
+Avoid unnecessary shared-file edits.
+Make backend behavior predictable so B can develop against Mock responses.
+
+## First Task
+If the backend has not been initialized:
+1. Analyze repository.
+2. Present a short implementation plan.
+3. Create the FastAPI skeleton.
+4. Add CORS for local Next.js development.
+5. Add `/health`.
+6. Create Mock course data.
+7. Implement `GET /api/courses`.
+8. Implement `GET /api/courses/{courseId}`.
+9. Test both endpoints.
+10. Report what was created and the next recommended task.
