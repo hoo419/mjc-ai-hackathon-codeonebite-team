@@ -75,7 +75,7 @@ export default function DashboardPage() {
                   {nextClass.professor}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {nextClass.building ? `${nextClass.building} ${nextClass.room}` : classTypeLabel[nextClass.classType]}
+                  {nextClass.building ? `${nextClass.building} ${nextClass.room}` : (nextClass.classType ? classTypeLabel[nextClass.classType] : "온라인(방식 확인 안 됨)")}
                 </p>
                 {nextClass.room && (
                   <Button
