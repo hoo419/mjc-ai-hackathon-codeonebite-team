@@ -18,6 +18,9 @@ export default function CoursesPage() {
   const [status, setStatus] = useState<CourseStatus | "ALL">("ALL");
   const [classType, setClassType] = useState<CourseClassType | "ALL">("ALL");
   const [category, setCategory] = useState<CourseCategory | "ALL">("ALL");
+  const [gubun, setGubun] = useState<"ALL" | "GENERAL" | "MAJOR" | "REMOTE">("ALL");
+  const [grade, setGrade] = useState<number | "ALL">("ALL");
+  const [dept, setDept] = useState<string | "ALL">("ALL");
   const [refreshKey, setRefreshKey] = useState(0);
   const [enrollingId, setEnrollingId] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<Record<string, { ok: boolean; message: string }>>({});
@@ -37,7 +40,20 @@ export default function CoursesPage() {
   const { data: myCoursesData } = useAsyncData(() => getMyCourses(), [refreshKey]);
 
   const enrolledIds = new Set((myCoursesData?.courses ?? []).map((c) => c.id));
-  const courses = coursesData?.courses ?? [];
+  const allCourses = coursesData?.courses ?? [];
+
+  const courses = allCourses.filter((c) => {
+    if (gubun === "REMOTE" && c.classType !== null) return false;
+    if (gubun === "GENERAL" && !c.category.startsWith("GENERAL")) return false;
+    if (gubun === "MAJOR" && c.category !== "MAJOR_COURSE" && c.category !== "INTEGRATED_MAJOR") return false;
+    if (grade !== "ALL" && c.targetGrade !== grade) return false;
+    if (dept !== "ALL" && !c.eligibleDepts.some((d) => d.code === dept)) return false;
+    return true;
+  });
+
+  const deptOptions = Array.from(
+    new Map(allCourses.flatMap((c) => c.eligibleDepts).map((d) => [d.code, d])).values()
+  ).sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
   async function handleAddToSchedule(courseId: string) {
     setEnrollingId(courseId);
@@ -113,6 +129,46 @@ export default function CoursesPage() {
             {(Object.keys(categoryLabel) as CourseCategory[]).map((c) => (
               <SelectItem key={c} value={c}>
                 {categoryLabel[c]}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={gubun} onValueChange={(v) => setGubun(v as typeof gubun)}>
+          <SelectTrigger size="sm">
+            <SelectValue placeholder="강좌구분" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="ALL">전체 강좌구분</SelectItem>
+            <SelectItem value="GENERAL">교양</SelectItem>
+            <SelectItem value="MAJOR">전공</SelectItem>
+            <SelectItem value="REMOTE">원격강좌</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select
+          value={grade === "ALL" ? "ALL" : String(grade)}
+          onValueChange={(v) => setGrade(v === "ALL" ? "ALL" : Number(v))}
+        >
+          <SelectTrigger size="sm">
+            <SelectValue placeholder="대상학년" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="ALL">전체 학년</SelectItem>
+            {[1, 2, 3, 4].map((g) => (
+              <SelectItem key={g} value={String(g)}>
+                {g}학년
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={dept} onValueChange={(v) => setDept(v as string)}>
+          <SelectTrigger size="sm">
+            <SelectValue placeholder="학과" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="ALL">전체 학과</SelectItem>
+            {deptOptions.map((d) => (
+              <SelectItem key={d.code} value={d.code}>
+                {d.name}
               </SelectItem>
             ))}
           </SelectContent>
