@@ -79,30 +79,39 @@ def fetch_recent_notices(limit: int = 4, *, http_client: httpx.Client | None = N
     오류, 파싱 실패)는 전부 빈 리스트를 반환한다 - 호출자(notice_repository)가
     이전에 성공한 캐시를 계속 쓰거나, 캐시도 없으면 정직하게 빈 목록을
     보여준다. 가짜 공지를 지어내지 않는다."""
+    # http_client가 안 넘어오면(스케줄러/실제 운영 경로) 우리가 직접 만든
+    # httpx.Client를 함수 끝에서 반드시 닫는다 - 이 함수가 6시간마다 영원히
+    # 반복 호출되므로, 안 닫으면 커넥션이 계속 쌓인다. 테스트가 주입한
+    # client(MockTransport 등)는 호출자 소유라 우리가 닫지 않는다.
+    owns_client = http_client is None
     client = http_client or httpx.Client(timeout=5.0, headers={"User-Agent": USER_AGENT})
     try:
-        response = client.get(LIST_URL)
-        response.raise_for_status()
-        rows = parse_notice_list_html(response.text)
-    except Exception:
-        logger.exception("failed to fetch academic notices list")
-        return []
+        try:
+            response = client.get(LIST_URL)
+            response.raise_for_status()
+            rows = parse_notice_list_html(response.text)
+        except Exception:
+            logger.exception("failed to fetch academic notices list")
+            return []
 
-    if not rows:
-        # 200 OK인데 파싱된 행이 0개면, "학교가 공지를 안 올렸다"가 아니라
-        # 게시판 HTML 구조가 바뀌어 셀렉터가 더 이상 안 맞을 가능성이 높다.
-        # 그냥 조용히 빈 목록을 반환하면 이 문제를 아무도 못 알아챈다.
-        logger.warning("academic notices list page returned 200 but parsed 0 rows - selector may be stale")
+        if not rows:
+            # 200 OK인데 파싱된 행이 0개면, "학교가 공지를 안 올렸다"가 아니라
+            # 게시판 HTML 구조가 바뀌어 셀렉터가 더 이상 안 맞을 가능성이 높다.
+            # 그냥 조용히 빈 목록을 반환하면 이 문제를 아무도 못 알아챈다.
+            logger.warning("academic notices list page returned 200 but parsed 0 rows - selector may be stale")
 
-    notices = []
-    for row in select_recent(rows, limit):
-        notice = _to_notice(row)
-        # 목록 페이지 자체가 긴 제목을 "..."로 잘라서 보여주는 경우가 실제로
-        # 있다 - 상세페이지에서 진짜(안 잘린) 제목을 가져와 덮어쓴다. 상세
-        # 조회가 실패하면 목록의 제목을 그대로 쓴다(지어내지 않고, 이미 가진
-        # 정보를 버리지도 않는다).
-        detail = mjc_detail.fetch_detail(notice.url, http_client=client)
-        if detail is not None and detail.title:
-            notice = notice.model_copy(update={"title": detail.title})
-        notices.append(notice)
-    return notices
+        notices = []
+        for row in select_recent(rows, limit):
+            notice = _to_notice(row)
+            # 목록 페이지 자체가 긴 제목을 "..."로 잘라서 보여주는 경우가 실제로
+            # 있다 - 상세페이지에서 진짜(안 잘린) 제목을 가져와 덮어쓴다. 상세
+            # 조회가 실패하면 목록의 제목을 그대로 쓴다(지어내지 않고, 이미 가진
+            # 정보를 버리지도 않는다).
+            detail = mjc_detail.fetch_detail(notice.url, http_client=client)
+            if detail is not None and detail.title:
+                notice = notice.model_copy(update={"title": detail.title})
+            notices.append(notice)
+        return notices
+    finally:
+        if owns_client:
+            client.close()

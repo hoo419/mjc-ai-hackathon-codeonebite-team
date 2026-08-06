@@ -1,4 +1,5 @@
 import asyncio
+import contextlib
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -33,7 +34,13 @@ async def lifespan(app: FastAPI):
     try:
         yield
     finally:
+        # cancel()만 하고 끝내면 "Task was destroyed but it is pending!"
+        # 경고가 뜰 수 있다(asyncio.run()이 알아서 정리해주는 러너에서는 안
+        # 보이지만, 그건 이 코드가 아니라 그 러너 덕분이다) - 취소가 실제로
+        # 처리될 때까지 기다려서 이 코드 스스로 안전하게 만든다.
         notice_task.cancel()
+        with contextlib.suppress(asyncio.CancelledError):
+            await notice_task
 
 
 app = FastAPI(title="MJC AI Campus Agent API", lifespan=lifespan)
