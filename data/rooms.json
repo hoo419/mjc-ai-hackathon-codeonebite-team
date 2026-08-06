@@ -1,83 +1,422 @@
 [
   {
-    "id": "engineering-301",
+    "id": "공110",
+    "building": "공학관",
+    "floor": 1,
+    "room": "110",
+    "directions": []
+  },
+  {
+    "id": "공113",
+    "building": "공학관",
+    "floor": 1,
+    "room": "113",
+    "directions": []
+  },
+  {
+    "id": "공306",
     "building": "공학관",
     "floor": 3,
-    "room": "301",
-    "directions": ["공학관 입구로 이동", "계단 또는 엘리베이터로 3층 이동", "301호로 이동"]
+    "room": "306",
+    "directions": []
   },
   {
-    "id": "engineering-302",
+    "id": "공307",
     "building": "공학관",
     "floor": 3,
-    "room": "302",
-    "directions": ["공학관 입구로 이동", "계단 또는 엘리베이터로 3층 이동", "302호로 이동"]
+    "room": "307",
+    "directions": []
   },
   {
-    "id": "engineering-401",
+    "id": "공501",
     "building": "공학관",
-    "floor": 4,
-    "room": "401",
-    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "401호로 이동"]
+    "floor": 5,
+    "room": "501",
+    "directions": []
   },
   {
-    "id": "engineering-402",
+    "id": "공502",
     "building": "공학관",
-    "floor": 4,
-    "room": "402",
-    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "402호로 이동"]
+    "floor": 5,
+    "room": "502",
+    "directions": []
   },
   {
-    "id": "engineering-410",
-    "building": "공학관",
-    "floor": 4,
-    "room": "410",
-    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "410호로 이동"]
-  },
-  {
-    "id": "engineering-503",
+    "id": "공503",
     "building": "공학관",
     "floor": 5,
     "room": "503",
-    "directions": [
-      "공학관 입구로 이동",
-      "엘리베이터를 이용해 5층으로 이동",
-      "엘리베이터에서 내려 503호로 이동"
-    ]
+    "directions": []
   },
   {
-    "id": "engineering-504",
+    "id": "공505",
     "building": "공학관",
     "floor": 5,
-    "room": "504",
-    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 5층으로 이동", "504호로 이동"]
+    "room": "505",
+    "directions": []
   },
   {
-    "id": "humanities-201",
-    "building": "인문관",
-    "floor": 2,
-    "room": "201",
-    "directions": ["인문관 입구로 이동", "계단으로 2층 이동", "201호로 이동"]
+    "id": "공506",
+    "building": "공학관",
+    "floor": 5,
+    "room": "506",
+    "directions": []
   },
   {
-    "id": "gym-1",
-    "building": "체육관",
-    "floor": 1,
-    "room": "1",
-    "directions": ["체육관 입구로 이동", "1층 메인 홀로 이동"]
+    "id": "공507",
+    "building": "공학관",
+    "floor": 5,
+    "room": "507",
+    "directions": []
   },
   {
-    "id": "student-hall-202",
-    "building": "학생회관",
-    "floor": 2,
-    "room": "202",
-    "directions": ["학생회관 입구로 이동", "계단으로 2층 이동", "202호로 이동"]
+    "id": "공508",
+    "building": "공학관",
+    "floor": 5,
+    "room": "508",
+    "directions": []
   },
   {
-    "id": "business-101",
-    "building": "경영관",
-    "floor": 1,
+    "id": "공510",
+    "building": "공학관",
+    "floor": 5,
+    "room": "510",
+    "directions": []
+  },
+  {
+    "id": "공512",
+    "building": "공학관",
+    "floor": 5,
+    "room": "512",
+    "directions": []
+  },
+  {
+    "id": "공513",
+    "building": "공학관",
+    "floor": 5,
+    "room": "513",
+    "directions": []
+  },
+  {
+    "id": "공610",
+    "building": "공학관",
+    "floor": 6,
+    "room": "610",
+    "directions": []
+  },
+  {
+    "id": "공614",
+    "building": "공학관",
+    "floor": 6,
+    "room": "614",
+    "directions": []
+  },
+  {
+    "id": "공706",
+    "building": "공학관",
+    "floor": 7,
+    "room": "706",
+    "directions": []
+  },
+  {
+    "id": "공711",
+    "building": "공학관",
+    "floor": 7,
+    "room": "711",
+    "directions": []
+  },
+  {
+    "id": "공713",
+    "building": "공학관",
+    "floor": 7,
+    "room": "713",
+    "directions": []
+  },
+  {
+    "id": "공803",
+    "building": "공학관",
+    "floor": 8,
+    "room": "803",
+    "directions": []
+  },
+  {
+    "id": "공813",
+    "building": "공학관",
+    "floor": 8,
+    "room": "813",
+    "directions": []
+  },
+  {
+    "id": "공B101",
+    "building": "공학관",
+    "floor": -1,
     "room": "101",
-    "directions": ["경영관 입구로 이동", "1층 101호로 이동"]
+    "directions": []
+  },
+  {
+    "id": "본417",
+    "building": "본관",
+    "floor": 4,
+    "room": "417",
+    "directions": []
+  },
+  {
+    "id": "본429",
+    "building": "본관",
+    "floor": 4,
+    "room": "429",
+    "directions": []
+  },
+  {
+    "id": "본501",
+    "building": "본관",
+    "floor": 5,
+    "room": "501",
+    "directions": []
+  },
+  {
+    "id": "본503",
+    "building": "본관",
+    "floor": 5,
+    "room": "503",
+    "directions": []
+  },
+  {
+    "id": "본504",
+    "building": "본관",
+    "floor": 5,
+    "room": "504",
+    "directions": []
+  },
+  {
+    "id": "본507",
+    "building": "본관",
+    "floor": 5,
+    "room": "507",
+    "directions": []
+  },
+  {
+    "id": "본514",
+    "building": "본관",
+    "floor": 5,
+    "room": "514",
+    "directions": []
+  },
+  {
+    "id": "본601",
+    "building": "본관",
+    "floor": 6,
+    "room": "601",
+    "directions": []
+  },
+  {
+    "id": "본603",
+    "building": "본관",
+    "floor": 6,
+    "room": "603",
+    "directions": []
+  },
+  {
+    "id": "본606",
+    "building": "본관",
+    "floor": 6,
+    "room": "606",
+    "directions": []
+  },
+  {
+    "id": "본608",
+    "building": "본관",
+    "floor": 6,
+    "room": "608",
+    "directions": []
+  },
+  {
+    "id": "본614",
+    "building": "본관",
+    "floor": 6,
+    "room": "614",
+    "directions": []
+  },
+  {
+    "id": "본615",
+    "building": "본관",
+    "floor": 6,
+    "room": "615",
+    "directions": []
+  },
+  {
+    "id": "본708",
+    "building": "본관",
+    "floor": 7,
+    "room": "708",
+    "directions": []
+  },
+  {
+    "id": "본711",
+    "building": "본관",
+    "floor": 7,
+    "room": "711",
+    "directions": []
+  },
+  {
+    "id": "본713",
+    "building": "본관",
+    "floor": 7,
+    "room": "713",
+    "directions": []
+  },
+  {
+    "id": "본715",
+    "building": "본관",
+    "floor": 7,
+    "room": "715",
+    "directions": []
+  },
+  {
+    "id": "본801",
+    "building": "본관",
+    "floor": 8,
+    "room": "801",
+    "directions": []
+  },
+  {
+    "id": "본803",
+    "building": "본관",
+    "floor": 8,
+    "room": "803",
+    "directions": []
+  },
+  {
+    "id": "본806",
+    "building": "본관",
+    "floor": 8,
+    "room": "806",
+    "directions": []
+  },
+  {
+    "id": "본903",
+    "building": "본관",
+    "floor": 9,
+    "room": "903",
+    "directions": []
+  },
+  {
+    "id": "사305",
+    "building": "사회교육관",
+    "floor": 3,
+    "room": "305",
+    "directions": []
+  },
+  {
+    "id": "사306",
+    "building": "사회교육관",
+    "floor": 3,
+    "room": "306",
+    "directions": []
+  },
+  {
+    "id": "사307",
+    "building": "사회교육관",
+    "floor": 3,
+    "room": "307",
+    "directions": []
+  },
+  {
+    "id": "사609",
+    "building": "사회교육관",
+    "floor": 6,
+    "room": "609",
+    "directions": []
+  },
+  {
+    "id": "사613",
+    "building": "사회교육관",
+    "floor": 6,
+    "room": "613",
+    "directions": []
+  },
+  {
+    "id": "사701",
+    "building": "사회교육관",
+    "floor": 7,
+    "room": "701",
+    "directions": []
+  },
+  {
+    "id": "사709",
+    "building": "사회교육관",
+    "floor": 7,
+    "room": "709",
+    "directions": []
+  },
+  {
+    "id": "사B101",
+    "building": "사회교육관",
+    "floor": -1,
+    "room": "101",
+    "directions": []
+  },
+  {
+    "id": "사B201",
+    "building": "사회교육관",
+    "floor": -2,
+    "room": "201",
+    "directions": []
+  },
+  {
+    "id": "예119",
+    "building": "예술관 (Art & Design House)",
+    "floor": 1,
+    "room": "119",
+    "directions": []
+  },
+  {
+    "id": "예204",
+    "building": "예술관 (Art & Design House)",
+    "floor": 2,
+    "room": "204",
+    "directions": []
+  },
+  {
+    "id": "예216",
+    "building": "예술관 (Art & Design House)",
+    "floor": 2,
+    "room": "216",
+    "directions": []
+  },
+  {
+    "id": "예308",
+    "building": "예술관 (Art & Design House)",
+    "floor": 3,
+    "room": "308",
+    "directions": []
+  },
+  {
+    "id": "예402",
+    "building": "예술관 (Art & Design House)",
+    "floor": 4,
+    "room": "402",
+    "directions": []
+  },
+  {
+    "id": "예901",
+    "building": "예술관 (Art & Design House)",
+    "floor": 9,
+    "room": "901",
+    "directions": []
+  },
+  {
+    "id": "예B203",
+    "building": "예술관 (Art & Design House)",
+    "floor": -2,
+    "room": "203",
+    "directions": []
+  },
+  {
+    "id": "예B210",
+    "building": "예술관 (Art & Design House)",
+    "floor": -2,
+    "room": "210",
+    "directions": []
   }
 ]

@@ -24,6 +24,10 @@ def list_buildings() -> list[Building]:
     return [Building.model_validate(item) for item in _load_buildings_raw(settings.data_dir)]
 
 
+def list_rooms() -> list[Room]:
+    return [Room.model_validate(item) for item in _load_rooms_raw(settings.data_dir)]
+
+
 def get_room(room_id: str) -> Room | None:
     for item in _load_rooms_raw(settings.data_dir):
         if item["id"] == room_id:

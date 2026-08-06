@@ -11,17 +11,15 @@ import { getNextClass } from "@/lib/schedule";
 import { cn } from "@/lib/utils";
 import type { ScheduleEntry } from "@/types";
 
-// 현재 데이터셋은 246개 실데이터 과목 전부 building이 null이라(원본이 "공502"
-// 같은 축약 코드뿐이라 정식 건물명을 지어내지 않기로 함), 아래 필터는 항상
-// 빈 배열을 반환한다. 필터 로직 자체의 버그가 아니라 데이터 한계이니 주의.
-// building을 채우려면 별도의 건물명 매핑 데이터가 필요하다 (out of scope).
+// building은 항상 null이다(원본이 "공502" 같은 축약 코드뿐이라 정식 건물명을
+// 지어내지 않기로 함). data/rooms.json의 id는 이 축약 코드(예: "공502") 자체를
+// 그대로 쓰므로, room 코드만으로 고유하게 강의실을 식별/조회할 수 있다.
 function uniqueRoomEntries(schedule: ScheduleEntry[]): ScheduleEntry[] {
   const seen = new Set<string>();
   return schedule.filter((e) => {
-    if (!e.building || !e.room) return false;
-    const key = `${e.building}-${e.room}`;
-    if (seen.has(key)) return false;
-    seen.add(key);
+    if (!e.room) return false;
+    if (seen.has(e.room)) return false;
+    seen.add(e.room);
     return true;
   });
 }
@@ -33,13 +31,11 @@ export default function RoomsPage() {
   const nextClass = getNextClass(schedule);
 
   const [manualKey, setManualKey] = useState<string | null>(null);
-  const defaultKey =
-    nextClass?.building && nextClass.room ? `${nextClass.building}-${nextClass.room}` : null;
+  const defaultKey = nextClass?.room ?? null;
   const selectedKey = manualKey ?? defaultKey;
 
-  const selectedEntry = roomEntries.find((e) => `${e.building}-${e.room}` === selectedKey) ?? null;
-  const selectedRoomId =
-    selectedEntry?.building && selectedEntry.room ? roomIdFor(selectedEntry.building, selectedEntry.room) : null;
+  const selectedEntry = roomEntries.find((e) => e.room === selectedKey) ?? null;
+  const selectedRoomId = roomIdFor(selectedEntry?.room ?? null);
 
   const { data: roomData, loading: roomLoading } = useAsyncData(
     () => (selectedRoomId ? getRoom(selectedRoomId) : Promise.resolve({ room: null })),
@@ -59,23 +55,20 @@ export default function RoomsPage() {
         </p>
       ) : (
         <div className="flex flex-wrap gap-2">
-          {roomEntries.map((e) => {
-            const key = `${e.building}-${e.room}`;
-            return (
-              <button
-                key={key}
-                onClick={() => setManualKey(key)}
-                className={cn(
-                  "rounded-full border px-3 py-1.5 text-sm",
-                  key === selectedKey
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-border text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {e.name} · {dayLabel[e.day]} {e.startTime}
-              </button>
-            );
-          })}
+          {roomEntries.map((e) => (
+            <button
+              key={e.room}
+              onClick={() => setManualKey(e.room)}
+              className={cn(
+                "rounded-full border px-3 py-1.5 text-sm",
+                e.room === selectedKey
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {e.name} · {dayLabel[e.day]} {e.startTime}
+            </button>
+          ))}
         </div>
       )}
 
