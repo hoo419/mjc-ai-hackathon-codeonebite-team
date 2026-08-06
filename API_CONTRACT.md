@@ -414,6 +414,41 @@ CAREER_COUNSELOR
 DEPARTMENT_OFFICE
 ```
 
+### POST /counseling/analyze-aptitude
+`mpu.mjc.ac.kr`(학생역량 이력관리 시스템, SMART CARE)은 로그인이 필수라 백엔드가
+대신 접속할 수 없다. 학생이 직접 로그인해서 확인한 진로적성검사/핵심역량검사/
+종합심리검사 결과 원문을 이 API에 붙여넣으면 AI가 요약/인사이트를 만들어준다
+(`MPU_APTITUDE_ANALYSIS_HANDOFF.md` 참고).
+
+Request:
+```json
+{
+  "rawText": "학생이 mpu.mjc.ac.kr에서 복사해온 검사 결과 원문 (형식 자유)"
+}
+```
+
+Response:
+```json
+{
+  "summary": "AI가 정리한 한 문단 요약",
+  "insights": [
+    "핵심 인사이트 1",
+    "핵심 인사이트 2"
+  ]
+}
+```
+
+`rawText`에 없는 내용은 추측/생성하지 않는다 (`AI_AGENT_RULES.md`). AI 미설정/
+실패 시:
+```json
+{
+  "error": {
+    "code": "ANALYSIS_UNAVAILABLE",
+    "message": "지금은 분석할 수 없습니다. 잠시 후 다시 시도해 주세요."
+  }
+}
+```
+
 ## 11. Building / Room API
 
 ### GET /buildings
