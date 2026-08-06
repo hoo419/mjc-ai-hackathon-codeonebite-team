@@ -39,13 +39,13 @@ export default function CoursesPage() {
   const enrolledIds = new Set((myCoursesData?.courses ?? []).map((c) => c.id));
   const courses = coursesData?.courses ?? [];
 
-  async function handleEnroll(courseId: string) {
+  async function handleAddToSchedule(courseId: string) {
     setEnrollingId(courseId);
     const result = await enroll(courseId);
     setFeedback((prev) => ({
       ...prev,
       [courseId]: result.success
-        ? { ok: true, message: "수강신청이 완료되었습니다." }
+        ? { ok: true, message: "내 시간표에 추가되었습니다." }
         : { ok: false, message: result.error.message },
     }));
     setEnrollingId(null);
@@ -54,7 +54,22 @@ export default function CoursesPage() {
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-4">
-      <h1 className="font-heading text-lg font-semibold">수강과목 검색</h1>
+      <div>
+        <h1 className="font-heading text-lg font-semibold">수강과목 검색</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          실제 수강신청은{" "}
+          <a
+            href="https://sugang.mjc.ac.kr/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            명지전문대학 수강신청시스템
+          </a>
+          에서 진행해 주세요. 여기서는 신청을 마친 과목을 골라 담아두면, 겹치는
+          시간이 없는지·강의실이 어딘지 내 시간표에서 바로 확인할 수 있습니다.
+        </p>
+      </div>
 
       <div className="flex flex-wrap gap-2">
         <Input
@@ -136,10 +151,10 @@ export default function CoursesPage() {
                       <Button
                         size="sm"
                         className="flex-1"
-                        disabled={enrollingId === course.id}
-                        onClick={() => handleEnroll(course.id)}
+                        disabled={enrollingId === course.id || isEnrolled}
+                        onClick={() => handleAddToSchedule(course.id)}
                       >
-                        {isEnrolled ? "신청완료" : "수강신청"}
+                        {isEnrolled ? "추가됨" : "신청한 과목 추가"}
                       </Button>
                     </div>
                     {cardFeedback && (
