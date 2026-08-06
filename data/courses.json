@@ -39,7 +39,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00105-102",
@@ -81,7 +81,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00105-103",
@@ -123,7 +123,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00105-104",
@@ -165,7 +165,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00123-101",
@@ -207,7 +207,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00123-102",
@@ -249,7 +249,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00123-103",
@@ -291,7 +291,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00123-104",
@@ -333,7 +333,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00411-101",
@@ -375,7 +375,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00411-102",
@@ -417,7 +417,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00936-101",
@@ -459,7 +459,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00936-102",
@@ -501,7 +501,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00936-103",
@@ -543,7 +543,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00951-101",
@@ -585,7 +585,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00951-102",
@@ -627,7 +627,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J00951-103",
@@ -669,7 +669,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01159-103",
@@ -711,7 +711,7 @@
     "capacity": 50,
     "enrolled": 48,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01165-101",
@@ -753,7 +753,7 @@
     "capacity": 27,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01165-102",
@@ -795,7 +795,7 @@
     "capacity": 27,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01165-103",
@@ -837,7 +837,7 @@
     "capacity": 27,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01680-101",
@@ -879,7 +879,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01680-102",
@@ -921,7 +921,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01683-101",
@@ -949,7 +949,7 @@
     "capacity": 150,
     "enrolled": 120,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01826-103",
@@ -991,7 +991,7 @@
     "capacity": 50,
     "enrolled": 48,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01829-101",
@@ -1026,7 +1026,7 @@
     "capacity": 50,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01840-101",
@@ -1068,7 +1068,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J01840-102",
@@ -1110,7 +1110,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02208-101",
@@ -1152,7 +1152,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02208-102",
@@ -1194,7 +1194,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02316-101",
@@ -1236,7 +1236,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02316-102",
@@ -1278,7 +1278,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02398-101",
@@ -1320,7 +1320,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02398-102",
@@ -1362,7 +1362,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02480-103",
@@ -1404,7 +1404,7 @@
     "capacity": 25,
     "enrolled": 25,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02480-104",
@@ -1446,7 +1446,7 @@
     "capacity": 25,
     "enrolled": 25,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02688-101",
@@ -1488,7 +1488,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02688-102",
@@ -1530,7 +1530,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02688-103",
@@ -1572,7 +1572,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02688-104",
@@ -1614,7 +1614,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02904-101",
@@ -1656,7 +1656,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02904-102",
@@ -1698,7 +1698,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02904-103",
@@ -1740,7 +1740,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02904-104",
@@ -1782,7 +1782,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02912-101",
@@ -1824,7 +1824,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02912-102",
@@ -1866,7 +1866,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02912-103",
@@ -1908,7 +1908,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J02912-104",
@@ -1950,7 +1950,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03522-103",
@@ -1992,7 +1992,7 @@
     "capacity": 50,
     "enrolled": 48,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03619-101",
@@ -2034,7 +2034,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03619-102",
@@ -2076,7 +2076,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03619-103",
@@ -2118,7 +2118,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03706-101",
@@ -2160,7 +2160,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03706-102",
@@ -2202,7 +2202,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03706-103",
@@ -2244,7 +2244,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03808-101",
@@ -2279,7 +2279,7 @@
     "capacity": 50,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03808-102",
@@ -2314,7 +2314,7 @@
     "capacity": 50,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03821-101",
@@ -2356,7 +2356,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03821-102",
@@ -2398,7 +2398,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03821-103",
@@ -2440,7 +2440,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03830-102",
@@ -2482,7 +2482,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J03830-103",
@@ -2524,7 +2524,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J04301-101",
@@ -2566,7 +2566,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J04301-102",
@@ -2608,7 +2608,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J04301-103",
@@ -2650,7 +2650,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05156-101",
@@ -2692,7 +2692,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05156-102",
@@ -2734,7 +2734,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05156-103",
@@ -2776,7 +2776,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05286-101",
@@ -2818,7 +2818,7 @@
     "capacity": 25,
     "enrolled": 25,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05286-102",
@@ -2860,7 +2860,7 @@
     "capacity": 25,
     "enrolled": 25,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05286-103",
@@ -2902,7 +2902,7 @@
     "capacity": 25,
     "enrolled": 25,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05288-101",
@@ -2944,7 +2944,7 @@
     "capacity": 22,
     "enrolled": 22,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05288-102",
@@ -2986,7 +2986,7 @@
     "capacity": 22,
     "enrolled": 22,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05737-102",
@@ -3021,7 +3021,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05754-101",
@@ -3063,7 +3063,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05754-102",
@@ -3105,7 +3105,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05754-103",
@@ -3147,7 +3147,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05757-101",
@@ -3189,7 +3189,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05757-102",
@@ -3231,7 +3231,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05757-103",
@@ -3273,7 +3273,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05759-101",
@@ -3315,7 +3315,7 @@
     "capacity": 22,
     "enrolled": 22,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05759-102",
@@ -3357,7 +3357,7 @@
     "capacity": 22,
     "enrolled": 22,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05768-101",
@@ -3399,7 +3399,7 @@
     "capacity": 29,
     "enrolled": 27,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05768-102",
@@ -3441,7 +3441,7 @@
     "capacity": 29,
     "enrolled": 27,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J05768-103",
@@ -3483,7 +3483,7 @@
     "capacity": 29,
     "enrolled": 27,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06234-101",
@@ -3518,7 +3518,7 @@
     "capacity": 40,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06234-102",
@@ -3553,7 +3553,7 @@
     "capacity": 40,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06398-101",
@@ -3595,7 +3595,7 @@
     "capacity": 45,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06398-102",
@@ -3637,7 +3637,7 @@
     "capacity": 45,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06442-101",
@@ -3679,7 +3679,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06442-102",
@@ -3721,7 +3721,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06442-103",
@@ -3763,7 +3763,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06480-101",
@@ -3791,7 +3791,7 @@
     "capacity": 150,
     "enrolled": 120,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06633-101",
@@ -3833,7 +3833,7 @@
     "capacity": 20,
     "enrolled": 20,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06638-101",
@@ -3875,7 +3875,7 @@
     "capacity": 20,
     "enrolled": 20,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06821-101",
@@ -3917,7 +3917,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06821-102",
@@ -3959,7 +3959,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06901-101",
@@ -4001,7 +4001,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06901-102",
@@ -4043,7 +4043,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06901-103",
@@ -4085,7 +4085,7 @@
     "capacity": 30,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06969-101",
@@ -4127,7 +4127,7 @@
     "capacity": 40,
     "enrolled": 38,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06969-102",
@@ -4169,7 +4169,7 @@
     "capacity": 40,
     "enrolled": 38,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06984-101",
@@ -4211,7 +4211,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06984-102",
@@ -4253,7 +4253,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06984-103",
@@ -4295,7 +4295,7 @@
     "capacity": 30,
     "enrolled": 30,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J06992-101",
@@ -4337,7 +4337,7 @@
     "capacity": 27,
     "enrolled": 25,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07039-101",
@@ -4352,7 +4352,7 @@
         "startTime": "17:00",
         "endTime": "17:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 2,
@@ -4365,7 +4365,7 @@
     "capacity": 81,
     "enrolled": 60,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07173-101",
@@ -4407,7 +4407,7 @@
     "capacity": 50,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07275-101",
@@ -4442,7 +4442,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07275-102",
@@ -4477,7 +4477,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07320-101",
@@ -4505,7 +4505,7 @@
     "capacity": 43,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07363-101",
@@ -4540,7 +4540,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07363-102",
@@ -4575,7 +4575,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07363-103",
@@ -4610,7 +4610,7 @@
     "capacity": 35,
     "enrolled": 35,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07453-101",
@@ -4638,7 +4638,7 @@
     "capacity": 51,
     "enrolled": 50,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07455-101",
@@ -4666,7 +4666,7 @@
     "capacity": 41,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07474-101",
@@ -4701,7 +4701,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07474-102",
@@ -4736,7 +4736,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07474-103",
@@ -4771,7 +4771,7 @@
     "capacity": 36,
     "enrolled": 35,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07479-101",
@@ -4813,7 +4813,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07479-102",
@@ -4855,7 +4855,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07479-103",
@@ -4897,7 +4897,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07557-101",
@@ -4939,7 +4939,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07557-102",
@@ -4981,7 +4981,7 @@
     "capacity": 31,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07604-101",
@@ -5016,7 +5016,7 @@
     "capacity": 40,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07604-102",
@@ -5051,7 +5051,7 @@
     "capacity": 40,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07626-101",
@@ -5093,7 +5093,7 @@
     "capacity": 42,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07626-102",
@@ -5135,7 +5135,7 @@
     "capacity": 42,
     "enrolled": 40,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07636-101",
@@ -5177,7 +5177,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07636-102",
@@ -5219,7 +5219,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07636-103",
@@ -5261,7 +5261,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "J07636-104",
@@ -5303,7 +5303,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00051-801",
@@ -5318,7 +5318,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5331,7 +5331,7 @@
     "capacity": 190,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00052-801",
@@ -5346,7 +5346,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5359,7 +5359,7 @@
     "capacity": 190,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00071-101",
@@ -5394,7 +5394,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00179-101",
@@ -5429,7 +5429,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00179-102",
@@ -5464,7 +5464,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00189-801",
@@ -5479,7 +5479,7 @@
         "startTime": "18:00",
         "endTime": "18:45",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5492,7 +5492,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00220-801",
@@ -5507,7 +5507,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5520,7 +5520,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00221-801",
@@ -5535,7 +5535,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5548,7 +5548,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00222-801",
@@ -5563,7 +5563,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5576,7 +5576,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00223-801",
@@ -5591,7 +5591,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5604,7 +5604,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00224-801",
@@ -5619,7 +5619,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5632,7 +5632,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00225-801",
@@ -5647,7 +5647,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5660,7 +5660,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00226-801",
@@ -5675,7 +5675,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5688,7 +5688,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00227-801",
@@ -5703,7 +5703,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5716,7 +5716,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00228-801",
@@ -5731,7 +5731,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5744,7 +5744,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00229-801",
@@ -5759,7 +5759,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5772,7 +5772,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-801",
@@ -5787,7 +5787,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5800,7 +5800,7 @@
     "capacity": 168,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-802",
@@ -5815,7 +5815,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5828,7 +5828,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-803",
@@ -5843,7 +5843,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5856,7 +5856,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-804",
@@ -5871,7 +5871,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5884,7 +5884,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-805",
@@ -5899,7 +5899,7 @@
         "startTime": "19:40",
         "endTime": "20:25",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5912,7 +5912,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-806",
@@ -5927,7 +5927,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5940,7 +5940,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00234-807",
@@ -5955,7 +5955,7 @@
         "startTime": "18:50",
         "endTime": "19:35",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -5968,7 +5968,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00239-101",
@@ -6003,7 +6003,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00242-101",
@@ -6038,7 +6038,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00244-801",
@@ -6053,7 +6053,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6066,7 +6066,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00255-801",
@@ -6081,7 +6081,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6094,7 +6094,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00257-101",
@@ -6129,7 +6129,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00257-102",
@@ -6164,7 +6164,7 @@
     "capacity": 50,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00265-101",
@@ -6199,7 +6199,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00265-102",
@@ -6234,7 +6234,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00265-103",
@@ -6269,7 +6269,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00315-801",
@@ -6284,7 +6284,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6297,7 +6297,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00315-804",
@@ -6312,7 +6312,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6325,7 +6325,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00323-101",
@@ -6360,7 +6360,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00331-802",
@@ -6375,7 +6375,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6388,7 +6388,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00347-101",
@@ -6423,7 +6423,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00347-102",
@@ -6458,7 +6458,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00347-103",
@@ -6493,7 +6493,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00347-104",
@@ -6528,7 +6528,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00347-105",
@@ -6563,7 +6563,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00353-801",
@@ -6583,7 +6583,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00373-801",
@@ -6598,7 +6598,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6611,7 +6611,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00374-101",
@@ -6646,7 +6646,7 @@
     "capacity": 40,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00393-801",
@@ -6661,7 +6661,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6674,7 +6674,7 @@
     "capacity": 109,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00396-801",
@@ -6689,7 +6689,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6702,7 +6702,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00418-801",
@@ -6717,7 +6717,7 @@
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6730,7 +6730,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00422-802",
@@ -6750,7 +6750,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00422-803",
@@ -6770,7 +6770,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00422-804",
@@ -6790,7 +6790,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00422-805",
@@ -6810,7 +6810,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00423-801",
@@ -6825,7 +6825,7 @@
         "startTime": "18:00",
         "endTime": "18:45",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6838,7 +6838,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00428-801",
@@ -6853,7 +6853,7 @@
         "startTime": "09:00",
         "endTime": "09:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6866,7 +6866,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00429-801",
@@ -6881,7 +6881,7 @@
         "startTime": "15:00",
         "endTime": "15:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -6894,7 +6894,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00447-801",
@@ -6914,7 +6914,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00447-802",
@@ -6934,7 +6934,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00447-803",
@@ -6954,7 +6954,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00447-804",
@@ -6974,7 +6974,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-101",
@@ -7002,7 +7002,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-102",
@@ -7030,7 +7030,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-103",
@@ -7058,7 +7058,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-104",
@@ -7086,7 +7086,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-105",
@@ -7114,7 +7114,7 @@
     "capacity": 184,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-106",
@@ -7142,7 +7142,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-107",
@@ -7170,7 +7170,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00448-108",
@@ -7198,7 +7198,7 @@
     "capacity": 199,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00509-801",
@@ -7218,7 +7218,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00510-801",
@@ -7233,7 +7233,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7246,7 +7246,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00511-801",
@@ -7261,7 +7261,7 @@
         "startTime": "15:00",
         "endTime": "15:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7274,7 +7274,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00544-801",
@@ -7289,7 +7289,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7302,7 +7302,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00546-801",
@@ -7322,7 +7322,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00547-801",
@@ -7337,7 +7337,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7350,7 +7350,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00560-801",
@@ -7365,7 +7365,7 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7378,7 +7378,7 @@
     "capacity": 99,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00561-801",
@@ -7393,7 +7393,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7406,7 +7406,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00562-801",
@@ -7421,7 +7421,7 @@
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7434,7 +7434,7 @@
     "capacity": 149,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00563-801",
@@ -7449,7 +7449,7 @@
         "startTime": "18:00",
         "endTime": "18:45",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7462,7 +7462,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00564-801",
@@ -7477,7 +7477,7 @@
         "startTime": "18:00",
         "endTime": "18:45",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7490,7 +7490,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00565-801",
@@ -7505,7 +7505,7 @@
         "startTime": "09:00",
         "endTime": "09:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7518,7 +7518,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00566-801",
@@ -7533,7 +7533,7 @@
         "startTime": "12:00",
         "endTime": "12:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -7546,7 +7546,7 @@
     "capacity": 90,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00567-801",
@@ -7566,7 +7566,7 @@
     "capacity": 50,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00567-802",
@@ -7586,7 +7586,7 @@
     "capacity": 50,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00584-801",
@@ -7606,7 +7606,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00585-801",
@@ -7626,7 +7626,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00586-801",
@@ -7646,7 +7646,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00587-801",
@@ -7666,7 +7666,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "K00589-801",
@@ -7686,7 +7686,7 @@
     "capacity": 8,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00039-101",
@@ -7868,7 +7868,7 @@
     "capacity": 15,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00041-101",
@@ -8050,7 +8050,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00041-102",
@@ -8232,7 +8232,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00079-101",
@@ -8274,7 +8274,7 @@
     "capacity": 23,
     "enrolled": 20,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00079-102",
@@ -8316,7 +8316,7 @@
     "capacity": 23,
     "enrolled": 20,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00081-101",
@@ -8358,7 +8358,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00081-102",
@@ -8400,7 +8400,7 @@
     "capacity": 25,
     "enrolled": 23,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-101",
@@ -8575,7 +8575,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-102",
@@ -8750,7 +8750,7 @@
     "capacity": 15,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-103",
@@ -8925,7 +8925,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-104",
@@ -9100,7 +9100,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-105",
@@ -9275,7 +9275,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00104-106",
@@ -9450,7 +9450,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00127-101",
@@ -9625,7 +9625,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00128-101",
@@ -9800,7 +9800,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00128-102",
@@ -9975,7 +9975,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00128-103",
@@ -10150,7 +10150,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00129-101",
@@ -10325,7 +10325,7 @@
     "capacity": 30,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00134-102",
@@ -10340,14 +10340,14 @@
         "startTime": "10:00",
         "endTime": "10:50",
         "building": null,
-        "room": " "
+        "room": null
       },
       {
         "day": "SAT",
         "startTime": "11:00",
         "endTime": "11:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -10360,7 +10360,7 @@
     "capacity": 119,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00135-101",
@@ -10375,21 +10375,21 @@
         "startTime": "15:00",
         "endTime": "15:50",
         "building": null,
-        "room": " "
+        "room": null
       },
       {
         "day": "FRI",
         "startTime": "16:00",
         "endTime": "16:50",
         "building": null,
-        "room": " "
+        "room": null
       },
       {
         "day": "FRI",
         "startTime": "17:00",
         "endTime": "17:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -10402,7 +10402,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-101",
@@ -10577,7 +10577,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-102",
@@ -10752,7 +10752,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-103",
@@ -10927,7 +10927,7 @@
     "capacity": 35,
     "enrolled": 30,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-107",
@@ -11109,7 +11109,7 @@
     "capacity": 35,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-108",
@@ -11291,7 +11291,7 @@
     "capacity": 35,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00137-109",
@@ -11473,7 +11473,7 @@
     "capacity": 35,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00138-101",
@@ -11488,7 +11488,7 @@
         "startTime": "11:00",
         "endTime": "11:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -11501,7 +11501,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00139-101",
@@ -11516,14 +11516,14 @@
         "startTime": "13:00",
         "endTime": "13:50",
         "building": null,
-        "room": " "
+        "room": null
       },
       {
         "day": "FRI",
         "startTime": "14:00",
         "endTime": "14:50",
         "building": null,
-        "room": " "
+        "room": null
       }
     ],
     "targetGrade": 1,
@@ -11536,7 +11536,7 @@
     "capacity": 200,
     "enrolled": 0,
     "status": "OPEN",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   },
   {
     "id": "T00140-104",
@@ -11696,6 +11696,6 @@
     "capacity": 20,
     "enrolled": 20,
     "status": "FULL",
-    "lastUpdated": "2026-08-07T04:03:50+09:00"
+    "lastUpdated": "2026-08-07T05:33:30+09:00"
   }
 ]

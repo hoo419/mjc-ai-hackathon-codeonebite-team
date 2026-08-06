@@ -46,6 +46,7 @@ def parse_sessions(time_str: str) -> list[dict]:
         if match is None:
             raise ValueError(f"세션 문자열을 파싱하지 못함: {segment!r}")
         day_kr, start, end, room = match.groups()
+        room = room.strip() or None
         sessions.append(
             {
                 "day": DAY_MAP[day_kr],

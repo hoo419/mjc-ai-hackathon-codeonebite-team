@@ -70,5 +70,5 @@ def test_get_current_student_schedule_returns_one_item_per_session():
         "startTime": "11:00",
         "endTime": "11:50",
         "building": None,
-        "room": " ",
+        "room": None,
     }
