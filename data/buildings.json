@@ -1,0 +1,7 @@
+[
+  { "id": "engineering", "name": "공학관" },
+  { "id": "humanities", "name": "인문관" },
+  { "id": "gym", "name": "체육관" },
+  { "id": "student-hall", "name": "학생회관" },
+  { "id": "business", "name": "경영관" }
+]

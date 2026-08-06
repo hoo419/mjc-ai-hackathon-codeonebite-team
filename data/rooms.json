@@ -1,0 +1,83 @@
+[
+  {
+    "id": "engineering-301",
+    "building": "공학관",
+    "floor": 3,
+    "room": "301",
+    "directions": ["공학관 입구로 이동", "계단 또는 엘리베이터로 3층 이동", "301호로 이동"]
+  },
+  {
+    "id": "engineering-302",
+    "building": "공학관",
+    "floor": 3,
+    "room": "302",
+    "directions": ["공학관 입구로 이동", "계단 또는 엘리베이터로 3층 이동", "302호로 이동"]
+  },
+  {
+    "id": "engineering-401",
+    "building": "공학관",
+    "floor": 4,
+    "room": "401",
+    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "401호로 이동"]
+  },
+  {
+    "id": "engineering-402",
+    "building": "공학관",
+    "floor": 4,
+    "room": "402",
+    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "402호로 이동"]
+  },
+  {
+    "id": "engineering-410",
+    "building": "공학관",
+    "floor": 4,
+    "room": "410",
+    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 4층으로 이동", "410호로 이동"]
+  },
+  {
+    "id": "engineering-503",
+    "building": "공학관",
+    "floor": 5,
+    "room": "503",
+    "directions": [
+      "공학관 입구로 이동",
+      "엘리베이터를 이용해 5층으로 이동",
+      "엘리베이터에서 내려 503호로 이동"
+    ]
+  },
+  {
+    "id": "engineering-504",
+    "building": "공학관",
+    "floor": 5,
+    "room": "504",
+    "directions": ["공학관 입구로 이동", "엘리베이터를 이용해 5층으로 이동", "504호로 이동"]
+  },
+  {
+    "id": "humanities-201",
+    "building": "인문관",
+    "floor": 2,
+    "room": "201",
+    "directions": ["인문관 입구로 이동", "계단으로 2층 이동", "201호로 이동"]
+  },
+  {
+    "id": "gym-1",
+    "building": "체육관",
+    "floor": 1,
+    "room": "1",
+    "directions": ["체육관 입구로 이동", "1층 메인 홀로 이동"]
+  },
+  {
+    "id": "student-hall-202",
+    "building": "학생회관",
+    "floor": 2,
+    "room": "202",
+    "directions": ["학생회관 입구로 이동", "계단으로 2층 이동", "202호로 이동"]
+  },
+  {
+    "id": "business-101",
+    "building": "경영관",
+    "floor": 1,
+    "room": "101",
+    "directions": ["경영관 입구로 이동", "1층 101호로 이동"]
+  }
+]
