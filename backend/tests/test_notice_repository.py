@@ -82,6 +82,36 @@ def test_list_notices_returns_empty_when_never_fetched_and_fetch_fails(monkeypat
     assert notice_repository.list_notices() == []
 
 
+def test_refresh_now_always_refetches_even_when_cache_is_fresh(monkeypatch):
+    # 백그라운드 스케줄러가 6시간마다 강제로 새로고침할 때 쓰는 함수 -
+    # list_notices()와 달리 캐시가 신선해도 무조건 다시 긁어온다.
+    notice_repository.reset()
+    calls = {"count": 0}
+
+    def fake_fetch(limit=4):
+        calls["count"] += 1
+        return [_notice(str(calls["count"]))]
+
+    monkeypatch.setattr(notice_repository.mjc_notices, "fetch_recent_notices", fake_fetch)
+
+    notice_repository.list_notices()  # 캐시를 신선하게 채움 (1번째 호출)
+    notice_repository.refresh_now()  # 신선해도 강제로 다시 (2번째 호출)
+
+    assert calls["count"] == 2
+    assert notice_repository.list_notices() == [_notice("2")]
+
+
+def test_refresh_now_keeps_stale_cache_when_fetch_fails(monkeypatch):
+    notice_repository.reset()
+    monkeypatch.setattr(notice_repository.mjc_notices, "fetch_recent_notices", lambda limit=4: [_notice("good")])
+    notice_repository.list_notices()
+
+    monkeypatch.setattr(notice_repository.mjc_notices, "fetch_recent_notices", lambda limit=4: [])
+    notice_repository.refresh_now()
+
+    assert notice_repository.list_notices() == [_notice("good")]
+
+
 def test_reset_clears_cache_so_next_call_refetches(monkeypatch):
     notice_repository.reset()
     calls = {"count": 0}

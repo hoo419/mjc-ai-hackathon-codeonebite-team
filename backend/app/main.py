@@ -1,3 +1,4 @@
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -24,7 +25,15 @@ async def lifespan(app: FastAPI):
 
         db.init_engine(settings.database_url)
         seed.seed_if_empty()
-    yield
+
+    # 학사공지를 6시간마다 백그라운드에서 새로고침 (notice_repository.py 참고).
+    from app.core.notice_scheduler import run_notice_refresh_loop
+
+    notice_task = asyncio.create_task(run_notice_refresh_loop())
+    try:
+        yield
+    finally:
+        notice_task.cancel()
 
 
 app = FastAPI(title="MJC AI Campus Agent API", lifespan=lifespan)
