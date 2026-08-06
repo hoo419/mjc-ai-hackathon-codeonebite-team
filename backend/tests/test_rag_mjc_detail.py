@@ -24,12 +24,18 @@ def test_parse_detail_html_extracts_title_date_and_body_for_plain_html_post():
     assert detail.url == SAMPLE_URL
 
 
-def test_parse_detail_html_returns_none_for_hwp_embedded_post():
+def test_parse_detail_html_returns_link_only_detail_for_hwp_embedded_post():
+    """본문 텍스트는 못 뽑지만(HWP 임베드), 제목/날짜/URL은 알고 있으니
+    "유사 링크 추천"용으로 body="" 인 NoticeDetail을 돌려준다 - 통째로
+    버리지 않는다."""
     html = (FIXTURES / "mjc_detail_hwp.html").read_text(encoding="utf-8")
 
     detail = parse_detail_html(html, url="https://example.com/hwp-post")
 
-    assert detail is None
+    assert detail is not None
+    assert detail.title == "2026학년도 하계 계절학기 수강신청 안내"
+    assert detail.body == ""
+    assert detail.published_at == "2026-05-20"
 
 
 def test_parse_detail_html_returns_none_when_no_title_found():
