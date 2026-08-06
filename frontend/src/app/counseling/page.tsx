@@ -3,39 +3,31 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import { useAsyncData } from "@/hooks/use-async-data";
-import { analyzeAptitude, getMyCounseling, requestCounseling } from "@/lib/api";
+import { analyzeAptitude, getMyCounseling } from "@/lib/api";
 import { ApiError } from "@/lib/api/client";
 import { formatDateTime } from "@/lib/time";
-import type { AptitudeAnalysisResult, CounselingTargetType } from "@/types";
+import type { AptitudeAnalysisResult } from "@/types";
+import { Phone } from "lucide-react";
 
-const TARGETS: { type: CounselingTargetType; label: string }[] = [
-  { type: "ADVISOR", label: "지도교수 연결" },
-  { type: "CAREER_COUNSELOR", label: "진로상담사 연결" },
-  { type: "DEPARTMENT_OFFICE", label: "학과사무실 문의" },
+// 명지전문대학교 상담센터 상담지원팀 실제 연락처 (www.mjc.ac.kr 교직원/전화번호
+// 검색으로 확인, 2026-08-06 기준). 학과/학년별 지도교수·조교 연락처는 학과마다
+// 별도 사이트 구조가 달라 아직 자동 조회를 지원하지 않는다 - 확인 안 된 번호를
+// 지어내는 대신, 검증된 상담센터 대표 연락처로 안내한다.
+const COUNSELING_CENTER_CONTACTS = [
+  { role: "팀장", phone: "02-300-8790" },
+  { role: "팀원", phone: "02-300-3751" },
 ];
 
 export default function CounselingPage() {
   const { data, loading } = useAsyncData(() => getMyCounseling());
-  const [message, setMessage] = useState("");
-  const [requestingType, setRequestingType] = useState<CounselingTargetType | null>(null);
-  const [result, setResult] = useState<string | null>(null);
 
   const [rawText, setRawText] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState<AptitudeAnalysisResult | null>(null);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
-
-  async function handleRequest(type: CounselingTargetType) {
-    setRequestingType(type);
-    setResult(null);
-    const res = await requestCounseling(type, message || "상담을 요청합니다.");
-    setResult(`요청이 접수되었습니다 (${res.requestId})`);
-    setRequestingType(null);
-  }
 
   async function handleAnalyze() {
     setAnalyzing(true);
@@ -121,28 +113,35 @@ export default function CounselingPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm">상담 요청</CardTitle>
+          <CardTitle className="text-sm">상담 연결</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <Input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="상담 요청 메시지 (선택)"
-          />
-          <div className="flex flex-col gap-2 sm:flex-row">
-            {TARGETS.map((t) => (
-              <Button
-                key={t.type}
-                variant="secondary"
-                className="flex-1"
-                disabled={requestingType === t.type}
-                onClick={() => handleRequest(t.type)}
-              >
-                {t.label}
-              </Button>
+        <CardContent className="space-y-2">
+          <p className="text-xs text-muted-foreground">
+            명지전문대학교 상담센터 상담지원팀 연락처입니다 (
+            <a
+              href="https://www.mjc.ac.kr/"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              www.mjc.ac.kr
+            </a>{" "}
+            교직원/전화번호 검색으로 확인).
+          </p>
+          <ul className="space-y-1.5">
+            {COUNSELING_CENTER_CONTACTS.map((c) => (
+              <li key={c.phone} className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">상담지원팀 {c.role}</span>
+                <Button
+                  render={<a href={`tel:${c.phone}`} />}
+                  variant="secondary"
+                  size="sm"
+                >
+                  <Phone className="h-3.5 w-3.5" /> {c.phone}
+                </Button>
+              </li>
             ))}
-          </div>
-          {result && <p className="text-sm text-foreground">{result}</p>}
+          </ul>
         </CardContent>
       </Card>
     </div>
