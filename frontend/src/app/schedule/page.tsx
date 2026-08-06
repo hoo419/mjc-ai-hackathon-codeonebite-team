@@ -33,7 +33,7 @@ interface Block {
   endTime: string;
   name: string;
   professor: string;
-  classType: string;
+  classType: string | null;
   building: string | null;
   room: string | null;
   status?: CourseStatus;
@@ -85,20 +85,22 @@ export default function SchedulePage() {
     const previewBlocks: Block[] = previewIds
       .map((id) => courseList.find((c) => c.id === id))
       .filter((c): c is NonNullable<typeof c> => !!c)
-      .map((c) => ({
-        key: `preview-${c.id}`,
-        courseId: c.id,
-        day: c.day,
-        startTime: c.startTime,
-        endTime: c.endTime,
-        name: c.name,
-        professor: c.professor,
-        classType: c.classType,
-        building: c.building,
-        room: c.room,
-        status: c.status,
-        isPreview: true,
-      }));
+      .flatMap((c) =>
+        c.sessions.map((s, i) => ({
+          key: `preview-${c.id}-${i}`,
+          courseId: c.id,
+          day: s.day,
+          startTime: s.startTime,
+          endTime: s.endTime,
+          name: c.name,
+          professor: c.professor,
+          classType: c.classType,
+          building: s.building,
+          room: s.room,
+          status: c.status,
+          isPreview: true,
+        }))
+      );
 
     return [...enrolledBlocks, ...previewBlocks];
   }, [scheduleData, coursesData, previewIds]);
@@ -213,7 +215,10 @@ export default function SchedulePage() {
                   시간: {dayLabel[selected.day]} {selected.startTime}~{selected.endTime}
                 </p>
                 <p>
-                  수업방식: {classTypeLabel[selected.classType as keyof typeof classTypeLabel]}
+                  수업방식:{" "}
+                  {selected.classType
+                    ? classTypeLabel[selected.classType as keyof typeof classTypeLabel]
+                    : "온라인(방식 확인 안 됨)"}
                 </p>
                 <p>
                   장소: {selected.building ? `${selected.building} ${selected.room}호` : "온라인"}
