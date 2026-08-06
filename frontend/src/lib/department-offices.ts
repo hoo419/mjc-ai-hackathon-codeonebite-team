@@ -1,8 +1,13 @@
 // 명지전문대학교 각 학과 홈페이지(예: https://mjcs.mjc.ac.kr/)의 페이지
 // 하단(footer)에 실제로 게시된 "학과사무실 대표전화"를 2026-08-07에 직접
 // 확인해서 정리한 것이다. 없는 정보를 지어내지 않는다는 원칙에 따라, 학과
-// 홈페이지에서 전화번호를 찾지 못한 3개 학과(전자공학과/유아교육학과/
-// 자유전공학과)는 phone을 null로 둔다.
+// 홈페이지에서 전화번호를 찾지 못한 학과는 phone을 null로 둔다:
+// - 전자공학과/유아교육학과/자유전공학과: 자체 학과 홈페이지는 있지만
+//   페이지에 대표전화가 게시돼 있지 않았다.
+// - AI게임소프트웨어학과: mjc.ac.kr 학과안내 목록에 자체 홈페이지 대신
+//   네이버 카페(cafe.naver.com/swcontent) 링크만 있어 확인할 방법이 없었다.
+// - AI미디어디자인학과: mjc.ac.kr 학과안내 어디에도 자체 홈페이지/서브도메인
+//   링크를 찾지 못했다 (비교적 신설 학과로 보임).
 //
 // "패션·리빙디자인과"는 원문에 "(02)300-300-1236"으로 적혀 있었는데, 다른
 // 모든 학과가 예외 없이 "(02)300-XXXX" 형식을 쓰는 걸로 볼 때 "300-"이
@@ -15,6 +20,8 @@ export interface DepartmentOffice {
 }
 
 export const DEPARTMENT_OFFICES: DepartmentOffice[] = [
+  { department: "AI게임소프트웨어학과", phone: null, office: null, homepageUrl: "https://cafe.naver.com/swcontent" },
+  { department: "AI미디어디자인학과", phone: null, office: null, homepageUrl: "https://www.mjc.ac.kr/ibuilder.do?menu_idx=100" },
   { department: "컴퓨터공학과", phone: "(02)300-1171", office: null, homepageUrl: "https://mjcs.mjc.ac.kr/" },
   { department: "컴퓨터보안공학과", phone: "(02)300-8737", office: "공학관 808호", homepageUrl: "https://cse.mjc.ac.kr/" },
   { department: "전자공학과", phone: null, office: null, homepageUrl: "https://cee.mjc.ac.kr/" },

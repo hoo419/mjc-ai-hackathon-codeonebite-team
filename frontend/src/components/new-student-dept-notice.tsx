@@ -10,6 +10,10 @@ import { MessageCircle, Phone } from "lucide-react";
 // 않는다).
 export function NewStudentDeptNotice({ department }: { department: string }) {
   const office = findDepartmentOffice(department);
+  // 프로필에 학과를 아직 입력 안 한 학생도 있을 수 있다 (department: str에
+  // 필수 검증이 없음) - 그 경우 "OO 학과 사무실"처럼 특정 학과를 지칭하지
+  // 않고 일반 문구로 대체한다.
+  const deptLabel = department.trim() ? `${department} ` : "";
 
   return (
     <Card className="border-primary/40 bg-primary/5">
@@ -19,8 +23,8 @@ export function NewStudentDeptNotice({ department }: { department: string }) {
           <p className="font-medium">1학년 1학기시네요 - 학과 단톡방에 들어가 보세요</p>
           <p className="text-muted-foreground">
             {office?.phone
-              ? `${department} 학과 사무실에 연락하면 카카오톡 단체채팅방 초대 링크를 안내받을 수 있습니다.`
-              : `${department} 학과 사무실에 문의하면 카카오톡 단체채팅방 초대 링크를 안내받을 수 있습니다 (죄송해요, 이 학과의 정확한 전화번호는 아직 확인하지 못했습니다).`}
+              ? `${deptLabel}학과 사무실에 연락하면 카카오톡 단체채팅방 초대 링크를 안내받을 수 있습니다.`
+              : `${deptLabel}학과 사무실에 문의하면 카카오톡 단체채팅방 초대 링크를 안내받을 수 있습니다 (죄송해요, 이 학과의 정확한 전화번호는 아직 확인하지 못했습니다).`}
           </p>
           {office?.phone && (
             <Button render={<a href={`tel:${office.phone}`} />} variant="secondary" size="sm">

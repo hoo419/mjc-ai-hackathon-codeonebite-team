@@ -366,35 +366,15 @@ Response:
 
 Frontend는 `answer`를 반드시 표시하고, `sources`, `courses`, `actions`는 존재할 경우 추가 UI로 표시한다.
 
-## 9. Notice API
+## 9. Notice API — 폐지됨
 
-### GET /notices
-학교 홈페이지 학사공지 게시판(menu_idx=169)에서 실시간으로 긁어온 최신 4개.
-`backend/app/rag/mjc_notices.py`가 목록 페이지를 날짜순으로 정렬해 상위
-4개를 고르고, 각 글의 상세페이지에서 진짜 제목을 다시 가져와 확정한다.
-
-`backend/app/core/notice_scheduler.py`가 앱 기동 시 즉시 한 번, 그 뒤로는
-6시간마다 백그라운드에서 계속 새로고침한다(요청 트래픽과 무관 - 진짜 6시간
-간격). `notice_repository.py`의 6시간 캐시는 그 스케줄러가 아직 못 돌았거나
-죽었을 때를 위한 안전망으로, 요청이 들어올 때 캐시가 6시간보다 오래됐으면
-그때도 한 번 더 새로고침을 시도한다. 학교 사이트가 잠깐 안 열리면 새로고침을
-건너뛰고 기존 캐시를 그대로 보여준다(캐시가 아예 없으면 빈 목록).
-`category`는 이 게시판 자체가 학사공지이므로 항상 `"ACADEMIC"`.
-
-Response:
-```json
-{
-  "notices": [
-    {
-      "id": "BD0050388085",
-      "title": "[교양과정] 2026학년도 2학기 군 e-러닝 학점교류 운영 안내",
-      "category": "ACADEMIC",
-      "publishedAt": "2026-08-06T00:00:00+09:00",
-      "url": "https://www.mjc.ac.kr/bbs/data/view.do?menu_idx=169&bbs_mst_idx=BM0000000025&data_idx=BD0050388085"
-    }
-  ]
-}
-```
+`GET /notices`로 학사공지 게시판을 실시간 스크래핑해서 재현하던 기능은
+제거했다 (학교 사이트 HTML 구조가 바뀌면 파싱이 깨질 수 있어 배포 전에
+안정성을 위해 정리). 대신 프론트 대시보드에 학교 홈페이지 원본 페이지로
+바로 연결되는 링크 버튼 2개를 둔다 (백엔드 API 없음, 프론트에 하드코딩된
+URL로 새 탭 오픈):
+- 학사공지: `https://www.mjc.ac.kr/bbs/data/list.do?menu_idx=169`
+- 학사일정: `https://www.mjc.ac.kr/collegeService/schedule.do?menu_idx=104`
 
 ## 10. Counseling API
 

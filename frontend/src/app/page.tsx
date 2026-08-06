@@ -3,30 +3,33 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { NewStudentDeptNotice } from "@/components/new-student-dept-notice";
 import { ProfileEditDialog } from "@/components/profile-edit-dialog";
 import { useAsyncData } from "@/hooks/use-async-data";
-import { getMe, getMySchedule, getNotices } from "@/lib/api";
+import { getMe, getMySchedule } from "@/lib/api";
 import { classTypeLabel, dayLabel } from "@/lib/labels";
 import { getNextClass, getTodaySchedule } from "@/lib/schedule";
 import type { Student } from "@/types";
-import { CalendarDays, DoorOpen, MessageCircle, Search } from "lucide-react";
+import { CalendarDays, CalendarRange, DoorOpen, Megaphone, MessageCircle, Search } from "lucide-react";
+
+// 학사공지/학사일정은 실시간으로 긁어와 재현하지 않고, 학교 홈페이지 원본
+// 페이지로 바로 연결한다 - 학교 사이트 구조가 바뀌어도 우리 쪽이 깨지지
+// 않고, 항상 원본 그대로다.
+const SCHOOL_NOTICE_BOARD_URL = "https://www.mjc.ac.kr/bbs/data/list.do?menu_idx=169";
+const SCHOOL_ACADEMIC_CALENDAR_URL = "https://www.mjc.ac.kr/collegeService/schedule.do?menu_idx=104";
 
 export default function DashboardPage() {
   const { data: studentData, loading: studentLoading } = useAsyncData(() => getMe());
   const { data: scheduleData, loading: scheduleLoading } = useAsyncData(() => getMySchedule());
-  const { data: noticesData, loading: noticesLoading } = useAsyncData(() => getNotices());
   const [studentOverride, setStudentOverride] = useState<Student | null>(null);
 
   const student = studentOverride ?? studentData?.student;
   const schedule = scheduleData?.schedule ?? [];
   const todaySchedule = getTodaySchedule(schedule);
   const nextClass = getNextClass(schedule);
-  const notices = noticesData?.notices ?? [];
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6">
@@ -120,27 +123,22 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-sm">주요 학교 공지</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {noticesLoading ? (
-            <Skeleton className="h-16 w-full" />
-          ) : (
-            <ul className="space-y-2">
-              {notices.map((notice) => (
-                <li key={notice.id} className="flex items-center justify-between text-sm">
-                  <a href={notice.url} target="_blank" rel="noreferrer" className="hover:underline">
-                    {notice.title}
-                  </a>
-                  <Badge variant="outline">{notice.category}</Badge>
-                </li>
-              ))}
-            </ul>
-          )}
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-2 gap-3">
+        <Button
+          render={<a href={SCHOOL_NOTICE_BOARD_URL} target="_blank" rel="noreferrer" />}
+          variant="secondary"
+          className="h-auto flex-col gap-1 py-4"
+        >
+          <Megaphone className="h-4 w-4" /> 학사공지
+        </Button>
+        <Button
+          render={<a href={SCHOOL_ACADEMIC_CALENDAR_URL} target="_blank" rel="noreferrer" />}
+          variant="secondary"
+          className="h-auto flex-col gap-1 py-4"
+        >
+          <CalendarRange className="h-4 w-4" /> 학사일정
+        </Button>
+      </div>
 
       <div className="grid grid-cols-3 gap-3">
         <Button render={<Link href="/courses" />} variant="secondary" className="h-auto flex-col gap-1 py-4">

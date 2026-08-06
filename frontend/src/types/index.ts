@@ -71,13 +71,6 @@ export interface ScheduleEntry {
   room: string | null;
 }
 
-export interface Notice {
-  id: string;
-  title: string;
-  category: string;
-  publishedAt: string;
-  url: string;
-}
 
 export interface CounselingSummary {
   careerSummary: string;
