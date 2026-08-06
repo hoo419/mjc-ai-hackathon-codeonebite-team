@@ -17,15 +17,25 @@ class NoticeDetail:
     url: str
 
 
+def _extract_published_at(soup: BeautifulSoup) -> str | None:
+    for th in soup.find_all("th"):
+        if th.get_text(strip=True) == "날짜":
+            td = th.find_next_sibling("td")
+            if td:
+                return td.get_text(strip=True)
+    return None
+
+
 def parse_detail_html(html: str, url: str) -> NoticeDetail | None:
     """Extracts (title, body, date) from a mjc.ac.kr bbs/data/view.do page.
 
-    Returns None if there's no title, or if the body was authored as an
-    embedded HWP document (`.hwp_editor_board_content`) instead of plain
-    HTML (`#divMemo`). There's no supported way to pull clean text out of
-    that proprietary JSON format, and feeding its raw contents to the chat
-    answer would be worse than finding nothing (AI_AGENT_RULES.md - never
-    let unreliable data pass as fact)."""
+    Returns None only when there's no title at all (an unexpected/broken
+    page). If the body was authored as an embedded HWP document
+    (`.hwp_editor_board_content`) instead of plain HTML (`#divMemo`), there
+    is no supported way to pull clean text out of that proprietary JSON
+    format - but the page is real and its title/url are still worth
+    surfacing as a link recommendation, so this still returns a
+    NoticeDetail with `body=""` rather than discarding it entirely."""
     soup = BeautifulSoup(html, "html.parser")
 
     title_el = soup.select_one(".board_view h2.tit")
@@ -33,25 +43,17 @@ def parse_detail_html(html: str, url: str) -> NoticeDetail | None:
     if not title:
         return None
 
+    published_at = _extract_published_at(soup)
+
     if soup.select_one(".hwp_editor_board_content"):
         # Even when #divMemo also exists here, real examples show it filled
         # with U+FFFD replacement characters - the school's own HWP-to-text
         # conversion failing silently. Presence of the HWP embed itself is
         # the reliable signal, not whether #divMemo looks empty.
-        return None
+        return NoticeDetail(title=title, body="", published_at=published_at, url=url)
 
     body_el = soup.select_one("#divMemo")
     body = body_el.get_text("\n", strip=True) if body_el else ""
-    if not body:
-        return None
-
-    published_at = None
-    for th in soup.find_all("th"):
-        if th.get_text(strip=True) == "날짜":
-            td = th.find_next_sibling("td")
-            if td:
-                published_at = td.get_text(strip=True)
-            break
 
     return NoticeDetail(title=title, body=body, published_at=published_at, url=url)
 
