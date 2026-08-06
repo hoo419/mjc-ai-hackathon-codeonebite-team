@@ -9,6 +9,12 @@ def get_current_student() -> Student:
     return student_repository.get_current_student()
 
 
+def update_current_student_profile(*, department: str, grade: int, semester: int) -> Student:
+    return student_repository.update_current_student_profile(
+        department=department, grade=grade, semester=semester
+    )
+
+
 def get_current_student_courses() -> list[Course]:
     """Active enrollments only. Which courses/seats/status exist is decided
     by the enrollment records + course data, never guessed here."""
