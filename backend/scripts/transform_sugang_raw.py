@@ -26,17 +26,21 @@ CATEGORY_MAP = {
 
 _SESSION_RE = re.compile(r"^([월화수목금토일])\s+(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})\s*\(\s*(.+?)\s*\)$")
 
+_EXAM_MARKER = "원격시험 배정시간"
+
 
 def parse_sessions(time_str: str) -> list[dict]:
     """"화 13:25 - 14:50 ( 공502 ) <br> 수 10:25 - 11:50 ( 공502 )" 같은 원본
-    time 문자열을 세션 dict 리스트로 쪼갠다. 빈/공백 문자열은 세션 없음."""
+    time 문자열을 세션 dict 리스트로 쪼갠다. 빈/공백 문자열은 세션 없음.
+    "원격시험 배정시간" 세그먼트는 원격시험 배정 시간 안내일 뿐 실제 수업 세션이
+    아니므로 건너뛴다."""
     if not time_str or not time_str.strip():
         return []
 
     sessions = []
     for segment in time_str.split("<br>"):
         segment = segment.strip()
-        if not segment:
+        if not segment or segment == _EXAM_MARKER:
             continue
         match = _SESSION_RE.match(segment)
         if match is None:

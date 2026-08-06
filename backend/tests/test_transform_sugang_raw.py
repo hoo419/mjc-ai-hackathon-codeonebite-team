@@ -62,6 +62,14 @@ def test_parse_sessions_blank_string_returns_empty_list():
     assert parse_sessions(" ") == []
 
 
+def test_parse_sessions_skips_exam_scheduling_marker():
+    sessions = parse_sessions("금 17:00 - 17:50 ( 공614 ) <br> 원격시험 배정시간")
+
+    assert sessions == [
+        {"day": "FRI", "startTime": "17:00", "endTime": "17:50", "building": None, "room": "공614"},
+    ]
+
+
 def test_transform_row_maps_category_and_grade_and_dept():
     course = transform_row(RAW_MULTI_SESSION)
 
