@@ -1,23 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ProfileEditDialog } from "@/components/profile-edit-dialog";
 import { useAsyncData } from "@/hooks/use-async-data";
 import { getMe, getMySchedule, getNotices } from "@/lib/api";
 import { classTypeLabel, dayLabel } from "@/lib/labels";
 import { getNextClass, getTodaySchedule } from "@/lib/schedule";
+import type { Student } from "@/types";
 import { CalendarDays, DoorOpen, MessageCircle, Search } from "lucide-react";
 
 export default function DashboardPage() {
   const { data: studentData, loading: studentLoading } = useAsyncData(() => getMe());
   const { data: scheduleData, loading: scheduleLoading } = useAsyncData(() => getMySchedule());
   const { data: noticesData, loading: noticesLoading } = useAsyncData(() => getNotices());
+  const [studentOverride, setStudentOverride] = useState<Student | null>(null);
 
-  const student = studentData?.student;
+  const student = studentOverride ?? studentData?.student;
   const schedule = scheduleData?.schedule ?? [];
   const todaySchedule = getTodaySchedule(schedule);
   const nextClass = getNextClass(schedule);
@@ -49,6 +53,9 @@ export default function DashboardPage() {
               </>
             )}
           </div>
+          {student && (
+            <ProfileEditDialog student={student} onUpdated={setStudentOverride} />
+          )}
         </CardContent>
       </Card>
 
