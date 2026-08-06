@@ -14,13 +14,26 @@ export type CourseStatus =
   | "CLOSED";
 
 export type CourseCategory =
-  | "MAJOR_REQUIRED"
-  | "MAJOR_ELECTIVE"
+  | "GENERAL_COURSE"
   | "GENERAL_REQUIRED"
   | "GENERAL_ELECTIVE"
-  | "OTHER";
+  | "MAJOR_COURSE"
+  | "INTEGRATED_MAJOR";
 
 export type Day = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
+
+export interface Session {
+  day: Day;
+  startTime: string; // "13:00"
+  endTime: string; // "15:50"
+  building: string | null;
+  room: string | null;
+}
+
+export interface EligibleDept {
+  code: string;
+  name: string;
+}
 
 export interface Course {
   id: string;
@@ -28,12 +41,10 @@ export interface Course {
   professor: string;
   credits: number;
   category: CourseCategory;
-  classType: CourseClassType;
-  day: Day;
-  startTime: string; // "13:00"
-  endTime: string; // "15:50"
-  building: string | null;
-  room: string | null;
+  classType: CourseClassType | null;
+  sessions: Session[];
+  targetGrade: number;
+  eligibleDepts: EligibleDept[];
   capacity: number;
   enrolled: number;
   status: CourseStatus;
@@ -52,7 +63,7 @@ export interface ScheduleEntry {
   courseId: string;
   name: string;
   professor: string;
-  classType: CourseClassType;
+  classType: CourseClassType | null;
   day: Day;
   startTime: string;
   endTime: string;

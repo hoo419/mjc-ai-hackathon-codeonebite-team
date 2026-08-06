@@ -18,11 +18,11 @@ export const classTypeLabel: Record<CourseClassType, string> = {
 };
 
 export const categoryLabel: Record<CourseCategory, string> = {
-  MAJOR_REQUIRED: "전공필수",
-  MAJOR_ELECTIVE: "전공선택",
+  GENERAL_COURSE: "교양과정",
   GENERAL_REQUIRED: "교양필수",
-  GENERAL_ELECTIVE: "교양선택",
-  OTHER: "기타",
+  GENERAL_ELECTIVE: "일반선택",
+  MAJOR_COURSE: "전공과정",
+  INTEGRATED_MAJOR: "통합전공교과",
 };
 
 export const statusLabel: Record<CourseStatus, string> = {
