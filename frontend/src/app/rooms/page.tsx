@@ -11,6 +11,10 @@ import { getNextClass } from "@/lib/schedule";
 import { cn } from "@/lib/utils";
 import type { ScheduleEntry } from "@/types";
 
+// 현재 데이터셋은 246개 실데이터 과목 전부 building이 null이라(원본이 "공502"
+// 같은 축약 코드뿐이라 정식 건물명을 지어내지 않기로 함), 아래 필터는 항상
+// 빈 배열을 반환한다. 필터 로직 자체의 버그가 아니라 데이터 한계이니 주의.
+// building을 채우려면 별도의 건물명 매핑 데이터가 필요하다 (out of scope).
 function uniqueRoomEntries(schedule: ScheduleEntry[]): ScheduleEntry[] {
   const seen = new Set<string>();
   return schedule.filter((e) => {
@@ -50,7 +54,9 @@ export default function RoomsPage() {
       {scheduleLoading ? (
         <Skeleton className="h-24 w-full" />
       ) : roomEntries.length === 0 ? (
-        <p className="text-sm text-muted-foreground">신청한 과목 중 오프라인 강의실 정보가 없습니다.</p>
+        <p className="text-sm text-muted-foreground">
+          신청한 과목의 건물 정보가 없어 강의실 안내를 제공할 수 없습니다.
+        </p>
       ) : (
         <div className="flex flex-wrap gap-2">
           {roomEntries.map((e) => {

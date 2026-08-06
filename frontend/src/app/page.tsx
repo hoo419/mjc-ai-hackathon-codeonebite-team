@@ -104,8 +104,8 @@ export default function DashboardPage() {
               <p className="text-sm text-muted-foreground">오늘은 수업이 없습니다.</p>
             ) : (
               <ul className="space-y-2">
-                {todaySchedule.map((entry) => (
-                  <li key={entry.courseId} className="text-sm">
+                {todaySchedule.map((entry, i) => (
+                  <li key={`${entry.courseId}-${i}`} className="text-sm">
                     <span className="font-medium">{entry.startTime}</span> {entry.name}
                   </li>
                 ))}

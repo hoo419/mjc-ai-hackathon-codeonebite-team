@@ -68,8 +68,8 @@ export default function SchedulePage() {
     const scheduleList = scheduleData?.schedule ?? [];
     const courseList = coursesData?.courses ?? [];
 
-    const enrolledBlocks: Block[] = scheduleList.map((e) => ({
-      key: `enrolled-${e.courseId}`,
+    const enrolledBlocks: Block[] = scheduleList.map((e, i) => ({
+      key: `enrolled-${e.courseId}-${i}`,
       courseId: e.courseId,
       day: e.day,
       startTime: e.startTime,
@@ -221,7 +221,9 @@ export default function SchedulePage() {
                     : "온라인(방식 확인 안 됨)"}
                 </p>
                 <p>
-                  장소: {selected.building ? `${selected.building} ${selected.room}호` : "온라인"}
+                  장소:{" "}
+                  {[selected.building, selected.room].filter(Boolean).join(" ") ||
+                    "장소 정보 없음"}
                 </p>
               </div>
             </>
