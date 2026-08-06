@@ -1,0 +1,969 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Back End와 통신하는 부분을 호출하여 검색결과를 request객체에 받아온다. -->
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 검색결과 결과및 각종 셋팅 공통 설정 로드 -->
+
+
+
+
+
+
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>명지전문대학 | 통합검색 결과 - 수강신청</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="common/css/style.css?20250512" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="common/js/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="common/js/borwerDpi.js"></script>
+<script type="text/javascript" src="common/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="common/js/front_js.js"></script>
+
+  <script type="text/javascript" src="./wpdldptm/jquery-1.5.min.js" ></script>
+  <script type="text/javascript" src="./wpdldptm/search.js" ></script>
+  <script type="text/javascript" src="./wpdldptm/common.js"></script>
+  <script type="text/javascript" src="./wpdldptm/preview.js"></script>
+  <script type="text/javascript" src="./wpdldptm/rsa.js"></script>
+  <script type="text/javascript" src="./wpdldptm/rcmdWord.js"></script>
+  <script type="text/javascript" src="./wpdldptm/api.js"></script>
+  				<script language="javascript">
+					<!--
+					function searchengine() {
+							  if( RsaSearchForm1.qt.value == '' ) {
+								 alert('please enter keyword(s)');
+								RsaSearchForm1.qt.focus();
+								
+							  }else{
+								RsaSearchForm1.submit();
+							  }
+
+							  
+							 
+							}
+					//-->
+					</script>
+<!--[if lte IE 8]>
+<script src="common/js/html5.js"></script>
+<![endif]-->
+</head>
+<body class="uiWeb" onload="initForm(document.RsaSearchForm1, 'false', '', '@all', '0', '0');">
+
+	
+	<dl id="skiptoContent">
+		<dt><strong class="invisible">바로가기 메뉴</strong></dt>
+		<dd><a href="#dBody">본문 바로가기</a></dd>
+	</dl>
+	<hr />
+
+	<!-- 상단 공통 -->
+	<header id="dHead">
+		<h1 class="invisible">명지전문대학</h1>
+		<h2 class="invisible">사이트 바로가기</h2>
+		<ul class="site_go">
+			<li class="on">대학</li>
+			<li><a href="http://ipsi.mjc.ac.kr/" target="_blank" title="새창열림">입학</a></li>
+			<!--<li><a href="/ibuilder.do?menu_idx=MN0000000100">학과</a></li>
+			<li><a href="#">명지커뮤니티</a></li>-->
+			<!-- <li><a href="http://sanhak.mjc.ac.kr/" target="_blank" title="새창열림">산학협력단</a></li> -->
+			<li><a href="http://edu.mjc.ac.kr/" target="_blank" title="새창열림">평생</a></li>
+			<li><a href="http://career.mjc.ac.kr/" target="_blank" title="새창열림">취업</a></li>
+			<li><a href="http://mjcc.mjc.ac.kr/" target="_blank" title="새창열림">명지커뮤니티</a></li>		
+		</ul>
+		<h2 class="invisible">유틸정보</h2>
+		<ul class="utility">
+			<li><a href="/">HOME</a></li>
+			<!--<li><a href="#" target="_blank">LOGIN</a></li>
+			<li><a href="">SITEMAP</a></li>-->
+			<li class="lang"><a href="http://eng.mjc.ac.kr" target="_blank" title="영문사이트로 이동">ENGLISH</a></li>
+			<li class="lang"><a href="http://jpn.mjc.ac.kr" target="_blank" title="일문사이트로 이동">JAPANESE</a></li>
+			<li class="lang"><a href="http://chn.mjc.ac.kr" target="_blank" title="중문사이트로 이동">CHINESE</a></li>
+		</ul>
+		<p class="logo"><a href="http://www.mjc.ac.kr">명지전문대학</a></p>
+		<fieldset class="total_search">
+			
+		</fieldset>
+	</header>
+	<hr />
+	<!-- //상단 공통 -->
+
+	<!-- body -->
+	<div id="dBody"  class="search_ui">
+		<!-- search S -->
+		<section>
+	  <form name="RsaSearchForm1" method="post" action="/RSA/front_new/Search.jsp" onsubmit="return chkSearchForm(this);" >
+		<input type="hidden" name="sect" value="" />
+		<input type="hidden" name="nh" value="10" />
+        <input type="hidden" name="st" value="1" />
+        <input type="hidden" name="adv" value="0" />
+        <input type="hidden" name="rf" value="@date" />
+        <input type="hidden" name="sw" value="0" />
+		<input type="hidden" name="searchType" value="2"/>
+		<fieldset>
+			<div class="search_top">
+				<label for="fsearch01" class="invisible">통합검색</label>
+				<select name="menu" id="fsearch01" title="통합검색">
+				
+                <option value="통합검색_new" selected="selected" >통합검색</option>
+				
+                <option value="메뉴_new"  >메뉴</option>
+				
+                <option value="대학소식_new"  >대학소식</option>
+				
+                <option value="메인홈페이지_new"  >메인홈페이지</option>
+				
+                <option value="입학정보_new"  >입학정보</option>
+				
+                <option value="부서/학과사이트_new"  >부서/학과사이트</option>
+				
+                <option value="교직원/전화번호_new"  >교직원/전화번호</option>
+				
+
+			통합검색 키워드 
+				</select>
+
+				<label for="fsearch02"></label>
+				<input type="text" id="fsearch02" title="검색어 입력" value="수강신청" size="20" class="search_text" name="qt" />
+				<input  type="image" src="images/btn_search.png" value="검색" alt="검색" title="검색" />
+				<a class="btn01" href="#search" onclick="openDetailWin(document.RsaSearchForm1);">상세검색</a>
+                <a href="#search" class="btn01" onclick="javascript:window.open('help.html','검색도움말팝업','width=760,height=701,left=100,top=50')" value="검색도우미" >검색도우미</a>
+				<p>
+				<input type="checkbox" id="fsearch03" onclick="clickPq(this, document.RsaSearchForm1.qt);" name="pq" value="null"/><label for="fsearch03">결과 내 재검색</label>
+				<input type="checkbox" id="fsearch04" name="sw" value="1" onClick="clickSw(this, document.RsaSearchForm1.qt);"/><label for="fsearch04">유의어 재검색</label>				
+				</p>
+			</div>
+			<div class="search_mid" id="search_detail" style="display:none">
+				<ul>
+					<li>
+						<label for="fsearchA01" class="tit">검색영역</label>
+						<select name="field" id="fsearchA01" title="검색영역">
+							<option value="0" >전체</option>
+							<option value="9" >제목</option>
+							<option value="10" >내용</option>
+						</select>
+					</li>
+					<li>
+						<span class="tit">검색기간</span>
+						<input name="search_period" type="radio" id="fsearchA02" onclick="autoSetDate(document.RsaSearchForm1.sDate, document.RsaSearchForm1.eDate, '', '');" value="all" checked="checked"/><label for="fsearchA02">전체</label>
+						<input name="search_period" type="radio" id="fsearchA03" value="week"  onclick="autoSetDate(document.RsaSearchForm1.sDate, document.RsaSearchForm1.eDate,'20260730', '20260806');" /><label for="fsearchA03">최근일주일</label>
+						<input name="search_period" type="radio" id="fsearchA04" value="month"  onclick="autoSetDate(document.RsaSearchForm1.sDate, document.RsaSearchForm1.eDate,'20260706', '20260806');" /><label for="fsearchA04">최근1개월</label>
+						&nbsp;&nbsp;<label for="fsearchA04" class="invisible" >시작날짜</label>
+						<input type="text" id="fsearchA04" title="시작날짜" name="sDate"/>
+						<!--<a href="#" class="btn_cha"><img src="images/contents/btn_cha.png" alt="달력" /></a>-->
+						<label for="fsearchA05" class="invisible">종료날짜</label>
+						~
+						<input type="text" title="종료날짜" id="fsearchA05" name="eDate"/>
+					    <!---<a href="#" class="btn_cha"><img src="images/contents/btn_cha.png" alt="달력" /></a>-->
+						<input type="image" value="검색" src="images/btn_search.png" alt="검색" title="검색">
+					</li>
+				</ul>				
+			</div>
+		 </fieldset>
+		</form>
+			<ul class="tab_navi">
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '통합검색_new' );" title="MENU 통합검색 Search" class="on" >통합검색</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '메뉴_new' );"  title="Menu '메뉴' Search">메뉴</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '대학소식_new' );"  title="Menu '대학소식' Search">대학소식</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '메인홈페이지_new' );"  title="Menu '메인홈페이지' Search">메인홈페이지</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '입학정보_new' );"  title="Menu '입학정보' Search">입학정보</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '부서/학과사이트_new' );"  title="Menu '부서/학과사이트' Search">부서/학과사이트</a></li>
+			
+						<li><a href="javascript:document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1,'menu', '교직원/전화번호_new' );"  title="Menu '교직원/전화번호' Search">교직원/전화번호</a></li>
+			
+				</ul>
+
+
+
+
+            <!--// 메뉴_new -->
+			<div class="search_resualt">
+				<h2 class="tiH2_type">메뉴 <span> [검색결과 2건]</span></h2>
+            
+
+
+				
+			<ul class="resualt">
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+					<li>[대표 외국어(일)]  <a href="http://jpn.mjc.ac.kr/ibuilder.do?menu_idx=2366" target="_blank" title="受講申請 보기 [새창열림]" target="_blank">?科サ?ビス &gt; ?事案? &gt; 授業 &gt; 受講申請</a></li>
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+					<li>[명지전문대학 대표 홈페이지]  <a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=109" target="_blank" title="수강신청 보기 [새창열림]" target="_blank">학사서비스 &gt; 학사안내 &gt; 수업 &gt; <strong>수강</strong><strong>신청</strong></a></li>
+
+
+
+
+
+
+
+
+                </ul>
+
+       
+
+
+
+       
+
+              
+
+            <!--// 대학소식_new -->
+			<div class="search_resualt">
+				<h2 class="tiH2_type">대학소식 <span> [검색결과 1,404건]</span></h2>
+            
+
+
+             
+              <ul class="resualt02" id="StdDb">
+
+                  
+
+
+
+
+
+
+
+
+
+			<li>
+						<p class="date">등록일 | 2025.11.17</p>
+						<p class="tit">[정보서비스 > 공지사항] <a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389913" target="_blank" title="[혁신] 2025학년도 2학기 Learning C.R.E.W(실시간 특강) 실시 ... 보기 [새창열림]" >[혁신] 2025학년도 2학기 Learning C.R.E.W(실시간 특강) 실시 ...</p>
+						<p class="memo">
+							   온라인 콘텐츠(1점/1개, 최대 10점) : 12/26까지 e-Class(cyber.mjc.ac.kr)에서 <strong>수강</strong> 가능 -  실시간 특강(40점/1회) : 진행 완료 -  대면 특강(50점/1회, 최대...80점) : 11월 현재 진행 중 -  학습역량진단검사 참여시 추가 20점 : 11/28까지 mpu(mpu.mjc.ac.kr)참여 가능  [포스터를 클릭하면 <strong>신청</strong> 페이지로 이동합니다.</p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389913" class="btn_blank" target="_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=18&amp;docId1=1&amp;docId2=1&amp;docId3=1&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+			</li>
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+			<li>
+						<p class="date">등록일 | 2025.09.16</p>
+						<p class="tit">[정보서비스 > 공지사항] <a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389879" target="_blank" title="[혁신] 2025-2학기 교과 연계 비교과(컴퓨터활용능력 2급) 특강 수강생 모집... 보기 [새창열림]" >[혁신] 2025-2학기 교과 연계 비교과(컴퓨터활용능력 2급) 특강 <strong>수강</strong>생 모집...</p>
+						<p class="memo">
+							   1. <strong>신청</strong>기간 : 교육과정별 상이 , 개강 전까지 상시모집 2. <strong>수강</strong>대상자 : 2025-2 학기 컴퓨터활용능력 원격 교양 교과목 <strong>수강</strong>생 3. <strong>신청</strong>방법 : 온라인 <strong>신청</strong> ( https://naver.me/FE3mgdUw)           ** URL 클릭** 4. <strong>수강</strong>료 : <strong>수강</strong>료 전액 지원 (80% 이상 교육이수 필수 ) ** 강의 녹화 영상본 제공 , 보강 가능 5....</p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389879" class="btn_blank" target="_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=18&amp;docId1=1&amp;docId2=1&amp;docId3=35&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+			</li>
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+			<li>
+						<p class="date">등록일 | 2025.09.05</p>
+						<p class="tit">[정보서비스 > 공지사항] <a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389872" target="_blank" title="[혁신] 2025학년도 2학기 명지튜터링 실시 안내 보기 [새창열림]" >[혁신] 2025학년도 2학기 명지튜터링 실시 안내</p>
+						<p class="memo">
+							   (3~5명, 배우는 학생)]  튜터/튜티는 아래의 3가지 조건 중 1가지에 해당된다면 <strong>신청</strong>할 수 있으며, 프로그램 내에서 최대 2개 팀으로 참여할 수 있습니다.... 오리엔테이션과 튜터교육 이 동시에 진행됩니다.(9/8~, e-Class에서 <strong>수강</strong>) <strong>신청</strong>을 희망하는 학생들은 오리엔테이션과 튜터교육을 <strong>수강</strong>한 후, 참가<strong>신청</strong>서와 계획서</p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/bbs/data/view.do?menu_idx=66&bbs_mst_idx=BM0000000026&data_idx=BD0050389872" class="btn_blank" target="_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=18&amp;docId1=1&amp;docId2=1&amp;docId3=42&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+			</li>
+
+
+
+
+
+
+
+                </ul>
+
+       
+
+
+
+       
+						
+				<p class="btn_more"><a href="#search" onclick="document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1, 'menu', '대학소식_new' );">대학소식 더보기</a></p>
+			</div><!-- //search_resualt -->
+				
+
+
+              
+
+            <!--// 메인홈페이지_new -->
+			<div class="search_resualt">
+				<h2 class="tiH2_type">메인홈페이지 <span> [검색결과 12건]</span></h2>
+            
+
+
+             
+              <ul class="resualt02" id="StdDb">
+
+                  
+
+
+
+
+
+
+
+
+
+
+					<li>
+						<p class="date">등록일 | 2023.12.04</p>
+						<p class="tit"><a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=3136" target="_blank" title="일정 및 운영 방법 보기 [새창열림]">일정 및 운영 방법</a></p>
+						<p class="memo">
+							   방법 &#9312; 운영 일정 : 기존 학사 운영과 동일 &#9313; 운영 방법 : 별도의 <strong>신청</strong>서는 접수하지 않으며, <strong>수강</strong><strong>신청</strong>에 해당 교과목이 포함된 경우 <strong>신청</strong>한 것으로 간주함 예) <strong>수강</strong><strong>신청</strong> 시스템 활용 : 분반명 &lsquo;융복합트랙&rsquo; 또는 &lsquo;융복합모듈&rsquo; 확인 후 <strong>수강</strong><strong>신청</strong> 개설강좌리스트표_NO, <strong>신청</strong>, 과목코드,
+							   <br/>[학부/학과안내 > 융복합 모듈전공 > 융복합 모듈전공 소개 > 일정 및 운영 방법]
+							   </p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=3136" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=1589&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+					<li>
+						<p class="date">등록일 | 2020.05.06</p>
+						<p class="tit"><a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=2880" target="_blank" title="장애학생지원 보기 [새창열림]">장애학생지원</a></p>
+						<p class="memo">
+							   있습니다. 장애학생 등록 안내 등록방법 : 매 학년 초 장애학생 조사 시 <strong>신청</strong>, 학기중에도 등록 가능 제출서류 : 장애인증명서 유의사항 : 본인이 원하는...등록된 자료는 지원 외의 용도로는 사용되지 않음 교수&middot;학습지원 <strong>수강</strong><strong>신청</strong> 지원 : 장애학생 우선<strong>수강</strong> 지원 등 장애학생 봉사도우미 지원 : 국가근로 장애학생
+							   <br/>[생활서비스 > 생활지원 > 장애학생지원]
+							   </p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=2880" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=1471&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+					<li>
+						<p class="date">등록일 | 2016.06.01</p>
+						<p class="tit"><a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=1938" target="_blank" title="복학 보기 [새창열림]">복학</a></p>
+						<p class="memo">
+							   복학예정학기에 따라 정상복학, 조기복학으로 나뉩니다. 정상복학은 인터넷으로 <strong>신청</strong>이 가능하며, 조기복학은 우리대학을 방문하여 <strong>신청</strong>하여야 합니다....;복학기간에 인터넷으로 <strong>신청</strong>(I-CAMPUS) &rarr; 교무처 학사지원팀 승인 &rarr; <strong>수강</strong><strong>신청</strong> 및 등록금고지서 출력하여 납부 조기복학 : 휴&middot;복학기간에 학과 사무
+							   <br/>[학사서비스 > 학사안내 > 학적 > 복학]
+							   </p>
+						<p class="btn">
+							<a href="http://www.mjc.ac.kr/ibuilder.do?menu_idx=1938" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=886&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+                </ul>
+
+       
+
+
+
+       
+						
+				<p class="btn_more"><a href="#search" onclick="document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1, 'menu', '메인홈페이지_new' );">메인홈페이지 더보기</a></p>
+			</div><!-- //search_resualt -->
+				
+
+
+              
+
+            <!--// 입학정보_new -->
+			<div class="search_resualt">
+				<h2 class="tiH2_type">입학정보 <span> [검색결과 70건]</span></h2>
+            
+
+
+             
+              <ul class="resualt02" id="StdDb">
+
+                  
+
+
+
+
+
+
+
+
+
+
+			<li><!--vw_search_content -->
+				<p class="date">등록일 | 2015.03.02</p>
+				<p class="tit"><a href="http://ipsi.mjc.ac.kr/?page_id=5016" target="_blank" title="수강신청 문의 보기 [새창열림]" ><strong>수강</strong><strong>신청</strong> 문의</a></p>
+				<p class="memo"></p>
+				<p class="btn">
+					<a href="http://ipsi.mjc.ac.kr/?page_id=5016" class="btn_blank" target="_blank">새창보기</a>
+					<a href="javascript:preview('./preview/RssWebView.jsp?collID=20&amp;docId1=1&amp;docId2=2&amp;docId3=1835&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+				</p>
+			</li>
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+			<li><!--vw_search_content -->
+				<p class="date">등록일 | 2015.02.27</p>
+				<p class="tit"><a href="http://ipsi.mjc.ac.kr/?page_id=5006" target="_blank" title="수강신청문의 보기 [새창열림]" ><strong>수강</strong><strong>신청</strong>문의</a></p>
+				<p class="memo"></p>
+				<p class="btn">
+					<a href="http://ipsi.mjc.ac.kr/?page_id=5006" class="btn_blank" target="_blank">새창보기</a>
+					<a href="javascript:preview('./preview/RssWebView.jsp?collID=20&amp;docId1=1&amp;docId2=2&amp;docId3=1826&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+				</p>
+			</li>
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+			<li><!--vw_search_content -->
+				<p class="date">등록일 | 2015.02.25</p>
+				<p class="tit"><a href="http://ipsi.mjc.ac.kr/?page_id=4990" target="_blank" title="수강신청 문의 드립니다. 보기 [새창열림]" ><strong>수강</strong><strong>신청</strong> 문의 드립니다.</a></p>
+				<p class="memo"></p>
+				<p class="btn">
+					<a href="http://ipsi.mjc.ac.kr/?page_id=4990" class="btn_blank" target="_blank">새창보기</a>
+					<a href="javascript:preview('./preview/RssWebView.jsp?collID=20&amp;docId1=1&amp;docId2=2&amp;docId3=1814&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+				</p>
+			</li>
+
+
+
+
+
+
+
+                </ul>
+
+       
+
+
+
+       
+						
+				<p class="btn_more"><a href="#search" onclick="document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1, 'menu', '입학정보_new' );">입학정보 더보기</a></p>
+			</div><!-- //search_resualt -->
+				
+
+
+              
+
+            <!--// 부서/학과사이트_new -->
+			<div class="search_resualt">
+				<h2 class="tiH2_type">부서/학과사이트 <span> [검색결과 31건]</span></h2>
+            
+
+
+             
+              <ul class="resualt02" id="StdDb">
+
+                  
+
+
+
+
+
+
+
+
+
+		  
+	
+			
+				<li>
+						<p class="date">등록일 | 2022.08.09</p>
+						<p class="tit">[혁신지원사업단]<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3095" target="_blank" title="기타혁신 보기 [새창열림]">기타혁신</a></p>
+						<p class="memo">
+							   개발 운영, 소프트웨어콘텐츠학과 (AR / VR 산산업분야), 전문기술석사 <strong>신청</strong> 및 운영 강의목록 확인&gt;<strong>수강</strong><strong>신청</strong>&gt;강의료 납입&gt;<strong>수강</strong> 및 학사지원&gt; 종강, 수요 만족도조사 원본보기 뷰어 닫기 원본 이미지입니다. 두 손가락을 이용해 이미지를 확대 또는 축소하실 수 있습니다. 닫기
+							   <br/>[혁신 프로그램 > 기타혁신]
+							   </p>
+						<p class="btn">
+							<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3095" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=1575&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+		  
+	
+			
+				<li>
+						<p class="date">등록일 | 2022.08.09</p>
+						<p class="tit">[혁신지원사업단]<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3093" target="_blank" title="교육혁신 보기 [새창열림]">교육혁신</a></p>
+						<p class="memo">
+							   핵심역량인증제(교과이수-비교과이수-학생활동), 진단/상담/프로그램/현장실습(<strong>신청</strong>&gt;운영&gt;분석&gt;관리) | 데이터 기반 맞춤형 로드맵 학생 전주기 통합지원...강의실 환경개선 매체제작실 환경개선 최신화를 위한 교육기자재 재정비 스마트 <strong>수강</strong>관리시스템 운영 [1-3-3] DX기반 교수학습시스템 고도화 Class-Tech 기반의...
+							   <br/>[혁신 프로그램 > 교육혁신]
+							   </p>
+						<p class="btn">
+							<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3093" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=1573&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+		  
+	
+			
+				<li>
+						<p class="date">등록일 | 2022.08.09</p>
+						<p class="tit">[혁신지원사업단]<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3092" target="_blank" title="혁신 프로그램 보기 [새창열림]">혁신 프로그램</a></p>
+						<p class="memo">
+							   핵심역량인증제(교과이수-비교과이수-학생활동), 진단/상담/프로그램/현장실습(<strong>신청</strong>&gt;운영&gt;분석&gt;관리) | 데이터 기반 맞춤형 로드맵 학생 전주기 통합지원...강의실 환경개선 매체제작실 환경개선 최신화를 위한 교육기자재 재정비 스마트 <strong>수강</strong>관리시스템 운영 [1-3-3] DX기반 교수학습시스템 고도화 Class-Tech 기반의...
+							   <br/>[혁신 프로그램]
+							   </p>
+						<p class="btn">
+							<a href="http://inno.mjc.ac.kr/ibuilder.do?menu_idx=3092" target="_blank" class="btn_blank">새창보기</a>
+							<a href="javascript:preview('./preview/RssWebView.jsp?collID=17&amp;docId1=1&amp;docId2=1&amp;docId3=1572&amp;queryList=수강 신청&amp;type=web');" class="btn_view">미리보기</a>
+						</p>
+					</li>
+
+
+
+
+
+
+
+
+
+
+                </ul>
+
+       
+
+
+
+       
+						
+				<p class="btn_more"><a href="#search" onclick="document.RsaSearchForm1.sect.value='';clickFldSet(document.RsaSearchForm1, 'menu', '부서/학과사이트_new' );">부서/학과사이트 더보기</a></p>
+			</div><!-- //search_resualt -->
+				
+
+
+              
+
+
+
+
+
+
+			
+	
+
+
+
+		</section>
+		<!-- search E -->
+
+		<a href="#" class="btn_top"><img src="images/common/btn_top.png" alt="위로 이동" /></a>
+	</div>
+	<hr />
+	<!-- //body -->
+
+	<!-- 배너 -->
+	<aside class="banner_ui">
+		<h2 class="invisible">배너</h2>
+		<div class="banner_scroll">
+			<ul class="slides" id="bannerOverJs">
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner01_off.png" alt="국제교류센터" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner02_off.png" alt="다기능학생증" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner03_off.png" alt="명지산학해피콜센터" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner04_off.png" alt="명지유치원" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner05_off.png" alt="정부보증학자금융자" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner06_off.png" alt="교수협의회" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner07_off.png" alt="직원협의회" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner03_off.png" alt="명지산학해피콜센터" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner04_off.png" alt="명지유치원" /></a></li>
+				<li><a href="#" target="_blank"><img src="https://www.mjc.ac.kr/resource/common/images/common/banner05_off.png" alt="정부보증학자금융자" /></a></li>
+			</ul>
+		</div>
+	</aside>
+	<!-- //배너 -->
+
+	<!-- 하단 -->
+	<footer id="dFoot" class="main_foot">
+	<h1 class="invisible">명지전문대학 로고</h1>
+	<div class="foot">
+		<ul class="m_foot_menu">
+			<li><a href="/privacy.do?menuNo=1"><strong>개인정보처리방침</strong></a></li>   
+		</ul>
+		<ul class="siteLink">
+
+			<li>
+
+			<label class="hide" for="subject1">부서/부속기관 홈페이지</label>
+
+			<form name="select" class="select" method="post" onsubmit="move(select.movepage)" >
+
+				<select name="movepage" id="subject1">
+
+					<option value="/ibuilder.do?menu_idx=3155" >[교목실] 선교지원팀</option>
+					<option value="/ibuilder.do?menu_idx=27" >[기획실] 기획평가팀</option>
+					<option value="/ibuilder.do?menu_idx=2614" >[기획실] 예산감사팀</option>
+					<option value="/ibuilder.do?menu_idx=29" >[교무처] 교무입학팀</option>
+					<option value="/ibuilder.do?menu_idx=42" >[교무처] 학사지원팀</option>
+					<option value="/ibuilder.do?menu_idx=67" >[학생지원처] 학생복지팀</option>
+					<option value="/ibuilder.do?menu_idx=3121" >[학생지원처] 장애학생지원센터</option>
+					<option value="/ibuilder.do?menu_idx=32" >[산학협력처] 산학협력팀</option>
+					<option value="/ibuilder.do?per_menu_idx=37&menu_idx=215&tabCnt=2" >[사무처] 총무회계팀</option>
+					<option value="/ibuilder.do?menu_idx=2618" >[사무처] 구매시설팀</option>
+					<option value="/ibuilder.do?menu_idx=40" >[학술정보원] 학술정보팀</option> 
+					<option value="/ibuilder.do?menu_idx=41" >[학술정보원] 정보관리팀</option>
+					<option value="/ibuilder.do?menu_idx=2616" >교육혁신지원센터</option>
+					<option value="/ibuilder.do?menu_idx=2893" >원격교육지원센터</option>
+					<option value="/ibuilder.do?menu_idx=44" >학보ㆍ방송국</option>
+					<option value="https://dorm.mjc.ac.kr/mjcIndex.do" >생활관</option>
+					<option value="/ibuilder.do?menu_idx=45" >예비군대대</option>
+					<option value="/ibuilder.do?menu_idx=48" >명지유치원</option>
+					<option value="/ibuilder.do?menu_idx=49" >평생교육원</option>
+					<option value="/ibuilder.do?menu_idx=50" >미래교육연구소</option>
+					<option value="/ibuilder.do?menu_idx=3051" >명지드론센터</option>
+					<option value="/ibuilder.do?menu_idx=52" >상담센터</option>
+					<option value="https://mjklec.mjc.ac.kr" >한국어교육센터</option>
+					<option value="/ibuilder.do?menu_idx=3056" >대학혁신팀</option>
+					<option value="/ibuilder.do?menu_idx=3052" >대학혁신지원사업단</option>
+					<option value="/ibuilder.do?menu_idx=3055" >성과관리센터</option>
+					<option value="/ibuilder.do?menu_idx=72" >산학협력단</option>
+					<option value="/ibuilder.do?menu_idx=2877" >캠퍼스타운사업단</option>
+					<option value="/ibuilder.do?menu_idx=3057" >조기취업형 계약학과 선도전문대학 육성사업단</option>
+					<option value="https://inter.mjc.ac.kr">글로벌교육센터</option>
+					<option value="http://hrd.mjc.ac.kr">공동훈련센터</option>
+					<option value="https://mrcc.mjc.ac.kr">명지지역상생협력센터</option>
+
+				</select>
+
+				<input type="image" alt="새창으로 페이지 열림" src="https://www.mjc.ac.kr/resource/site_theme/ST0000000002/images/main/site_btn.png" />
+
+			</form>		
+
+			</li>
+
+			<li>
+
+			<label class="hide" for="subject2">학과 홈페이지</label>
+
+			<form name="select2" class="select" method="post" onsubmit="move(select2.movepage2)" >
+
+				<select name="movepage2" id="subject2">
+					<option value="https://cafe.naver.com/swcontent">AI게임소프트웨어학과</option>
+					<option value="https://mjcs.mjc.ac.kr/">컴퓨터공학과</option>
+					<option value="https://cse.mjc.ac.kr/">컴퓨터보안공학과</option>
+					<option value="https://cee.mjc.ac.kr">전자공학과</option>
+					<option value="https://itc.mjc.ac.kr/">정보통신공학과</option>
+					<option value="https://mee.mjc.ac.kr/">기계공학과</option>
+					<option value="https://idm.mjc.ac.kr/">산업경영공학과</option>
+					<option value="https://electrical.mjc.ac.kr/">전기공학과</option>
+					<option value="https://civil.mjc.ac.kr/">토목공학과</option>
+					<option value="https://jijuk.mjc.ac.kr/">지적공간정보학과</option>
+					<option value="https://droneinfo.mjc.ac.kr">드론정보공학과</option>
+					<option value="https://ceo.mjc.ac.kr/">경영학과</option>
+					<option value="https://tax.mjc.ac.kr">세무회계과</option>
+					<option value="https://rem.mjc.ac.kr/">부동산경영과</option>
+					<option value="https://swd.mjc.ac.kr">사회복지과</option>
+					<option value="https://publiccs.mjc.ac.kr/mjcIndex.do">공공행정서비스과</option>
+					<option value="https://skysvc.mjc.ac.kr/mjcIndex.do">항공서비스과</option>
+					<option value="https://china.mjc.ac.kr/">중국어비즈니스과</option>
+					<option value="https://mjcjp.mjc.ac.kr/">일본어과</option>
+					<option value="https://mjccrw.mjc.ac.kr">문예창작과</option>
+					<option value="https://ece.mjc.ac.kr">유아교육학과</option>
+					<option value="https://yde.mjc.ac.kr">청소년교육상담과</option>
+					<option value="https://iid.mjc.ac.kr/">산업디자인학과</option>
+					<option value="https://fashionceramic.mjc.ac.kr/">패션ㆍ리빙디자인학과</option>
+					<option value="https://mjcd.mjc.ac.kr/">커뮤니케이션디자인과</option>
+					<option value="https://sls.mjc.ac.kr/">사회체육과</option>
+					<option value="https://beauty.mjc.ac.kr/">뷰티매니지먼트과</option>
+					<option value="https://medinfo.mjc.ac.kr/">보건의료정보과</option>
+					<option value="https://sileum.mjc.ac.kr/">실용음악과</option>
+					<option value="https://acting.mjc.ac.kr/">연극영상학과</option>
+					<option value="/ibuilder.do?menu_idx=1728">계약학과</option>
+				</select>
+
+				<input type="image" alt="새창으로 페이지 열림" src="https://www.mjc.ac.kr/resource/site_theme/ST0000000002/images/main/site_btn.png" />
+
+			</form>
+
+			<script type="text/javascript">
+
+				function move(obj) {
+
+					window.open(obj.options[obj.selectedIndex].value);
+
+				}
+
+			</script>
+
+			</li>
+
+		</ul>	
+
+		<h2>하단 정보</h2>
+		<ul class="foot_menu">
+			<li><a href="http://www.academyinfo.go.kr/pubinfo/pubinfo1600/doInit.do?schlId=0000473" target="_blank" title="새창열기">대학정보공시</a></li>     
+			<li><a href="/AttachData/mjc.pdf" target="_blank" title="새창열기">자체평가</a></li>     
+			<!--<li><a href="http://www2.mjc.ac.kr/c/document_library/get_file?uuid=1a805987-8eda-4779-b42c-57fc318a1fa3&amp;groupId=10185" target="_blank" title="새창열기">자체평가</a></li>-->
+			<li><a href="/bbs/data/list.do?menu_idx=2095">입찰정보</a></li>     
+			<li><a href="/ibuilder.do?menu_idx=137&sso=ok">시설이용안내</a></li>     
+			<li><a href="mailto:choi@mjc.ac.kr">불편사항 보내기</a></li>     
+			<li><a href="/privacy.do?menuNo=2">이메일 수집거부</a></li>     
+			<li><a href="/privacy.do?menuNo=1"><strong>개인정보처리방침</strong></a></li>     
+			<!-- <li><a href="/privacy.do?menuNo=3">영상정보처리기기운영관리방침</a></li>-->
+			<li><a href="/privacy.do?menuNo=5&cont_idx=CT0000001580">개인정보 공시</a></li>
+		</ul>
+
+			
+
+		<div class="sns_bft">
+
+			<ul class="sns_bftwrap">
+				<li><a href="https://www.youtube.com/channel/UCHXGJlj1l_fDJuQDuAT6j8w" target="_blank" title="새창열기"><img width="19" height="19" src="/images/main/icon_y.png" alt="유튜브" /></a></li>
+				
+
+				<li><a href="https://www.instagram.com/myongji_college/" target="_blank" title="새창열기"><img width="19" height="19" src="/images/main/icon_i.png" alt="인스타그램" /></a></li>
+				<li><a href="https://www.facebook.com/mjc2014" target="_blank" title="새창열기"><img width="19" height="19" src="/images/main/icon_f.png" alt="페이스북" /></a></li>
+				
+
+				<li><a href="http://blog.naver.com/mjc_1974" target="_blank" title="새창열기"><img width="19" height="19" src="/images/main/icon_b.png" alt="네이버 블로그" /></a></li>
+			
+			
+				<li><a href="https://member.mjc.ac.kr/member/login.do?returnUrl=https%3A%2F%2Fwww.mjc.ac.kr%2FmjcIndex.do%3Foffice%3Dy" title="오피스365"><img width="73" height="19" src="/ibuilder/template/theme_skin/theme100/images/common/mobile_office_365.png" alt="오피스365" /></a></li>
+      
+	  
+			</ul>
+
+		</div>
+		
+
+		<p class="address">
+
+			우)03656 서울특별시 서대문구 가좌로 134(서울특별시 서대문구 홍은 2동 356-1) 대표전화 (02)300-1000,1114 FAX (02)304-4832 <br />
+
+			Copyright 2014 MYONGJI College All Rights Reserved. 
+		
+
+		</p>
+		
+		<div class="webmark">
+			<a href="http://kwacc.or.kr/CertificationSite/WA/1722/Detail?page=1" target="_blank" title="한국웹접근성평가센터 인증현황 바로가기_새창"><img src="/resource/site_theme/ST0000000002/images/main/webmark.png" alt="국가공인 정보통신접근성 품질인증마크"></a>
+		</div>
+
+	</div>
+
+</footer>
+	<!-- //하단 -->
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		menuJs.menu('.lnb .has_child',4,1,1);
+	});
+
+	$(window).load(function(){
+	  $('.banner_scroll').flexslider({
+		animation: "slide",
+		animationLoop: false,
+		itemWidth: 132,
+		itemMargin: 0,
+		minItems: 3,
+		maxItems: 7
+	  });
+	});
+	imgMenuOver("bannerOverJs");
+</script>
+</body>
+</html>

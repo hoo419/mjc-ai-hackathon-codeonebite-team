@@ -3,6 +3,7 @@ from datetime import datetime
 from enum import StrEnum
 
 from app.core.time import KST
+from app.rag import school_info
 from app.schemas.chat import ChatAction, ChatResponse
 from app.schemas.course import Course, CourseCategory, CourseClassType
 from app.schemas.student import ScheduleItem
@@ -208,10 +209,14 @@ def handle_message(message: str, now: datetime | None = None) -> ChatResponse:
     elif intent == ChatIntent.NEXT_CLASS:
         response = _handle_next_class(now)
     else:
-        # SCHOOL_INFO: no RAG/document search exists yet (Phase 9-10), so we
-        # never fabricate a school-policy answer, and never let the AI
-        # rephrase this fixed safety sentence either.
-        return ChatResponse(answer=NO_DATA_ANSWER)
+        # SCHOOL_INFO: search the school site in real time and answer only
+        # from what's actually found there (app/rag/school_info.py). This
+        # path already produces a fact-constrained answer on its own, so it
+        # skips the generic _rephrase() step below - and if nothing useful
+        # was found, we fall back to the fixed safety sentence, never
+        # fabricating a school-policy answer, and never letting the AI
+        # rephrase that fixed sentence either.
+        return school_info.answer(message) or ChatResponse(answer=NO_DATA_ANSWER)
 
     response.answer = _rephrase(response.answer)
     return response
