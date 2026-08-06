@@ -1,0 +1,47 @@
+MJC AI Campus Agent - 검증 근거 목록
+
+팀 및 저장소
+- 팀명: 코드한입조 (README.md)
+- 팀원: 전자공학과 임채호, AI게임소프트웨어학과 조영남 (사용자 확인)
+- 공개 GitHub: https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team (git remote origin)
+
+구현 범위
+- 화면 6개: 대시보드, AI 채팅, 과목 검색, 시간표, 강의실, 상담 (frontend/src/app/**/page.tsx)
+- 서비스 REST 엔드포인트 14개: Course 2, Student 4, Enrollment 2, Chat 1, Counseling 3, Campus 2 (backend/app/api/*.py)
+- 상태 확인 엔드포인트 1개: GET /health (backend/app/main.py)
+- Backend 테스트 함수 105개 (backend/tests/test_*.py에서 def test_ 집계)
+- Frontend ESLint --max-warnings=0 통과 (2026-08-07 현재 작업환경에서 재검증)
+- Backend pytest는 현재 Codex 번들 환경에 pytest가 없어 이번 문서 제작 과정에서는 재실행하지 못함. 테스트 통과 수로 표현하지 않음.
+
+실제 강좌 데이터
+- 2026학년도 2학기 수강편람 API 응답을 학과·학년·강좌 구분 조합으로 수집 (data/raw/README.md)
+- 동일 과목코드·분반·학기의 반복 노출을 하나의 고유 분반으로 통합
+- 고유 분반 246개 (data/raw/sugang_courses_raw_2026_2.json, data/courses.json)
+- 실제 수업 세션 516개 (data/courses.json의 sessions 원소 합계)
+- 복수 학과 개방 분반 21개, 최대 36개 학과 개방 (eligibleDepts)
+- 서로 다른 분반은 별도 ID로 보존하고 복수 요일·시간은 sessions 배열에 보존
+- 원격시험 배정시간 문구만 실제 수업 시간이 아니므로 세션에서 제외
+
+데이터와 상태의 구분
+- 실제 데이터: 강좌·시간·교수·정원·신청인원·학과·강의실 축약 코드
+- 시연용 사용자 상태: 학생 1명과 초기 수강내역 2건
+- 선택 가능한 저장소: DATABASE_URL 설정 시 PostgreSQL, 미설정 시 JSON/in-memory 경로
+- Frontend는 NEXT_PUBLIC_API_BASE_URL 기반 공용 API 클라이언트로 FastAPI를 호출
+
+AI 신뢰성
+- LLM은 의도 파악, 조건 추출, 결과 설명을 담당 (AI_AGENT_RULES.md)
+- 강좌 상태, 정원, 시간 충돌, 자격, 강의실 등 권위 정보는 코드·API·DB 결과를 사용
+- AI 공급자 오류 시 구조화된 규칙 기반 응답 또는 안전한 실패 안내 사용
+- 확인되지 않은 학교 사실을 생성하지 않음
+
+정직하게 밝혀야 할 한계
+- 실제 학교 수강신청 시스템에서 신청을 실행하지 않음. 사용자가 실제 신청을 마친 과목을 개인 시간표에 기록하는 도구임.
+- 학교 통합 인증은 미연동이며 시연용 학생 상태를 사용함.
+- 학교정보 검색용 기본 모듈은 있으나 pgvector 기반 완전한 RAG 고도화는 향후 범위임.
+- 실제 상담 배정·예약 시스템과 자동 연동하지 않음.
+
+핵심 심사 메시지
+- 학생 가치: 여러 학교 시스템을 오가는 탐색 비용 감소
+- 교수 관점: 실제 학사 데이터와 AI 추측 방지 원칙
+- 기업 관점: 교체 가능한 저장소와 기능 확장성
+- AI 심사 관점: 문제-구현-검증-한계의 명시적 연결
