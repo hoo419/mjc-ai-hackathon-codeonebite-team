@@ -88,13 +88,19 @@ def fetch_recent_notices(limit: int = 4, *, http_client: httpx.Client | None = N
         logger.exception("failed to fetch academic notices list")
         return []
 
+    if not rows:
+        # 200 OK인데 파싱된 행이 0개면, "학교가 공지를 안 올렸다"가 아니라
+        # 게시판 HTML 구조가 바뀌어 셀렉터가 더 이상 안 맞을 가능성이 높다.
+        # 그냥 조용히 빈 목록을 반환하면 이 문제를 아무도 못 알아챈다.
+        logger.warning("academic notices list page returned 200 but parsed 0 rows - selector may be stale")
+
     notices = []
     for row in select_recent(rows, limit):
         notice = _to_notice(row)
-        # 목록 페이지의 "최근 공지" 배너 항목은 제목이 "..."로 잘려서 나오는
-        # 경우가 실제로 있다 - 상세페이지에서 진짜(안 잘린) 제목을 가져와
-        # 덮어쓴다. 상세 조회가 실패하면 목록의 제목을 그대로 쓴다(지어내지
-        # 않고, 이미 가진 정보를 버리지도 않는다).
+        # 목록 페이지 자체가 긴 제목을 "..."로 잘라서 보여주는 경우가 실제로
+        # 있다 - 상세페이지에서 진짜(안 잘린) 제목을 가져와 덮어쓴다. 상세
+        # 조회가 실패하면 목록의 제목을 그대로 쓴다(지어내지 않고, 이미 가진
+        # 정보를 버리지도 않는다).
         detail = mjc_detail.fetch_detail(notice.url, http_client=client)
         if detail is not None and detail.title:
             notice = notice.model_copy(update={"title": detail.title})

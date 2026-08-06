@@ -111,10 +111,25 @@ def test_fetch_recent_notices_returns_empty_list_on_network_error():
     assert fetch_recent_notices(http_client=client) == []
 
 
+def test_fetch_recent_notices_warns_when_page_parses_to_zero_rows(caplog):
+    # 200 OK인데 0행이면 "공지 없음"이 아니라 셀렉터가 깨졌을 가능성이 높다 -
+    # 조용히 넘어가지 않고 로그로 남겨야 한다.
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, text="<html><body>no matching rows</body></html>")
+
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+
+    with caplog.at_level("WARNING"):
+        notices = fetch_recent_notices(http_client=client)
+
+    assert notices == []
+    assert any("0 rows" in record.message for record in caplog.records)
+
+
 def test_fetch_recent_notices_replaces_truncated_list_title_with_full_detail_title():
-    # 목록 페이지의 "최근 공지" 배너 항목처럼 제목이 "..."로 잘려 나오는
-    # 경우가 실제로 있다 (검증 중 실사이트에서 발견). 상세페이지에서 진짜
-    # 제목을 가져와 덮어써야 한다.
+    # 제목 뒤쪽이 "..."로 잘려 나오는 글이 실제로 있다(목록 페이지 자체가
+    # 긴 제목을 잘라서 보여줌 - 검증 중 실사이트에서 발견). 상세페이지에서
+    # 진짜 제목을 가져와 덮어써야 한다.
     list_html = (FIXTURES / "mjc_notice_list.html").read_text(encoding="utf-8")
     detail_html = (FIXTURES / "mjc_detail_plain.html").read_text(encoding="utf-8")
 
