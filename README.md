@@ -28,12 +28,24 @@
 - [x] Frontend ↔ Backend 실연동 통합 테스트 (`integration/fullstack-demo` 브랜치)
 - [x] sugang.mjc.ac.kr 개설강좌 실데이터 246개 반영 (Mock/가짜 강의 데이터 제거)
 - [x] 실제 배포 (Backend: Railway, Frontend: Vercel)
-- [ ] 발표 자료 정리
+- [x] 발표 자료 정리
 
 ## 실행 방법
+| 서비스 | URL | 설명 |
+|---|---|---|
+| 웹앱 | [frontend-ten-alpha-5uxgevufyr.vercel.app](https://frontend-ten-alpha-5uxgevufyr.vercel.app/) | Vercel에 배포된 사용자 화면 |
+| Backend API | [mjc-ai-campus-agent-backend-production.up.railway.app](https://mjc-ai-campus-agent-backend-production.up.railway.app/) | Railway에 배포된 FastAPI 서버 |
+| 상태 확인 | [/health](https://mjc-ai-campus-agent-backend-production.up.railway.app/health) | Backend 정상 동작 확인 |
+| Swagger | [/docs](https://mjc-ai-campus-agent-backend-production.up.railway.app/docs) | 대화형 REST API 문서 |
 
-로컬에서 전체 데모(Frontend + Backend + DB)를 띄우는 방법은 **[DEMO_SETUP.md](./DEMO_SETUP.md)** 참고.
-
+ ++++주요기능++++
+- **통합 대시보드**: 학생 정보, 다음 수업, 오늘의 시간표와 공지 확인
+- **AI 캠퍼스 비서**: 과목 데이터와 명지전문대 학교정보 검색을 활용한 질의응답
+- **과목 검색·수강신청**: 2026학년도 2학기 실제 개설강좌 246개 검색, 잔여석·시간 충돌 확인, 신청과 취소
+- **주간 시간표**: 신청한 과목을 요일·교시별로 시각화
+- **강의실 조회**: 건물과 강의실 정보 검색
+- **상담 지원**: 상담 내역 조회, 상담 신청과 적성 분석
+- **듀얼 데이터 모드**: 환경변수 하나로 Mock JSON 또는 PostgreSQL(Neon) 사용
 ## 문서 목록
 
 | 문서 | 내용 |
