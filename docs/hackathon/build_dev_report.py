@@ -238,7 +238,10 @@ def build_pdf(header: list[str], sections: list[tuple[str, list[Block]]]) -> Non
     story.append(Spacer(1, 30 * mm))
     story.append(Paragraph("CodeOneBite Team | 2026년 8월", cover_meta))
     story.append(Spacer(1, 5 * mm))
-    story.append(Paragraph("GitHub  github.com/hoo419/mjc-ai-hackathon-codeonebite-team", cover_meta))
+    story.append(Paragraph(
+        'GitHub  <link href="https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team" color="#1677FF"><u>github.com/hoo419/mjc-ai-hackathon-codeonebite-team</u></link>',
+        cover_meta,
+    ))
     story.append(NextPageTemplate("Body"))
     story.append(PageBreak())
 
@@ -279,6 +282,33 @@ def set_run_font(run, name: str, size: float, bold: bool = False, color: str = "
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.color.rgb = RGBColor.from_string(color)
+
+
+def add_docx_hyperlink(paragraph, url: str, text: str, size: float, color: str = "1677FF") -> None:
+    part = paragraph.part
+    r_id = part.relate_to(url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink", is_external=True)
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), r_id)
+    run = OxmlElement("w:r")
+    rpr = OxmlElement("w:rPr")
+    rfonts = OxmlElement("w:rFonts")
+    rfonts.set(qn("w:eastAsia"), "맑은 고딕")
+    rpr.append(rfonts)
+    sz = OxmlElement("w:sz")
+    sz.set(qn("w:val"), str(int(size * 2)))
+    rpr.append(sz)
+    color_el = OxmlElement("w:color")
+    color_el.set(qn("w:val"), color)
+    rpr.append(color_el)
+    u = OxmlElement("w:u")
+    u.set(qn("w:val"), "single")
+    rpr.append(u)
+    run.append(rpr)
+    t = OxmlElement("w:t")
+    t.text = text
+    run.append(t)
+    hyperlink.append(run)
+    paragraph._p.append(hyperlink)
 
 
 def add_page_number(paragraph) -> None:
@@ -371,8 +401,9 @@ def build_docx(header: list[str], sections: list[tuple[str, list[Block]]]) -> No
 
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run("GitHub  https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team")
+    r = p.add_run("GitHub  ")
     set_run_font(r, "맑은 고딕", 10, False, "172033")
+    add_docx_hyperlink(p, "https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team", "https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team", 10)
     doc.add_page_break()
 
     for idx, (title, blocks) in enumerate(sections):
