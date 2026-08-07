@@ -8,7 +8,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CourseCard } from "@/components/course-card";
 import { useAsyncData } from "@/hooks/use-async-data";
 import { usePreviewCourseIds } from "@/hooks/use-preview-course-ids";
-import { enroll, getCourses, getMyCourses } from "@/lib/api";
+import { ApiError } from "@/lib/api/client";
+import { enroll, getCourses, getMyCourses, unenroll } from "@/lib/api";
 import { categoryLabel, classTypeLabel, statusLabel } from "@/lib/labels";
 import { togglePreview } from "@/lib/preview-store";
 import type { CourseCategory, CourseClassType, CourseStatus } from "@/types";
@@ -64,6 +65,22 @@ export default function CoursesPage() {
         ? { ok: true, message: "내 시간표에 추가되었습니다." }
         : { ok: false, message: result.error.message },
     }));
+    setEnrollingId(null);
+    setRefreshKey((k) => k + 1);
+  }
+
+  async function handleCancel(courseId: string) {
+    setEnrollingId(courseId);
+    try {
+      await unenroll(courseId);
+      setFeedback((prev) => ({
+        ...prev,
+        [courseId]: { ok: true, message: "신청을 취소했습니다." },
+      }));
+    } catch (err) {
+      const message = err instanceof ApiError ? err.message : "취소에 실패했습니다.";
+      setFeedback((prev) => ({ ...prev, [courseId]: { ok: false, message } }));
+    }
     setEnrollingId(null);
     setRefreshKey((k) => k + 1);
   }
@@ -206,11 +223,14 @@ export default function CoursesPage() {
                       </Button>
                       <Button
                         size="sm"
+                        variant={isEnrolled ? "destructive" : "default"}
                         className="flex-1"
-                        disabled={enrollingId === course.id || isEnrolled}
-                        onClick={() => handleAddToSchedule(course.id)}
+                        disabled={enrollingId === course.id}
+                        onClick={() =>
+                          isEnrolled ? handleCancel(course.id) : handleAddToSchedule(course.id)
+                        }
                       >
-                        {isEnrolled ? "추가됨" : "신청한 과목 추가"}
+                        {isEnrolled ? "취소" : "신청한 과목 추가"}
                       </Button>
                     </div>
                     {cardFeedback && (

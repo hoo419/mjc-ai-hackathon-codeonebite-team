@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +14,8 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAsyncData } from "@/hooks/use-async-data";
 import { usePreviewCourseIds } from "@/hooks/use-preview-course-ids";
-import { getCourses, getMySchedule } from "@/lib/api";
+import { getCourses, getMyCourses, getMySchedule, unenroll } from "@/lib/api";
+import { ApiError } from "@/lib/api/client";
 import { classTypeLabel, dayLabel } from "@/lib/labels";
 import { getNextClass, hasConflict } from "@/lib/schedule";
 import { toMinutes, todayAsDay } from "@/lib/time";
@@ -55,14 +58,35 @@ function computeConflictKeys(blocks: Block[]): Set<string> {
 }
 
 export default function SchedulePage() {
-  const { data: scheduleData, loading } = useAsyncData(() => getMySchedule());
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [cancellingId, setCancellingId] = useState<string | null>(null);
+  const [cancelError, setCancelError] = useState<string | null>(null);
+
+  const { data: scheduleData, loading } = useAsyncData(() => getMySchedule(), [refreshKey]);
+  const { data: myCoursesData, loading: myCoursesLoading } = useAsyncData(
+    () => getMyCourses(),
+    [refreshKey]
+  );
   const { data: coursesData } = useAsyncData(() => getCourses());
   const previewIds = usePreviewCourseIds();
   const [selected, setSelected] = useState<Block | null>(null);
 
   const schedule = scheduleData?.schedule ?? [];
+  const myCourses = myCoursesData?.courses ?? [];
   const today = todayAsDay();
   const nextClass = getNextClass(schedule);
+
+  async function handleCancel(courseId: string) {
+    setCancellingId(courseId);
+    setCancelError(null);
+    try {
+      await unenroll(courseId);
+      setRefreshKey((k) => k + 1);
+    } catch (err) {
+      setCancelError(err instanceof ApiError ? err.message : "취소에 실패했습니다.");
+    }
+    setCancellingId(null);
+  }
 
   const blocks: Block[] = useMemo(() => {
     const scheduleList = scheduleData?.schedule ?? [];
@@ -115,6 +139,49 @@ export default function SchedulePage() {
           <p className="text-xs text-muted-foreground">
             다음 수업: {dayLabel[nextClass.day]} {nextClass.startTime} {nextClass.name}
           </p>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h2 className="text-sm font-medium text-muted-foreground">신청한 과목</h2>
+        {myCoursesLoading ? (
+          <Skeleton className="h-16 w-full" />
+        ) : myCourses.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            신청한 과목이 없습니다. 과목 검색에서 담아보세요.
+          </p>
+        ) : (
+          <div className="flex flex-col gap-2">
+            {myCourses.map((course) => (
+              <Card key={course.id}>
+                <CardContent className="flex flex-wrap items-center justify-between gap-2 py-2">
+                  <div>
+                    <p className="text-sm font-medium">{course.name}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {course.professor} ·{" "}
+                      {course.sessions
+                        .map(
+                          (s) =>
+                            `${dayLabel[s.day]} ${s.startTime}~${s.endTime}${
+                              s.building ? ` (${[s.building, s.room].filter(Boolean).join(" ")})` : ""
+                            }`
+                        )
+                        .join(", ")}
+                    </p>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    disabled={cancellingId === course.id}
+                    onClick={() => handleCancel(course.id)}
+                  >
+                    취소
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+            {cancelError && <p className="text-xs text-destructive">{cancelError}</p>}
+          </div>
         )}
       </div>
 
