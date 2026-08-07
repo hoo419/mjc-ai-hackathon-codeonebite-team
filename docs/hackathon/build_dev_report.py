@@ -239,7 +239,7 @@ def build_pdf(header: list[str], sections: list[tuple[str, list[Block]]]) -> Non
     story.append(Paragraph("CodeOneBite Team | 2026년 8월", cover_meta))
     story.append(Spacer(1, 5 * mm))
     story.append(Paragraph(
-        'GitHub  <link href="https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team" color="#1677FF"><u>github.com/hoo419/mjc-ai-hackathon-codeonebite-team</u></link>',
+        'GitHub  <link href="https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team" color="#1677FF"><u>https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team</u></link>',
         cover_meta,
     ))
     story.append(NextPageTemplate("Body"))
