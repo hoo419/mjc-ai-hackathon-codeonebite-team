@@ -237,6 +237,8 @@ def build_pdf(header: list[str], sections: list[tuple[str, list[Block]]]) -> Non
     story.append(Paragraph("학교 정보 접근 격차 해소 · 시간표 및 강의실 안내 · 진로상담 AI 분석", tagline))
     story.append(Spacer(1, 30 * mm))
     story.append(Paragraph("CodeOneBite Team | 2026년 8월", cover_meta))
+    story.append(Spacer(1, 5 * mm))
+    story.append(Paragraph("GitHub  github.com/hoo419/mjc-ai-hackathon-codeonebite-team", cover_meta))
     story.append(NextPageTemplate("Body"))
     story.append(PageBreak())
 
@@ -365,6 +367,11 @@ def build_docx(header: list[str], sections: list[tuple[str, list[Block]]]) -> No
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_before = Pt(120)
     r = p.add_run("CodeOneBite Team | 2026년 8월")
+    set_run_font(r, "맑은 고딕", 10, False, "172033")
+
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r = p.add_run("GitHub  https://github.com/hoo419/mjc-ai-hackathon-codeonebite-team")
     set_run_font(r, "맑은 고딕", 10, False, "172033")
     doc.add_page_break()
 
